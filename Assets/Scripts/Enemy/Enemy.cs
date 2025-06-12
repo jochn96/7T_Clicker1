@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 [CreateAssetMenu(fileName = "EnemyCenter" , menuName = "ScriptableObject/Enemy", order = 1)]
 
