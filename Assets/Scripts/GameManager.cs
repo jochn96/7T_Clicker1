@@ -4,6 +4,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Header("Connection")]
+    public SoundManager soundManager;
+
+    [Header("Info")]
     public int gold;
 
     public int finalAttack;
@@ -36,7 +40,12 @@ public class GameManager : MonoBehaviour
     {
 
     }
-    
+
+    public void PlayEffect(AudioClip clip)
+    {
+        soundManager.PlayClip(clip);
+    }
+
     public void playerDataLoad()
     {
         playerData = SaveDataToJSON.LoadUsers();
