@@ -37,6 +37,11 @@ public class GameManager : MonoBehaviour
         playerDataLoad();
     }
 
+    private void Start()
+    {
+        soundManager.ChangeBackGroundMusic(0);  //기본 로비음악 재생
+    }
+
     public void Update()
     {
 
@@ -99,27 +104,27 @@ public class GameManager : MonoBehaviour
     }
 
     public int FinalAttack(bool isCritical)
-    {
+    {//공격시 bool isCritical()을 실행시켜 (공격에서 임팩트를 주기위해서 이 함수가 필요) 크리티컬 여부판단
         //finalAttack = 전체 데미지 + (보너스 데미지 퍼센트)
-        if (isCritical)
+        if (isCritical)//크리티컬이 발동되면
         {
             //finalCritDmg = finalAttack * 크리티컬 데미지 보너스 퍼센트
-            damage = finalAttack + finalCritDmg;
-            return damage;
+            damage = finalAttack + finalCritDmg; //데미지는 기존데미지 + 크리티컬로 발동된 추가데미지
+            return damage; //데미지값을 반환
         }
-        return damage;
+        return damage;  //크리티컬이 안뜨면 그대로 데미지값 반환
     }
 
     public bool isCritical()
     {
-        float isCritical = Random.Range(0,100);
-        if (isCritical <= finalCritical)
+        float isCritical = Random.Range(0,100); //float값으로 랜덤을 돌려서
+        if (isCritical <= finalCritical) //나온숫자가 크리티컬 수치보다 작거나 같다면
         {
-            return true;
+            return true;  //크리티컬 발동을위해 true반환
         }
         else
         {
-            return false;
+            return false;  //아니라면 false반환
         }
     }
 
@@ -152,4 +157,22 @@ public class GameManager : MonoBehaviour
         else  //그렇지않으면 하위파츠만 출력 예시 1456면 1456출력
             return parts[0];
     }
+
+    //public string NumberText1(int value)
+    //{
+    //    int eok = value / 100000000;
+    //    int man = (value % 100000000) / 10000;
+    //    int rest = value % 10000;
+
+    //    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+    //    if (eok > 0)
+    //        sb.Append(eok).Append("억 ");
+    //    if (man > 0)
+    //        sb.Append(man).Append("만 ");
+    //    if (rest > 0 || sb.Length == 0)
+    //        sb.Append(rest);
+
+    //    return sb.ToString().Trim();
+    //}
 }
