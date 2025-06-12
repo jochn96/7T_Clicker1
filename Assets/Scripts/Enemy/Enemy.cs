@@ -24,8 +24,7 @@ public class Enemy : ScriptableObject
    [SerializeField]
 
    private int enemyExp;
-   public int EnemyExp
-   { get { return enemyExp; } }
+   public int EnemyExp { get { return enemyExp; } }
 
    [Header("적 종류")] 
    [Tooltip("적 종류의 갯수를 수정한다")] 
