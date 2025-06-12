@@ -19,6 +19,14 @@ public class Enemy : ScriptableObject
    private int maxenemyLife = 30;
    public int MaxenemyLife { get { return maxenemyLife; } }
 
+   [Header("적 경험치")] 
+   [Tooltip("적을 쓰러뜨릴 때 얻는 경험치")] 
+   [SerializeField]
+
+   private int enemyExp;
+   public int EnemyExp
+   { get { return enemyExp; } }
+
    [Header("적 종류")] 
    [Tooltip("적 종류의 갯수를 수정한다")] 
    [SerializeField]
