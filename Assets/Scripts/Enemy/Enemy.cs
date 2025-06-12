@@ -11,6 +11,13 @@ public class Enemy : ScriptableObject
 
    private int enemyLife = 5;
    public int EnemyLife { get { return enemyLife; } }
+   
+   [Header("적 최대 체력")]
+   [Tooltip("값을 수정하여 적의 최대 체력량을 바꾼다")]
+   [SerializeField]
+   
+   private int maxenemyLife = 30;
+   public int MaxenemyLife { get { return maxenemyLife; } }
 
    [Header("적 종류")] 
    [Tooltip("적 종류의 갯수를 수정한다")] 
