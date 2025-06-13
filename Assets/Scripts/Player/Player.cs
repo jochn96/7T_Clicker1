@@ -9,6 +9,13 @@ public class Player : MonoBehaviour
 {
     private PlayerStatManager statManager;
 
+    [Header("기본 능력치(초기값)")]
+    [SerializeField] private float baseAttackPower = 10f;
+    [SerializeField] private float baseCriticalChance = 20f;      // %
+    [SerializeField] private float baseCriticalDamage = 1.3f;    // 배율
+    [SerializeField] private float baseGoldGainPercent = 0f;     // %
+    [SerializeField] private float baseAutoAttackCooldownReduce = 0f; // 쿨타임 감소(초)
+
     private void Awake()
     {
         // StatManager 컴포넌트 캐싱
@@ -64,11 +71,29 @@ public class Player : MonoBehaviour
     }
 
     /// <summary>
-    /// 특정 능력치의 현재 값을 반환합니다.
+    /// 특정 능력치의 현재 값을 반환합니다. (기본값 + 업그레이드 누적값, 최대치 적용)
     /// </summary>
     public float GetStatValue(PlayerStatType statType)
     {
-        return statManager.GetStatValue(statType);
+        float upgradeValue = statManager.GetStatValue(statType);
+        switch (statType)
+        {
+            case PlayerStatType.AttackPower:
+                return baseAttackPower + upgradeValue;
+            case PlayerStatType.CriticalChance:
+                // 최대 100%
+                return Mathf.Min(baseCriticalChance + upgradeValue, 100f);
+            case PlayerStatType.CriticalDamage:
+                // 최대 250%
+                return Mathf.Min(baseCriticalDamage + upgradeValue, 250f);
+            case PlayerStatType.GoldGainPercent:
+                // 최대 100%
+                return Mathf.Min(baseGoldGainPercent + upgradeValue, 100f);
+            case PlayerStatType.AutoAttackCooldownReduce:
+                return baseAutoAttackCooldownReduce + upgradeValue;
+            default:
+                return upgradeValue;
+        }
     }
 
     /// <summary>
