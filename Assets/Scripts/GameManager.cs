@@ -1,4 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -10,16 +15,18 @@ public class GameManager : MonoBehaviour
 
     [Header("Info")]
     public int gold;
-
     public int finalAttack;
     public int finalCritical;
     public int finalCritDmg;
     public int finalGetGold;
-
     public int stage;
-
     public int damage;
-    
+
+    public int musicNumber;
+
+    [Header("UI")]
+    public TextMeshProUGUI warningText;
+
     PlayerData playerData = new PlayerData();
 
     private void Awake()
@@ -39,13 +46,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        soundManager.ChangeBackGroundMusic(0);  //기본 로비음악 재생
+        soundManager.ChangeBackGroundMusic(musicNumber);  //기본 로비음악 재생
     }
 
     public void Update()
     {
-
+        soundManager.ChangeBackGroundMusic(musicNumber);
     }
+
+
 
     public void PlayEffect(AudioClip clip)
     {
@@ -85,47 +94,64 @@ public class GameManager : MonoBehaviour
 
     public bool UseGold(int useGold) //재화를 사용해야되면 UseGold 함수를 호출
     { //나중에 강화석이랑 분할을 하든 업그레이드 타입에 맞춰서 변수를 변경하던 할 것
-        if (gold >= useGold)
+        if (useGold <= 0)
         {
-            gold -= useGold;
+            ShowWarning("잘못된 호출입니다");
+            return false;
+        }
+
+        if (playerData.Gold >= useGold)
+        {
+            playerData.Gold -= useGold;
             return true;
         }
         else
         {
+            ShowWarning("골드가 부족합니다");
             return false;
         }
     }
 
-
-    public void GetGold()  //몬스터가 죽으면 GetGold를 호출
-    {
-        //finalGetGold = 획득골드 + (획득골드 * 보너스 골드)
-        gold += finalGetGold;
-    }
-
-    public int FinalAttack(bool isCritical)
-    {//공격시 bool isCritical()을 실행시켜 (공격에서 임팩트를 주기위해서 이 함수가 필요) 크리티컬 여부판단
-        //finalAttack = 전체 데미지 + (보너스 데미지 퍼센트)
-        if (isCritical)//크리티컬이 발동되면
+    public bool UseEnforceStone(int enforceStone)
+    { 
+        if (enforceStone <= 0)
         {
-            //finalCritDmg = finalAttack * 크리티컬 데미지 보너스 퍼센트
-            damage = finalAttack + finalCritDmg; //데미지는 기존데미지 + 크리티컬로 발동된 추가데미지
-            return damage; //데미지값을 반환
+            ShowWarning("잘못된 호출입니다");
+            return false;
         }
-        return damage;  //크리티컬이 안뜨면 그대로 데미지값 반환
-    }
 
-    public bool isCritical()
-    {
-        float isCritical = Random.Range(0,100); //float값으로 랜덤을 돌려서
-        if (isCritical <= finalCritical) //나온숫자가 크리티컬 수치보다 작거나 같다면
+        if (playerData.EnforceStone >= enforceStone)
         {
-            return true;  //크리티컬 발동을위해 true반환
+            playerData.EnforceStone -= enforceStone;
+            return true;
         }
         else
         {
-            return false;  //아니라면 false반환
+            ShowWarning("강화석이 부족합니다");
+            return false;
         }
+    }
+
+    public void GetGold(int dropGold, int enforceStone)  //몬스터가 죽으면 GetGold를 호출
+    {
+        //finalGetGold = dropGold + (dropGold * ((보너스골드 스텟 * 5) /100 보너스골드 스텟당 몇퍼센트로할지 상의))
+        playerData.Gold += Mathf.RoundToInt(finalGetGold);
+        playerData.EnforceStone += enforceStone;
+    }
+
+    public void ShowWarning(string mesege)
+    {
+        StartCoroutine(WarningSign(mesege));
+    }
+
+    private IEnumerator WarningSign(string message)
+    {
+        warningText.text = message;
+        warningText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(2);
+
+        warningText.gameObject.SetActive(false);
     }
 
     public string NumberText(int value) //예시 10조 1000억 1000만 이란 숫자가 들어오면
@@ -158,21 +184,28 @@ public class GameManager : MonoBehaviour
             return parts[0];
     }
 
-    //public string NumberText1(int value)
-    //{
-    //    int eok = value / 100000000;
-    //    int man = (value % 100000000) / 10000;
-    //    int rest = value % 10000;
+    public int FinalAttack(bool isCritical)
+    {//공격시 bool isCritical()을 실행시켜 (공격에서 임팩트를 주기위해서 이 함수가 필요) 크리티컬 여부판단
+        //finalAttack = 전체 데미지 + (보너스 데미지 퍼센트)
+        if (isCritical)//크리티컬이 발동되면
+        {
+            //finalCritDmg = finalAttack * 크리티컬 데미지 보너스 퍼센트
+            damage = finalAttack + finalCritDmg; //데미지는 기존데미지 + 크리티컬로 발동된 추가데미지
+            return damage; //데미지값을 반환
+        }
+        return damage;  //크리티컬이 안뜨면 그대로 데미지값 반환
+    }
 
-    //    System.Text.StringBuilder sb = new System.Text.StringBuilder();
-
-    //    if (eok > 0)
-    //        sb.Append(eok).Append("억 ");
-    //    if (man > 0)
-    //        sb.Append(man).Append("만 ");
-    //    if (rest > 0 || sb.Length == 0)
-    //        sb.Append(rest);
-
-    //    return sb.ToString().Trim();
-    //}
+    public bool isCritical()
+    {
+        float isCritical = Random.Range(0f, 100f); //float값으로 랜덤을 돌려서
+        if (isCritical <= finalCritical) //나온숫자가 크리티컬 수치보다 작거나 같다면
+        {
+            return true;  //크리티컬 발동을위해 true반환
+        }
+        else
+        {
+            return false;  //아니라면 false반환
+        }
+    }
 }
