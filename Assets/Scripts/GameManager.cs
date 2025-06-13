@@ -168,12 +168,22 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator WarningSign(string message)
     {
-        warningText.text = message;
-        warningText.gameObject.SetActive(true);
+        warningText.alpha = 1;  //알파값 1로 초기화
+        warningText.text = message;  //메세지를 미리 바꾸고
+        warningText.gameObject.SetActive(true);  //게임오브젝트 활성화
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
 
-        warningText.gameObject.SetActive(false);
+        float duration = 1.5f;  //지속시간 1.5초
+        float endEffect = 0f;  //임팩트시간
+
+        while (endEffect < duration)  //임팩트 시간이 지속시간보다 짧을 때 까지
+        {
+            endEffect += Time.deltaTime;  //임팩트 시간변수에 시간마다 ++
+            warningText.alpha = Mathf.Lerp(1f,0f,endEffect/duration);  //투명도가 1f에서 0f로 가는 간격의 비율 임팩트시간/지속시간
+            yield return null;  //결론 투명도는 임팩트시간/지속시간
+        }
+        warningText.gameObject.SetActive(false);  //투명도가 0이될쯤 종료
     }
 
     public string NumberText(int value) //예시 10조 1000억 1000만 이란 숫자가 들어오면
