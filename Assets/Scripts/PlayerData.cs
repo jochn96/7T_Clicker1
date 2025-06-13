@@ -12,7 +12,6 @@ public class EquimentData
 public  class  PlayerData //임시입니다 스텟레벨을 가져올예정
 {
     public int Stage;
-    
 
     [Header("StatLevel")]
     public int Attack;

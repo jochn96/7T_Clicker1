@@ -12,11 +12,14 @@ public class GameManager : MonoBehaviour
     public SoundManager soundManager;
 
     [Header("Info")]
+    private int baseAttack = 10;
+    private float baseCritDmgPercent = 70;
+
     public int gold;
     public int finalAttack;
-    public int finalCritical;
+    public float finalCritical;
     public int finalCritDmg;
-    public int finalGetGold;
+    public float finalGetGold;
     public int stage;
     public int damage;
 
@@ -101,10 +104,10 @@ public class GameManager : MonoBehaviour
     {
         //Stage = 현 스테이지 인덱스? 데이터? 가져오기
 
-        //finalAttack = finalAttack = 전체 데미지 + (보너스 데미지 퍼센트)
-        //finalGetGold = 획득골드 + (획득골드 * 보너스 골드)
-        //finalCritDmg = finalAttack * 크리티컬 데미지 보너스 퍼센트
-        //finalCritical = 크리티컬 확률 + 보너스 크리티컬 확률(무기보너스등)
+        finalAttack = (int)Mathf.Round(baseAttack * (Mathf.Pow(1.2f, playerData.Attack)));  //*장착무기스텟 퍼뎀
+        finalGetGold = (playerData.BonusGold * 5) / 100;  //장착무기스텟 보너스골드?
+        finalCritical = 0.5f * playerData.Critical; //+장착무기스텟 크리
+        finalCritDmg = finalAttack + (int)Mathf.Round(finalAttack * (baseCritDmgPercent + (playerData.CriticalDmg * 2))/100);
 
         //저장될때마다 혹은 UI창을 열어볼때마다 등등 각종 상황에서 갱신해줄것
 
@@ -153,9 +156,10 @@ public class GameManager : MonoBehaviour
 
     public void GetGold(int dropGold, int enforceStone)  //몬스터가 죽으면 GetGold를 호출
     {
-        //finalGetGold = dropGold + (dropGold * ((보너스골드 스텟 * 5) /100 보너스골드 스텟당 몇퍼센트로할지 상의))
+        finalGetGold = dropGold + (int)Mathf.Round(dropGold * (playerData.BonusGold * 5) / 100);
         playerData.Gold += Mathf.RoundToInt(finalGetGold);
         playerData.EnforceStone += enforceStone;
+        updateData();
     }
 
     public void ShowLoding()
