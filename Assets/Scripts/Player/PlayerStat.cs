@@ -6,6 +6,7 @@ using UnityEngine;
 /// </summary>
 public class PlayerStat : MonoBehaviour
 {
+    #region 필드 및 프로퍼티
     /// <summary>
     /// 능력치별 업그레이드 테이블 리스트 (Inspector에서 할당)
     /// </summary>
@@ -31,8 +32,9 @@ public class PlayerStat : MonoBehaviour
     [SerializeField] private float baseCriticalDamage = 1.3f;    // 배율
     [SerializeField] private float baseGoldGainPercent = 0f;     // %
     [SerializeField] private float baseAutoAttackCooldownReduce = 0f; // 쿨타임 감소(초)
+    #endregion
 
-
+    #region 초기화
     private void Awake()
     {
         player = GetComponent<Player>();
@@ -74,7 +76,9 @@ public class PlayerStat : MonoBehaviour
         // 값 저장
         SaveDataToJSON.SaveUsers(playerData);
     }
+    #endregion
 
+    #region 데이터 조회
     /// <summary>
     /// PlayerData에서 해당 능력치의 레벨을 가져옵니다.
     /// </summary>
@@ -120,7 +124,9 @@ public class PlayerStat : MonoBehaviour
         int level = statLevels.TryGetValue(statType, out var value) ? value : 0;
         return Mathf.RoundToInt(table.baseCost * Mathf.Pow(table.costMultiplier, level));
     }
+    #endregion
 
+    #region 스탯 업그레이드 처리
     /// <summary>
     /// 능력치 업그레이드 시도 (성공 시 true 반환)
     /// </summary>
@@ -184,7 +190,9 @@ public class PlayerStat : MonoBehaviour
         
         return true;
     }
+    #endregion
     
+    #region 능력치 업그레이드 public 메서드
     /// <summary>
     /// 공격력 능력치 업그레이드
     /// </summary>
@@ -254,4 +262,5 @@ public class PlayerStat : MonoBehaviour
             GameManager.Instance.updateData();
         }
     }
+    #endregion
 } 
