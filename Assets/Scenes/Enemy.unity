@@ -294,8 +294,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 137, y: 243.5}
-  m_SizeDelta: {x: 274, y: 487}
+  m_AnchoredPosition: {x: 135.64044, y: 243.49998}
+  m_SizeDelta: {x: 271.2809, y: 492.4384}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &461582851
 MonoBehaviour:
@@ -639,6 +639,7 @@ GameObject:
   - component: {fileID: 963713238}
   - component: {fileID: 963713237}
   - component: {fileID: 963713239}
+  - component: {fileID: 963713240}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -700,6 +701,20 @@ MonoBehaviour:
       spawnCount: 0
     hasboss: 0
     bosstype: 
+--- !u!114 &963713240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963713236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9893ba8e3c7a19459a5489ee9551bcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAttackUnlocked: 0
+  autoAttackInterval: 5
 --- !u!1 &1011049128
 GameObject:
   m_ObjectHideFlags: 0
