@@ -23,7 +23,7 @@ public class Enemy : ScriptableObject
    [Tooltip("적을 쓰러뜨릴 때 얻는 경험치")] 
    [SerializeField]
 
-   private int enemyExp;
+   private int enemyExp = 5;
    public int EnemyExp { get { return enemyExp; } }
 
    [Header("적 종류")] 
