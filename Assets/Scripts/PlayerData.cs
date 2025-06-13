@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-﻿[System.Serializable]
-=======
 ﻿using UnityEngine;
 
 [System.Serializable]
@@ -12,7 +9,6 @@ public class EquimentData
 }
 
 [System.Serializable]
->>>>>>> dev
 public  class  PlayerData //임시입니다 스텟레벨을 가져올예정
 {
     public int Stage;

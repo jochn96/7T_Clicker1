@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Connection")]
     public SoundManager soundManager;
+    private Player player;
+    private PlayerStatUI playerStatUI;
 
     [Header("Info")]
     private int baseAttack = 10;
@@ -22,11 +24,6 @@ public class GameManager : MonoBehaviour
     public float finalGetGold;
     public int stage;
     public int damage;
-<<<<<<< HEAD
-    
-    private Player player;
-    private PlayerStatUI playerStatUI;
-=======
 
     public int musicNumber;
 
@@ -36,7 +33,6 @@ public class GameManager : MonoBehaviour
     public Image lodingDisplay;
     private Coroutine lodingCoroutine;
     PlayerData playerData = new PlayerData();
->>>>>>> dev
 
     private void Awake()
     {
@@ -62,19 +58,14 @@ public class GameManager : MonoBehaviour
         {
             playerStatUI.RefreshUI();
         }
-    }
-
-    private void Start()
-    {
-<<<<<<< HEAD
-        // 필요한 업데이트 로직
-=======
+        
         lodingDisplay.gameObject.SetActive(false);
         warningText.gameObject.SetActive(false);
         soundManager.ChangeBackGroundMusic(musicNumber);  //기본 로비음악 재생
         ShowWarning("StartGame");
->>>>>>> dev
     }
+
+    
 
     public void TestLoding()
     {
@@ -106,21 +97,6 @@ public class GameManager : MonoBehaviour
 
     public void playerDataLoad()
     {
-<<<<<<< HEAD
-        if (player == null) player = FindObjectOfType<Player>();
-        if (player != null && player.playerData != null)
-        {
-            gold = player.playerData.Gold;
-            finalAttack = player.playerData.Attack;
-            finalCritical = player.playerData.Critical;
-            finalCritDmg = player.playerData.CriticalDmg;
-            finalGetGold = player.playerData.BonusGold;
-            stage = player.playerData.Stage;
-            if (playerStatUI != null)
-            {
-                playerStatUI.RefreshUI();
-            }
-=======
         playerData = SaveDataToJSON.LoadUsers();
 
         if (playerData != null) //실제로는 스텟을 가져올것 
@@ -133,31 +109,11 @@ public class GameManager : MonoBehaviour
             stage = playerData.Stage;  //스테이지 인덱스를 가져올 예정
 
             updateData();  //가져온 값을 게임이 실행되면 넣어주기
->>>>>>> dev
         }
     }
 
     public void updateData()
     {
-<<<<<<< HEAD
-        
-        if (player == null) player = FindObjectOfType<Player>();
-        if (player == null || player.playerData == null) return;
-        
-        //todo : 장비스탯 여기에 추가
-        int equipmentAttack = 0;
-        int equipmentCritical = 0;
-        int equipmentCritDmg = 0;
-        int equipmentBonusGold = 0;
-        // 최종 스탯 계산 (업그레이드 누적값 + 기본값 + 장비)
-        finalAttack = player.playerData.Attack + equipmentAttack;
-        finalCritical = player.playerData.Critical + equipmentCritical;
-        finalCritDmg = player.playerData.CriticalDmg + equipmentCritDmg;
-        finalGetGold = player.playerData.BonusGold + equipmentBonusGold;
-        SaveDataToJSON.SaveUsers(player.playerData);
-        if (playerStatUI != null)
-            playerStatUI.RefreshUI();
-=======
         //Stage = 현 스테이지 인덱스? 데이터? 가져오기
 
         finalAttack = (int)Mathf.Round(baseAttack * (Mathf.Pow(1.2f, playerData.Attack)));  //*장착무기스텟 퍼뎀
@@ -168,7 +124,6 @@ public class GameManager : MonoBehaviour
         //저장될때마다 혹은 UI창을 열어볼때마다 등등 각종 상황에서 갱신해줄것
 
         SaveDataToJSON.SaveUsers(playerData);
->>>>>>> dev
     }
     
 
@@ -176,13 +131,6 @@ public class GameManager : MonoBehaviour
     { //나중에 강화석이랑 분할을 하든 업그레이드 타입에 맞춰서 변수를 변경하던 할 것
         if (useGold <= 0)
         {
-<<<<<<< HEAD
-            gold -= useGold;
-            if (playerStatUI != null)
-            {
-                playerStatUI.RefreshUI();
-            }
-=======
             ShowWarning("잘못된 호출입니다");
             return false;
         }
@@ -190,7 +138,6 @@ public class GameManager : MonoBehaviour
         if (playerData.Gold >= useGold)
         {
             playerData.Gold -= useGold;
->>>>>>> dev
             return true;
         }
         else
@@ -222,14 +169,12 @@ public class GameManager : MonoBehaviour
 
     public void GetGold(int dropGold, int enforceStone)  //몬스터가 죽으면 GetGold를 호출
     {
-<<<<<<< HEAD
         //finalGetGold = 획득골드 + (획득골드 * 보너스 골드)
-        gold += finalGetGold;
+        gold += (int)finalGetGold;
         if (playerStatUI != null)
         {
             playerStatUI.RefreshUI();
         }
-=======
         finalGetGold = dropGold + (int)Mathf.Round(dropGold * (playerData.BonusGold * 5) / 100);
         playerData.Gold += Mathf.RoundToInt(finalGetGold);
         playerData.EnforceStone += enforceStone;
@@ -335,7 +280,6 @@ public class GameManager : MonoBehaviour
             return $"{parts[0]}\n{parts[1]}";
         else  //그렇지않으면 하위파츠만 출력 예시 1456면 1456출력
             return parts[0];
->>>>>>> dev
     }
 
     public int FinalAttack(bool isCritical)
@@ -347,11 +291,7 @@ public class GameManager : MonoBehaviour
             damage = finalAttack + finalCritDmg; //데미지는 기존데미지 + 크리티컬로 발동된 추가데미지
             return damage; //데미지값을 반환
         }
-<<<<<<< HEAD
         return finalAttack;
-=======
-        return damage;  //크리티컬이 안뜨면 그대로 데미지값 반환
->>>>>>> dev
     }
 
     public bool isCritical()
@@ -366,27 +306,6 @@ public class GameManager : MonoBehaviour
             return false;  //아니라면 false반환
         }
     }
-<<<<<<< HEAD
 
-    public string NumberText(int value)
-    {
-        if (value == 0) return "0";
-
-        int eok = value / 100000000;
-        int man = (value % 100000000) / 10000;
-        int rest = value % 10000;
-
-        System.Text.StringBuilder sb = new System.Text.StringBuilder();
-
-        if (eok > 0)
-            sb.Append(eok).Append("B ");
-        if (man > 0)
-            sb.Append(man).Append("M ");
-        if (rest > 0 || sb.Length == 0)
-            sb.Append(rest);
-
-        return sb.ToString().Trim();
-    }
-=======
->>>>>>> dev
+    
 }
