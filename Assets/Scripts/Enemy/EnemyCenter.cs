@@ -1,5 +1,11 @@
 using UnityEngine;
 
+/// <summary>
+/// 적의 체력 최소, 최대량을 정의합니다.
+/// 적을 쓰러뜨릴 때 얻는 경험치 양을 정의합니다.
+/// 적의 종류의 갯수를 정의합니다.
+/// 스테이지의 종류 갯수를 정의합니다.
+/// </summary>
 [CreateAssetMenu(fileName = "EnemyCenter" , menuName = "ScriptableObject/Enemy", order = 1)]
 
 public class EnemyCenter : ScriptableObject
