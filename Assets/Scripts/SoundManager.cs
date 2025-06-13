@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     private AudioSource musicAudioSource;
     public AudioClip[] musicClips;  //배경음악을 배열로 저장
     public SoundSource soundSourcePrefab;
+    public Transform soundSlot;
     public Slider musicVolumeSlider;
 
     private void Awake()
@@ -55,7 +56,7 @@ public class SoundManager : MonoBehaviour
         {
             return;
         }
-        SoundSource obj = Instantiate(soundSourcePrefab);
+        SoundSource obj = Instantiate(soundSourcePrefab, soundSlot);
         SoundSource soundSource = obj.GetComponent<SoundSource>();
         soundSource.Play(clip, musicVolume);
     }

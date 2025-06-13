@@ -3,7 +3,7 @@
 public class SoundSource : MonoBehaviour
 {
     private AudioSource audioSource;
-    public void Play(AudioClip clip, float EffectVolume)
+    public void Play(AudioClip clip, float effectVolume)
     {
         {
             if (audioSource == null)
@@ -11,7 +11,7 @@ public class SoundSource : MonoBehaviour
 
             CancelInvoke();
             audioSource.clip = clip;
-            audioSource.volume = EffectVolume;
+            audioSource.volume = effectVolume;
             audioSource.Play();
 
             Invoke("Disable", clip.length);
