@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     {
         // StatManager 컴포넌트 캐싱
         statManager = GetComponent<PlayerStatManager>();
+        Debug.Log(statManager == null ? "PlayerStatManager is NULL!" : "PlayerStatManager is OK!");
     }
 
     // Start is called before the first frame update
@@ -56,18 +57,11 @@ public class Player : MonoBehaviour
     }
 
     /// <summary>
-    /// 능력치 업그레이드 시도 예시
+    /// 능력치 업그레이드 시도(성공 시 true 반환)
     /// </summary>
-    public void UpgradeStat(PlayerStatType statType, int currentGold)
+    public bool UpgradeStat(PlayerStatType statType, int currentGold)
     {
-        if (statManager.TryUpgradeStat(statType, currentGold, out int newGold))
-        {
-            // 업그레이드 성공, newGold로 갱신
-        }
-        else
-        {
-            // 업그레이드 실패(골드 부족 등)
-        }
+        return statManager.TryUpgradeStat(statType, currentGold, out int _);
     }
 
     /// <summary>

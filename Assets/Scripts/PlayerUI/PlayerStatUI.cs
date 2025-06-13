@@ -39,11 +39,11 @@ public class PlayerStatUI : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         // 버튼에 리스너 등록
-        attackUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.AttackPower));
-        critChanceUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.CriticalChance));
-        critDamageUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.CriticalDamage));
-        goldGainUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.GoldGainPercent));
-        autoAttackCooldownUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.AutoAttackCooldownReduce));
+        // attackUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.AttackPower));
+        // critChanceUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.CriticalChance));
+        // critDamageUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.CriticalDamage));
+        // goldGainUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.GoldGainPercent));
+        // autoAttackCooldownUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.AutoAttackCooldownReduce));
     }
 
     /// <summary>
@@ -52,29 +52,36 @@ public class PlayerStatUI : MonoBehaviour
     public void RefreshUI()
     {
         attackValueText.text = player.GetStatValue(PlayerStatType.AttackPower).ToString();
-        attackCostText.text = player.GetUpgradeCost(PlayerStatType.AttackPower) + "골드";
+        attackCostText.text = player.GetUpgradeCost(PlayerStatType.AttackPower) + "G";
 
         critChanceValueText.text = player.GetStatValue(PlayerStatType.CriticalChance) + "%";
-        critChanceCostText.text = player.GetUpgradeCost(PlayerStatType.CriticalChance) + "골드";
+        critChanceCostText.text = player.GetUpgradeCost(PlayerStatType.CriticalChance) + "G";
 
-        critDamageValueText.text = player.GetStatValue(PlayerStatType.CriticalDamage).ToString();
-        critDamageCostText.text = player.GetUpgradeCost(PlayerStatType.CriticalDamage) + "골드";
+        // 치명타 데미지 %로 표시
+        critDamageValueText.text = (player.GetStatValue(PlayerStatType.CriticalDamage) * 100f).ToString("F0") + "%";
+        critDamageCostText.text = player.GetUpgradeCost(PlayerStatType.CriticalDamage) + "G";
 
         goldGainValueText.text = player.GetStatValue(PlayerStatType.GoldGainPercent) + "%";
-        goldGainCostText.text = player.GetUpgradeCost(PlayerStatType.GoldGainPercent) + "골드";
+        goldGainCostText.text = player.GetUpgradeCost(PlayerStatType.GoldGainPercent) + "G";
 
         autoAttackCooldownValueText.text = player.GetStatValue(PlayerStatType.AutoAttackCooldownReduce).ToString();
-        autoAttackCooldownCostText.text = player.GetUpgradeCost(PlayerStatType.AutoAttackCooldownReduce) + "골드";
+        autoAttackCooldownCostText.text = player.GetUpgradeCost(PlayerStatType.AutoAttackCooldownReduce) + "G";
     }
 
     /// <summary>
     /// +버튼 클릭 시 업그레이드 시도 및 UI 갱신
     /// </summary>
-    private void OnUpgrade(PlayerStatType statType)
-    {
-        player.UpgradeStat(statType, currentGold);
-        RefreshUI();
-    }
+    // private void OnUpgrade(PlayerStatType statType)
+    // {
+    //     if (player.UpgradeStat(statType, currentGold))
+    //     {
+    //         RefreshUI();
+    //     }
+    //     else
+    //     {
+    //         Debug.Log("돈부족");
+    //     }
+    // }
 
     /// <summary>
     /// PlayerStatUI 패널을 활성화(보이게) 합니다.
