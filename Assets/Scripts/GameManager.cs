@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
 
     public int damage;
     
-    PlayerData playerData = new PlayerData();
+    private Player player;
+    private PlayerStatUI playerStatUI;
 
     private void Awake()
     {
@@ -26,51 +27,77 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
         DontDestroyOnLoad(this.gameObject);
+    }
 
-        playerDataLoad();
+    private void Start()
+    {
+        //테스트용 골드
+        gold += 100000;
+        player = FindObjectOfType<Player>();
+        playerStatUI = FindObjectOfType<PlayerStatUI>();
+        if (playerStatUI != null)
+        {
+            playerStatUI.RefreshUI();
+        }
     }
 
     public void Update()
     {
-
+        // 필요한 업데이트 로직
     }
     
     public void playerDataLoad()
     {
-        playerData = SaveDataToJSON.LoadUsers();
-
-        if (playerData != null) //실제로는 스텟을 가져올것 
-        {   //임시코드입니다
-            gold = playerData.Gold;
-            finalAttack = playerData.Attack;
-            finalCritical = playerData.Critical;
-            finalCritDmg = playerData.CriticalDmg;
-            finalGetGold = playerData.BonusGold;
-            stage = playerData.Stage;
+        if (player == null) player = FindObjectOfType<Player>();
+        if (player != null && player.playerData != null)
+        {
+            gold = player.playerData.Gold;
+            finalAttack = player.playerData.Attack;
+            finalCritical = player.playerData.Critical;
+            finalCritDmg = player.playerData.CriticalDmg;
+            finalGetGold = player.playerData.BonusGold;
+            stage = player.playerData.Stage;
+            if (playerStatUI != null)
+            {
+                playerStatUI.RefreshUI();
+            }
         }
     }
 
     public void updateData()
     {
-        //Stage = 현 스테이지 인덱스? 데이터? 가져오기
-
-        //finalAttack = finalAttack = 전체 데미지 + (보너스 데미지 퍼센트)
-        //finalGetGold = 획득골드 + (획득골드 * 보너스 골드)
-        //finalCritDmg = finalAttack * 크리티컬 데미지 보너스 퍼센트
-        //finalCritical = 크리티컬 확률 + 보너스 크리티컬 확률(무기보너스등)
-
-        //저장될때마다 혹은 UI창을 열어볼때마다 등등 각종 상황에서 갱신해줄것
-
-        SaveDataToJSON.SaveUsers(playerData);
+        
+        if (player == null) player = FindObjectOfType<Player>();
+        if (player == null || player.playerData == null) return;
+        
+        //todo : 장비스탯 여기에 추가
+        int equipmentAttack = 0;
+        int equipmentCritical = 0;
+        int equipmentCritDmg = 0;
+        int equipmentBonusGold = 0;
+        // 최종 스탯 계산 (업그레이드 누적값 + 기본값 + 장비)
+        finalAttack = player.playerData.Attack + equipmentAttack;
+        finalCritical = player.playerData.Critical + equipmentCritical;
+        finalCritDmg = player.playerData.CriticalDmg + equipmentCritDmg;
+        finalGetGold = player.playerData.BonusGold + equipmentBonusGold;
+        SaveDataToJSON.SaveUsers(player.playerData);
+        if (playerStatUI != null)
+            playerStatUI.RefreshUI();
     }
+    
 
     public bool UseGold(int useGold) //재화를 사용해야되면 UseGold 함수를 호출
     { 
         if (gold >= useGold)
         {
             gold -= useGold;
+            if (playerStatUI != null)
+            {
+                playerStatUI.RefreshUI();
+            }
             return true;
         }
         else
@@ -84,6 +111,10 @@ public class GameManager : MonoBehaviour
     {
         //finalGetGold = 획득골드 + (획득골드 * 보너스 골드)
         gold += finalGetGold;
+        if (playerStatUI != null)
+        {
+            playerStatUI.RefreshUI();
+        }
     }
 
     public int FinalAttack(bool isCritical)
@@ -95,7 +126,7 @@ public class GameManager : MonoBehaviour
             damage = finalAttack + finalCritDmg;
             return damage;
         }
-        return damage;
+        return finalAttack;
     }
 
     public bool isCritical()
@@ -113,6 +144,8 @@ public class GameManager : MonoBehaviour
 
     public string NumberText(int value)
     {
+        if (value == 0) return "0";
+
         int eok = value / 100000000;
         int man = (value % 100000000) / 10000;
         int rest = value % 10000;
@@ -120,9 +153,9 @@ public class GameManager : MonoBehaviour
         System.Text.StringBuilder sb = new System.Text.StringBuilder();
 
         if (eok > 0)
-            sb.Append(eok).Append("억 ");
+            sb.Append(eok).Append("B ");
         if (man > 0)
-            sb.Append(man).Append("만 ");
+            sb.Append(man).Append("M ");
         if (rest > 0 || sb.Length == 0)
             sb.Append(rest);
 

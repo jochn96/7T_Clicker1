@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Player : MonoBehaviour
 {
+    public PlayerData playerData { get; private set; }
     private PlayerStatManager statManager;
 
     [Header("기본 능력치(초기값)")]
@@ -18,8 +19,9 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        // StatManager 컴포넌트 캐싱
+        playerData = SaveDataToJSON.LoadUsers();
         statManager = GetComponent<PlayerStatManager>();
+        statManager.InitWithPlayerData(playerData);
         Debug.Log(statManager == null ? "PlayerStatManager is NULL!" : "PlayerStatManager is OK!");
     }
 

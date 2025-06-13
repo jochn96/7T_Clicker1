@@ -22,14 +22,36 @@ public class PlayerStatManager : MonoBehaviour
     /// </summary>
     private Dictionary<PlayerStatType, float> statValues = new();
 
-    private void Awake()
+    private PlayerData playerData;
+
+    public void InitWithPlayerData(PlayerData data)
     {
-        // 능력치별 초기화
+        playerData = data;
         foreach (var table in statUpgradeTables)
         {
-            statLevels[table.statType] = 0;
-            statValues[table.statType] = 0f;
+            statLevels[table.statType] = GetUpgradeLevelFromPlayerData(table.statType);
+            statValues[table.statType] = GetUpgradeValueFromPlayerData(table.statType, table.upgradeValue);
         }
+    }
+
+    private int GetUpgradeLevelFromPlayerData(PlayerStatType statType)
+    {
+        if (playerData == null) return 0;
+        return statType switch
+        {
+            PlayerStatType.AttackPower => playerData.Attack,
+            PlayerStatType.CriticalChance => playerData.Critical,
+            PlayerStatType.CriticalDamage => playerData.CriticalDmg,
+            PlayerStatType.GoldGainPercent => playerData.BonusGold,
+            // AutoAttack 등 추가 시 여기에
+            _ => 0
+        };
+    }
+
+    private float GetUpgradeValueFromPlayerData(PlayerStatType statType, float upgradeValue)
+    {
+        int level = GetUpgradeLevelFromPlayerData(statType);
+        return level * upgradeValue;
     }
 
     /// <summary>
@@ -68,11 +90,30 @@ public class PlayerStatManager : MonoBehaviour
             newGold = currentGold;
             return false;
         }
-        // 비용 차감
         newGold = currentGold - cost;
-        // 능력치 증가
         statLevels[statType]++;
         statValues[statType] += table.upgradeValue;
+        // PlayerData에 업그레이드 값 반영
+        if (playerData != null)
+        {
+            switch (statType)
+            {
+                case PlayerStatType.AttackPower:
+                    playerData.Attack++;
+                    break;
+                case PlayerStatType.CriticalChance:
+                    playerData.Critical++;
+                    break;
+                case PlayerStatType.CriticalDamage:
+                    playerData.CriticalDmg++;
+                    break;
+                case PlayerStatType.GoldGainPercent:
+                    playerData.BonusGold++;
+                    break;
+                // AutoAttack 등 추가 시 여기에
+            }
+            SaveDataToJSON.SaveUsers(playerData);
+        }
         return true;
     }
 } 
