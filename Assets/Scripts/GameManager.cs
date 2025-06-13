@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
             finalCritical = playerData.Critical;  //플레이어 크리티컬 레벨 가져올예정
             finalCritDmg = playerData.CriticalDmg;  //플레이어 크리티컬 데미지 레벨 가져올 예정
             finalGetGold = playerData.BonusGold;  //플레이어 골드 보너스 가져올 예정
-            stage = playerData.Stage;  //스테이지 인덱스를 가져올 예정
+            stage = playerData.StageInfo;  //스테이지 인덱스를 가져올 예정
 
             updateData();  //가져온 값을 게임이 실행되면 넣어주기
         }
