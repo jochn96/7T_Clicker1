@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")]
     public TextMeshProUGUI warningText;
-
+    private Coroutine warningCoroutine;
     PlayerData playerData = new PlayerData();
 
     private void Awake()
@@ -46,15 +46,33 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        warningText.gameObject.SetActive(false);
         soundManager.ChangeBackGroundMusic(musicNumber);  //기본 로비음악 재생
+        ShowWarning("StartGame");
     }
 
     public void Update()
     {
-        soundManager.ChangeBackGroundMusic(musicNumber);
+
     }
 
+    public void TestWarningSign()
+    {
+        ShowWarning($"this Music is MusicTrack Name is\n{soundManager.musicClips[musicNumber].name}");
+    }
 
+    public void TestMusicButton()
+    {
+        if (musicNumber < soundManager.musicClips.Length - 1)
+        {
+            musicNumber++;
+        }
+        else 
+        {
+            musicNumber = 0; 
+        }
+        soundManager.ChangeBackGroundMusic(musicNumber);
+    }
 
     public void PlayEffect(AudioClip clip)
     {
@@ -141,7 +159,11 @@ public class GameManager : MonoBehaviour
 
     public void ShowWarning(string mesege)
     {
-        StartCoroutine(WarningSign(mesege));
+        if (warningCoroutine != null)
+        {
+            StopCoroutine(warningCoroutine);
+        }
+        warningCoroutine = StartCoroutine(WarningSign(mesege));
     }
 
     private IEnumerator WarningSign(string message)
