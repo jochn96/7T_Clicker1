@@ -36,19 +36,21 @@ public class PlayerStatUI : MonoBehaviour
     public TextMeshProUGUI currentGoldText;
 
     private Player player;
+    private PlayerStat playerStat;
     private GameManager gameManager;
 
     private void Awake()
     {
         player = FindObjectOfType<Player>();
+        playerStat = player?.GetComponent<PlayerStat>();
         gameManager = GameManager.Instance;
 
         // 버튼에 리스너 등록
-        attackUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.AttackPower));
-        critChanceUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.CriticalChance));
-        critDamageUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.CriticalDamage));
-        goldGainUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.GoldGainPercent));
-        autoAttackCooldownUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.AutoAttackCooldownReduce));
+        attackUpgradeButton.onClick.AddListener(OnUpgradeAttack);
+        critChanceUpgradeButton.onClick.AddListener(OnUpgradeCriticalChance);
+        critDamageUpgradeButton.onClick.AddListener(OnUpgradeCriticalDamage);
+        goldGainUpgradeButton.onClick.AddListener(OnUpgradeGoldGain);
+        autoAttackCooldownUpgradeButton.onClick.AddListener(OnUpgradeAutoAttackCooldown);
     }
 
     private void OnEnable()
@@ -61,64 +63,101 @@ public class PlayerStatUI : MonoBehaviour
     /// </summary>
     public void RefreshUI()
     {
+        if (player == null || gameManager == null) return;
+
         // 현재 골드 표시
         currentGoldText.text = gameManager.NumberText(gameManager.gold) + "G";
 
         // 공격력
         attackValueText.text = gameManager.finalAttack.ToString();
-        int attackCost = player.GetUpgradeCost(PlayerStatType.AttackPower);
+        int attackCost = playerStat?.GetUpgradeCost(PlayerStatType.AttackPower) ?? 0;
         attackCostText.text = gameManager.NumberText(attackCost) + "G";
         attackUpgradeButton.interactable = gameManager.gold >= attackCost;
 
         // 치명타 확률
         critChanceValueText.text = gameManager.finalCritical + "%";
-        int critChanceCost = player.GetUpgradeCost(PlayerStatType.CriticalChance);
+        int critChanceCost = playerStat?.GetUpgradeCost(PlayerStatType.CriticalChance) ?? 0;
         critChanceCostText.text = gameManager.NumberText(critChanceCost) + "G";
         critChanceUpgradeButton.interactable = gameManager.gold >= critChanceCost;
 
         // 치명타 데미지
         critDamageValueText.text = gameManager.finalCritDmg + "%";
-        int critDamageCost = player.GetUpgradeCost(PlayerStatType.CriticalDamage);
+        int critDamageCost = playerStat?.GetUpgradeCost(PlayerStatType.CriticalDamage) ?? 0;
         critDamageCostText.text = gameManager.NumberText(critDamageCost) + "G";
         critDamageUpgradeButton.interactable = gameManager.gold >= critDamageCost;
 
         // 골드 획득량
         goldGainValueText.text = gameManager.finalGetGold + "%";
-        int goldGainCost = player.GetUpgradeCost(PlayerStatType.GoldGainPercent);
+        int goldGainCost = playerStat?.GetUpgradeCost(PlayerStatType.GoldGainPercent) ?? 0;
         goldGainCostText.text = gameManager.NumberText(goldGainCost) + "G";
         goldGainUpgradeButton.interactable = gameManager.gold >= goldGainCost;
 
         // 자동공격 쿨타임
-        float cooldownValue = player.GetStatValue(PlayerStatType.AutoAttackCooldownReduce);
-        autoAttackCooldownValueText.text = cooldownValue.ToString("F1") + "s";
-        int cooldownCost = player.GetUpgradeCost(PlayerStatType.AutoAttackCooldownReduce);
-        autoAttackCooldownCostText.text = gameManager.NumberText(cooldownCost) + "G";
-        autoAttackCooldownUpgradeButton.interactable = gameManager.gold >= cooldownCost;
+        if (autoAttackCooldownValueText != null)
+        {
+            float autoAttackValue = playerStat?.GetStatValue(PlayerStatType.AutoAttackCooldownReduce) ?? 0f;
+            autoAttackCooldownValueText.text = autoAttackValue.ToString("F2") + "초";
+            
+            int autoAttackCost = playerStat?.GetUpgradeCost(PlayerStatType.AutoAttackCooldownReduce) ?? 0;
+            if (autoAttackCooldownCostText != null)
+            {
+                autoAttackCooldownCostText.text = gameManager.NumberText(autoAttackCost) + "G";
+            }
+            if (autoAttackCooldownUpgradeButton != null)
+            {
+                autoAttackCooldownUpgradeButton.interactable = gameManager.gold >= autoAttackCost;
+            }
+        }
     }
 
     /// <summary>
-    /// +버튼 클릭 시 업그레이드 시도 및 UI 갱신
+    /// 공격력 업그레이드 버튼 클릭 처리
     /// </summary>
-    private void OnUpgrade(PlayerStatType statType)
+    private void OnUpgradeAttack()
     {
-        int cost = player.GetUpgradeCost(statType);
-        if (gameManager.UseGold(cost))
-        {
-            if (player.UpgradeStat(statType, cost))
-            {
-                gameManager.updateData(); // 게임매니저 데이터 갱신
-                RefreshUI();
-            }
-            else
-            {
-                gameManager.gold += cost; // 업그레이드 실패시 골드 환불
-                Debug.Log($"업그레이드 실패: {statType}");
-            }
-        }
-        else
-        {
-            Debug.Log("골드가 부족합니다.");
-        }
+        if (playerStat == null) return;
+        playerStat.UpgradeAttack();
+        RefreshUI();
+    }
+
+    /// <summary>
+    /// 치명타 확률 업그레이드 버튼 클릭 처리
+    /// </summary>
+    private void OnUpgradeCriticalChance()
+    {
+        if (playerStat == null) return;
+        playerStat.UpgradeCriticalChance();
+        RefreshUI();
+    }
+
+    /// <summary>
+    /// 치명타 데미지 업그레이드 버튼 클릭 처리
+    /// </summary>
+    private void OnUpgradeCriticalDamage()
+    {
+        if (playerStat == null) return;
+        playerStat.UpgradeCriticalDamage();
+        RefreshUI();
+    }
+
+    /// <summary>
+    /// 골드 획득량 업그레이드 버튼 클릭 처리
+    /// </summary>
+    private void OnUpgradeGoldGain()
+    {
+        if (playerStat == null) return;
+        playerStat.UpgradeGoldGain();
+        RefreshUI();
+    }
+
+    /// <summary>
+    /// 자동공격 쿨타임 업그레이드 버튼 클릭 처리
+    /// </summary>
+    private void OnUpgradeAutoAttackCooldown()
+    {
+        if (playerStat == null) return;
+        playerStat.UpgradeAutoAttackCooldown();
+        RefreshUI();
     }
 
     /// <summary>

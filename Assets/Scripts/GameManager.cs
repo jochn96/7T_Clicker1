@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public int gold;
 
     public int finalAttack;
-    public int finalCritical;
+    public float finalCritical;
     public int finalCritDmg;
     public int finalGetGold;
 
