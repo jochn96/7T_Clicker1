@@ -51,8 +51,12 @@ public class SoundManager : MonoBehaviour
 
     public void PlayClip(AudioClip clip)
     {
+        if (musicVolume == 0)
+        {
+            return;
+        }
         SoundSource obj = Instantiate(soundSourcePrefab);
         SoundSource soundSource = obj.GetComponent<SoundSource>();
-        soundSource.Play(clip, soundEffectVolume, soundEffectPitchVariance);
+        soundSource.Play(clip, musicVolume);
     }
 }

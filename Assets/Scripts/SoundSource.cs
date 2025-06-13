@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SoundSource : MonoBehaviour
 {
     private AudioSource audioSource;
-    public void Play(AudioClip clip, float soundEffectVolume, float soundEffectPitchVariance)
+    public void Play(AudioClip clip, float EffectVolume)
     {
         {
             if (audioSource == null)
@@ -13,11 +11,10 @@ public class SoundSource : MonoBehaviour
 
             CancelInvoke();
             audioSource.clip = clip;
-            audioSource.volume = soundEffectVolume;
+            audioSource.volume = EffectVolume;
             audioSource.Play();
-            audioSource.pitch = 1f + Random.Range(-soundEffectPitchVariance, soundEffectPitchVariance);
 
-            Invoke("Disable", clip.length + 2);
+            Invoke("Disable", clip.length);
         }
     }
     public void Disable()
