@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e0d1a0f026a2114fa0b955164b4ef39, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c4eb8bed27f41541a8818b9882504d6, type: 3}
   m_Name: EnemyCenter
   m_EditorClassIdentifier: 
   enemyLife: 5
+  maxenemyLife: 30
+  enemyExp: 0
   enenmyType: 10
   stageCount: 10
