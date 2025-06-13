@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: EnemyCenter
   m_EditorClassIdentifier: 
   enemyLife: 5
+  maxenemyLife: 30
+  enemyExp: 0
   enenmyType: 10
   stageCount: 10

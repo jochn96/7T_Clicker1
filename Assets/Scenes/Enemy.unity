@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 60.758, y: 198.6}
-  m_SizeDelta: {x: 121.5163, y: 36.405}
+  m_AnchoredPosition: {x: 54.46, y: 199.49}
+  m_SizeDelta: {x: 108.921, y: 26.662}
   m_Pivot: {x: 0.5, y: 0.5000003}
 --- !u!114 &402438305
 MonoBehaviour:
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 1.3596802, y: 0, z: 0, w: 0}
+  m_margin: {x: 0.07842255, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -291,8 +291,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -61.162994, y: 202.99994}
-  m_SizeDelta: {x: 122.3257, y: 36.404}
+  m_AnchoredPosition: {x: -61.162994, y: 198.81}
+  m_SizeDelta: {x: 122.3257, y: 28.026}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &757008461
 MonoBehaviour:
@@ -457,7 +457,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StageKey: 0
-  Waves: []
+  Waves:
+  - enemies: []
+    hasboss: 0
+    bosstype: 
 --- !u!1 &1349912300
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,8 +599,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -32.012, y: 203.83}
-  m_SizeDelta: {x: 64.0237, y: 36.404}
+  m_AnchoredPosition: {x: -32.012, y: 200.67453}
+  m_SizeDelta: {x: 64.0237, y: 24.657}
   m_Pivot: {x: 0.49999997, y: 0.64372283}
 --- !u!114 &1482700922
 MonoBehaviour:
@@ -682,7 +685,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 1.3596802, y: 0, z: 0, w: 0}
+  m_margin: {x: 0.105285645, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -788,7 +791,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609054831}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -831,7 +834,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.23064259, g: 0.6886792, b: 0.36597157, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
