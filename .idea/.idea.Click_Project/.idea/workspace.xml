@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e44ed41-d675-41b0-8514-78f0e80371ff" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/FantasyIconsPackFree/Atlases/Icons.spriteatlas" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FantasyIconsPackFree/Atlases/Icons.spriteatlas" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/NEXONLv1GothicRegular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/NEXONLv1GothicRegular SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/KJH.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/KJH.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Slime Enemy - Pixel Art/Sprites/Jump/Blue/Sprite Sheet - Blue Jump Down.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Slime Enemy - Pixel Art/Sprites/Jump/Blue/Sprite Sheet - Blue Jump Down.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Slime Enemy - Pixel Art/Sprites/Jump/Blue/Sprite Sheet - Blue Jump Up.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Slime Enemy - Pixel Art/Sprites/Jump/Blue/Sprite Sheet - Blue Jump Up.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Slime Enemy - Pixel Art/Sprites/Jump/Green/Sprite Sheet - Green Jump Down.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Slime Enemy - Pixel Art/Sprites/Jump/Green/Sprite Sheet - Green Jump Down.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Slime Enemy - Pixel Art/Sprites/Jump/Green/Sprite Sheet - Green Jump Up.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Slime Enemy - Pixel Art/Sprites/Jump/Green/Sprite Sheet - Green Jump Up.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Slime Enemy - Pixel Art/Sprites/Jump/Red/Sprite Sheet - Red Jump Down.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Slime Enemy - Pixel Art/Sprites/Jump/Red/Sprite Sheet - Red Jump Down.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Slime Enemy - Pixel Art/Sprites/Jump/Red/Sprite Sheet - Red Jump Up.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Slime Enemy - Pixel Art/Sprites/Jump/Red/Sprite Sheet - Red Jump Up.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Click_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Click_Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KJH/WeaponButtonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KJH/WeaponButtonManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +100,7 @@
       <updated>1749777744072</updated>
       <workItem from="1749777746463" duration="827000" />
       <workItem from="1749792883351" duration="7963000" />
+      <workItem from="1749801678473" duration="2083000" />
     </task>
     <servers />
   </component>

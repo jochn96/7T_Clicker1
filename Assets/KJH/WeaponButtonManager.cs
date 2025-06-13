@@ -48,10 +48,10 @@ public class WeaponButtonManager : MonoBehaviour
         WOpenButton.onClick.AddListener(VWOpen);
         WCloseButton.onClick.AddListener(VWClose);
         
-        W1EquipButton.onClick.AddListener(VW1Equip);
-        W2EquipButton.onClick.AddListener(VW2Equip);
-        W3EquipButton.onClick.AddListener(VW3Equip);
-        W4EquipButton.onClick.AddListener(VW4Equip);
+        W1EquipButton.onClick.AddListener(() => EquipWeapon(0));
+        W2EquipButton.onClick.AddListener(() => EquipWeapon(1));
+        W3EquipButton.onClick.AddListener(() => EquipWeapon(2));
+        W4EquipButton.onClick.AddListener(() => EquipWeapon(3));
         
         W2BuyButton.onClick.AddListener(VW2Buy);
         W3BuyButton.onClick.AddListener(VW3Buy);
@@ -63,82 +63,47 @@ public class WeaponButtonManager : MonoBehaviour
         W4UpgradeButton.onClick.AddListener(VW4Upgrade);
     }
 
-    void VWOpen()
+    void VWOpen() //창 열기 코드
     {
         WeaponInven.SetActive(true);
         Debug.Log("열기");
     }
 
-    void VWClose()
+    void VWClose() //창 닫기 코드
     {
         WeaponInven.SetActive(false);
         Debug.Log("닫기");
     }
 
-    void VW1Equip()
+    void EquipWeapon(int index) //장착 버튼 UI 코드
     {
-        W1EquipText.text = "장착중";
-        W2EquipText.text = "장착";
-        W3EquipText.text = "장착";
-        W4EquipText.text = "장착";
-        W1EquipImage.color = EquipColor;
-        W2EquipImage.color = UnEquipColor;
-        W3EquipImage.color = UnEquipColor;
-        W4EquipImage.color = UnEquipColor;
-        Debug.Log("1장착");
-    }
-    void VW2Equip()
-    {
-        W1EquipText.text = "장착";
-        W2EquipText.text = "장착중";
-        W3EquipText.text = "장착";
-        W4EquipText.text = "장착";
-        W1EquipImage.color = UnEquipColor;
-        W2EquipImage.color = EquipColor;
-        W3EquipImage.color = UnEquipColor;
-        W4EquipImage.color = UnEquipColor;
-        Debug.Log("2장착");
-    }
-    void VW3Equip()
-    {
-        W1EquipText.text = "장착";
-        W2EquipText.text = "장착";
-        W3EquipText.text = "장착중";
-        W4EquipText.text = "장착";
-        W1EquipImage.color = UnEquipColor;
-        W2EquipImage.color = UnEquipColor;
-        W3EquipImage.color = EquipColor;
-        W4EquipImage.color = UnEquipColor;
-        Debug.Log("3장착");
-    }
-    void VW4Equip()
-    {
-        W1EquipText.text = "장착";
-        W2EquipText.text = "장착";
-        W3EquipText.text = "장착";
-        W4EquipText.text = "장착중";
-        W1EquipImage.color = UnEquipColor;
-        W2EquipImage.color = UnEquipColor;
-        W3EquipImage.color = UnEquipColor;
-        W4EquipImage.color = EquipColor;
-        Debug.Log("4장착");
+        TMP_Text[] texts = { W1EquipText, W2EquipText, W3EquipText, W4EquipText };
+        Image[] images = { W1EquipImage, W2EquipImage, W3EquipImage, W4EquipImage };
+
+        for (int i = 0; i < 4; i++)
+        {
+            texts[i].text = (i == index) ? "장착중" : "장착";
+            images[i].color = (i == index) ? EquipColor : UnEquipColor;
+        }
+
+        Debug.Log($"{index + 1}장착");
     }
     
-    void VW2Buy()
+    void VW2Buy() //2번무기 구매 코드
     {
         W2Equip.SetActive(true);
         W2Buy.SetActive(false);
         W2Shadow.SetActive(false);
         Debug.Log("2구매");
     }
-    void VW3Buy()
+    void VW3Buy() //3번무기 구매 코드
     {
         W3Equip.SetActive(true);
         W3Buy.SetActive(false);
         W3Shadow.SetActive(false);
         Debug.Log("3구매");
     }
-    void VW4Buy()
+    void VW4Buy() //4번무기 구매 코드
     {
         W4Equip.SetActive(true);
         W4Buy.SetActive(false);
@@ -146,19 +111,19 @@ public class WeaponButtonManager : MonoBehaviour
         Debug.Log("4구매");
     }
     
-    void VW1Upgrade()
+    void VW1Upgrade() //1번무기 업그레이드 코드
     {
         Debug.Log("1업그레이드");
     }
-    void VW2Upgrade()
+    void VW2Upgrade() //2번무기 업그레이드 코드
     {
         Debug.Log("2업그레이드");
     }
-    void VW3Upgrade()
+    void VW3Upgrade() //3번무기 업그레이드 코드
     {
         Debug.Log("3업그레이드");
     }
-    void VW4Upgrade()
+    void VW4Upgrade() //4번무기 업그레이드 코드
     {
         Debug.Log("4업그레이드");
     }
