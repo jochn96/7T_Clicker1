@@ -1,10 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +25,8 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI warningText;
     private Coroutine warningCoroutine;
+    public Image lodingDisplay;
+    private Coroutine lodingCoroutine;
     PlayerData playerData = new PlayerData();
 
     private void Awake()
@@ -46,14 +46,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        lodingDisplay.gameObject.SetActive(false);
         warningText.gameObject.SetActive(false);
         soundManager.ChangeBackGroundMusic(musicNumber);  //기본 로비음악 재생
         ShowWarning("StartGame");
     }
 
-    public void Update()
+    public void TestLoding()
     {
-
+        ShowLoding();
     }
 
     public void TestWarningSign()
@@ -155,6 +156,48 @@ public class GameManager : MonoBehaviour
         //finalGetGold = dropGold + (dropGold * ((보너스골드 스텟 * 5) /100 보너스골드 스텟당 몇퍼센트로할지 상의))
         playerData.Gold += Mathf.RoundToInt(finalGetGold);
         playerData.EnforceStone += enforceStone;
+    }
+
+    public void ShowLoding()
+    {
+        if (lodingCoroutine != null)
+        {
+            StopCoroutine(lodingCoroutine);
+        }
+        lodingCoroutine = StartCoroutine(LodingSign());
+    }
+    private IEnumerator LodingSign()
+    {
+        Color color = lodingDisplay.color;
+        color.a = 0;
+        lodingDisplay.color = color;
+
+        float effecttime = 0;
+        float duration = 0.5f;  //연출시간
+        lodingDisplay.gameObject.SetActive(true);
+
+        while (effecttime < duration/2)  //연출시간 / 2만큼 시간동안 알파값이 1로증가
+        {
+            effecttime += Time.deltaTime;
+            color.a = Mathf.Lerp(0f, 1f, effecttime / (duration/2f));
+            lodingDisplay.color = color;
+            yield return null;
+        }
+        color.a = 1;
+        lodingDisplay.color = color;
+        yield return new WaitForSeconds(0.25f); //증가된채로 0.25초 대기
+        effecttime = 0;
+
+        while (effecttime < duration / 2)  //위와 동일코드
+        {
+            effecttime += Time.deltaTime;
+            color.a = Mathf.Lerp(1f, 0f, effecttime / (duration/2f));
+            lodingDisplay.color = color;
+            yield return null;
+        }
+        color.a = 0;
+        lodingDisplay.color= color;  //총 지속시간 + 대기시간동안 작동 0.75초
+        lodingDisplay.gameObject.SetActive(false);  //종료
     }
 
     public void ShowWarning(string mesege)

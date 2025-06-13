@@ -19,7 +19,7 @@ public class SoundManager : MonoBehaviour
         musicAudioSource.volume = musicVolume;
         musicAudioSource.loop = true;
     }
-
+    
     private void Start()
     {
         musicVolumeSlider.minValue = 0f;
