@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,17 +12,24 @@ public class GameManager : MonoBehaviour
     public SoundManager soundManager;
 
     [Header("Info")]
+    private int baseAttack = 10;
+    private float baseCritDmgPercent = 70;
+
     public int gold;
-
     public int finalAttack;
-    public int finalCritical;
+    public float finalCritical;
     public int finalCritDmg;
-    public int finalGetGold;
-
+    public float finalGetGold;
     public int stage;
-
     public int damage;
-    
+
+    public int musicNumber;
+
+    [Header("UI")]
+    public TextMeshProUGUI warningText;
+    private Coroutine warningCoroutine;
+    public Image lodingDisplay;
+    private Coroutine lodingCoroutine;
     PlayerData playerData = new PlayerData();
 
     private void Awake()
@@ -37,9 +47,35 @@ public class GameManager : MonoBehaviour
         playerDataLoad();
     }
 
-    public void Update()
+    private void Start()
     {
+        lodingDisplay.gameObject.SetActive(false);
+        warningText.gameObject.SetActive(false);
+        soundManager.ChangeBackGroundMusic(musicNumber);  //기본 로비음악 재생
+        ShowWarning("StartGame");
+    }
 
+    public void TestLoding()
+    {
+        ShowLoding();
+    }
+
+    public void TestWarningSign()
+    {
+        ShowWarning($"this Music is MusicTrack Name is\n{soundManager.musicClips[musicNumber].name}");
+    }
+
+    public void TestMusicButton()
+    {
+        if (musicNumber < soundManager.musicClips.Length - 1)
+        {
+            musicNumber++;
+        }
+        else 
+        {
+            musicNumber = 0; 
+        }
+        soundManager.ChangeBackGroundMusic(musicNumber);
     }
 
     public void PlayEffect(AudioClip clip)
@@ -68,10 +104,10 @@ public class GameManager : MonoBehaviour
     {
         //Stage = 현 스테이지 인덱스? 데이터? 가져오기
 
-        //finalAttack = finalAttack = 전체 데미지 + (보너스 데미지 퍼센트)
-        //finalGetGold = 획득골드 + (획득골드 * 보너스 골드)
-        //finalCritDmg = finalAttack * 크리티컬 데미지 보너스 퍼센트
-        //finalCritical = 크리티컬 확률 + 보너스 크리티컬 확률(무기보너스등)
+        finalAttack = (int)Mathf.Round(baseAttack * (Mathf.Pow(1.2f, playerData.Attack)));  //*장착무기스텟 퍼뎀
+        finalGetGold = (playerData.BonusGold * 5) / 100;  //장착무기스텟 보너스골드?
+        finalCritical = 0.5f * playerData.Critical; //+장착무기스텟 크리
+        finalCritDmg = finalAttack + (int)Mathf.Round(finalAttack * (baseCritDmgPercent + (playerData.CriticalDmg * 2))/100);
 
         //저장될때마다 혹은 UI창을 열어볼때마다 등등 각종 상황에서 갱신해줄것
 
@@ -80,47 +116,121 @@ public class GameManager : MonoBehaviour
 
     public bool UseGold(int useGold) //재화를 사용해야되면 UseGold 함수를 호출
     { //나중에 강화석이랑 분할을 하든 업그레이드 타입에 맞춰서 변수를 변경하던 할 것
-        if (gold >= useGold)
+        if (useGold <= 0)
         {
-            gold -= useGold;
+            ShowWarning("잘못된 호출입니다");
+            return false;
+        }
+
+        if (playerData.Gold >= useGold)
+        {
+            playerData.Gold -= useGold;
             return true;
         }
         else
         {
+            ShowWarning("골드가 부족합니다");
             return false;
         }
     }
 
-
-    public void GetGold()  //몬스터가 죽으면 GetGold를 호출
-    {
-        //finalGetGold = 획득골드 + (획득골드 * 보너스 골드)
-        gold += finalGetGold;
-    }
-
-    public int FinalAttack(bool isCritical)
-    {
-        //finalAttack = 전체 데미지 + (보너스 데미지 퍼센트)
-        if (isCritical)
+    public bool UseEnforceStone(int enforceStone)
+    { 
+        if (enforceStone <= 0)
         {
-            //finalCritDmg = finalAttack * 크리티컬 데미지 보너스 퍼센트
-            damage = finalAttack + finalCritDmg;
-            return damage;
+            ShowWarning("잘못된 호출입니다");
+            return false;
         }
-        return damage;
-    }
 
-    public bool isCritical()
-    {
-        float isCritical = Random.Range(0,100);
-        if (isCritical <= finalCritical)
+        if (playerData.EnforceStone >= enforceStone)
         {
+            playerData.EnforceStone -= enforceStone;
             return true;
         }
         else
         {
+            ShowWarning("강화석이 부족합니다");
             return false;
         }
+    }
+
+    public void GetGold(int dropGold, int enforceStone)  //몬스터가 죽으면 GetGold를 호출
+    {
+        finalGetGold = dropGold + (int)Mathf.Round(dropGold * (playerData.BonusGold * 5) / 100);
+        playerData.Gold += Mathf.RoundToInt(finalGetGold);
+        playerData.EnforceStone += enforceStone;
+        updateData();
+    }
+
+    public void ShowLoding()
+    {
+        if (lodingCoroutine != null)
+        {
+            StopCoroutine(lodingCoroutine);
+        }
+        lodingCoroutine = StartCoroutine(LodingSign());
+    }
+    private IEnumerator LodingSign()
+    {
+        Color color = lodingDisplay.color;
+        color.a = 0;
+        lodingDisplay.color = color;
+
+        float effecttime = 0;
+        float duration = 0.5f;  //연출시간
+        lodingDisplay.gameObject.SetActive(true);
+
+        while (effecttime < duration/2)  //연출시간 / 2만큼 시간동안 알파값이 1로증가
+        {
+            effecttime += Time.deltaTime;
+            color.a = Mathf.Lerp(0f, 1f, effecttime / (duration/2f));
+            lodingDisplay.color = color;
+            yield return null;
+        }
+        color.a = 1;
+        lodingDisplay.color = color;
+        yield return new WaitForSeconds(0.25f); //증가된채로 0.25초 대기
+        effecttime = 0;
+
+        while (effecttime < duration / 2)  //위와 동일코드
+        {
+            effecttime += Time.deltaTime;
+            color.a = Mathf.Lerp(1f, 0f, effecttime / (duration/2f));
+            lodingDisplay.color = color;
+            yield return null;
+        }
+        color.a = 0;
+        lodingDisplay.color= color;  //총 지속시간 + 대기시간동안 작동 0.75초
+        lodingDisplay.gameObject.SetActive(false);  //종료
+    }
+
+    public void ShowWarning(string mesege)
+    {
+        if (warningCoroutine != null)
+        {
+            StopCoroutine(warningCoroutine);
+        }
+        warningCoroutine = StartCoroutine(WarningSign(mesege));
+    }
+
+    private IEnumerator WarningSign(string message)
+    {
+        warningText.alpha = 1;  //알파값 1로 초기화
+        warningText.text = message;  //메세지를 미리 바꾸고
+        warningText.gameObject.SetActive(true);  //게임오브젝트 활성화
+
+        yield return new WaitForSeconds(0.5f);
+
+        float duration = 1.5f;  //지속시간 1.5초
+        float endEffect = 0f;  //임팩트시간
+
+        while (endEffect < duration)  //임팩트 시간이 지속시간보다 짧을 때 까지
+        {
+            endEffect += Time.deltaTime;  //임팩트 시간변수에 시간마다 ++
+            warningText.alpha = Mathf.Lerp(1f,0f,endEffect/duration);  //투명도가 1f에서 0f로 가는 간격의 비율 임팩트시간/지속시간
+            yield return null;  //결론 투명도는 임팩트시간/지속시간
+        }
+        warningText.gameObject.SetActive(false);  //투명도가 0이될쯤 종료
     }
 
     public string NumberText(int value) //예시 10조 1000억 1000만 이란 숫자가 들어오면
@@ -151,5 +261,30 @@ public class GameManager : MonoBehaviour
             return $"{parts[0]}\n{parts[1]}";
         else  //그렇지않으면 하위파츠만 출력 예시 1456면 1456출력
             return parts[0];
+    }
+
+    public int FinalAttack(bool isCritical)
+    {//공격시 bool isCritical()을 실행시켜 (공격에서 임팩트를 주기위해서 이 함수가 필요) 크리티컬 여부판단
+        //finalAttack = 전체 데미지 + (보너스 데미지 퍼센트)
+        if (isCritical)//크리티컬이 발동되면
+        {
+            //finalCritDmg = finalAttack * 크리티컬 데미지 보너스 퍼센트
+            damage = finalAttack + finalCritDmg; //데미지는 기존데미지 + 크리티컬로 발동된 추가데미지
+            return damage; //데미지값을 반환
+        }
+        return damage;  //크리티컬이 안뜨면 그대로 데미지값 반환
+    }
+
+    public bool isCritical()
+    {
+        float isCritical = Random.Range(0f, 100f); //float값으로 랜덤을 돌려서
+        if (isCritical <= finalCritical) //나온숫자가 크리티컬 수치보다 작거나 같다면
+        {
+            return true;  //크리티컬 발동을위해 true반환
+        }
+        else
+        {
+            return false;  //아니라면 false반환
+        }
     }
 }
