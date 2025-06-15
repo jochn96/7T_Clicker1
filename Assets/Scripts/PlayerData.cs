@@ -35,6 +35,12 @@ public  class  PlayerData //임시입니다 스텟레벨을 가져올예정
         CriticalDmg = playerdata.CriticalDmg;
         BonusGold = playerdata.BonusGold;
 
+        //statLevels[PlayerStatType.Attack] = playerdata.Attack;
+        //statLevels[PlayerStatType.Critical] = playerdata.Critical;
+        //statLevels[PlayerStatType.CriticalDmg] = playerdata.CriticalDmg;
+        //statLevels[PlayerStatType.BonusGold] = playerdata.BonusGold;
+
+
         if (playerdata != null)
             SaveDataToJSON.SaveUsers(playerdata);
     }
