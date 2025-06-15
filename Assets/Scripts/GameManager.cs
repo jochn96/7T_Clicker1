@@ -7,11 +7,14 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public PlayerStatManager statManager;
 
     [Header("Connection")]
     public SoundManager soundManager;
 
     [Header("Info")]
+    public const int MAX_VALUE = 1000000000;
+
     private int baseAttack = 10;
     private float baseCritDmgPercent = 70;
 
@@ -102,6 +105,11 @@ public class GameManager : MonoBehaviour
 
     public void updateData()
     {
+        //float baseAttack = statManager.GetStatValue(PlayerStatType.Attack);
+        //float baseCritical = statManager.GetStatValue(PlayerStatType.Critical);
+        //float baseCritDmg = statManager.GetStatValue(PlayerStatType.CriticalDmg);
+        //float baseBonusGold = statManager.GetStatValue(PlayerStatType.BonusGold);
+
         //Stage = 현 스테이지 인덱스? 데이터? 가져오기
 
         finalAttack = (int)Mathf.Round(baseAttack * (Mathf.Pow(1.2f, playerData.Attack)));  //*장착무기스텟 퍼뎀
@@ -235,17 +243,16 @@ public class GameManager : MonoBehaviour
 
     public string NumberText(int value) //예시 10조 1000억 1000만 이란 숫자가 들어오면
     {
-        string[] units = { "", "만", "억", "조" }; //문자열 배열 선언
+        if (value <= 0)  //0이면 0출력(0을 나누면 오류남)
+            return "0";
+
+        if (value >= MAX_VALUE)
+            return MAX_VALUE.ToString();
+
+        string[] units = { "", "만", "억" }; //문자열 배열 선언
         List<string> parts = new List<string>();  //문자열 리스트선언
 
         int unitIndex = 0; //10000으로 몇번 나눴는지 카운팅
-        if (value < 0)  //0보다 작으면 0을 출력
-            value = 0;
-        if (value > int.MaxValue) //int 최댓값을 넘기지 못하게 하는 방어코드
-            value = int.MaxValue;
-
-        if (value == 0)  //0이면 0출력(0을 나누면 오류남)
-            return "0";
 
         while (value > 0 && unitIndex < units.Length)
         {
