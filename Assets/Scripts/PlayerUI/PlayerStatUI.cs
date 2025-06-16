@@ -43,19 +43,28 @@ public class PlayerStatUI : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         gameManager = GameManager.Instance;
-        
-        // 버튼에 리스너 등록
-        // attackUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.AttackPower));
-        // critChanceUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.CriticalChance));
-        // critDamageUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.CriticalDamage));
-        // goldGainUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.GoldGainPercent));
-        // autoAttackCooldownUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.AutoAttackCooldownReduce));
     }
 
     private void Start()
     {
         // 시작 시 UI 갱신
         RefreshUI();
+        
+        // 약간의 지연 후 버튼 리스너 등록 (모든 매니저가 초기화된 후)
+        Invoke("SetupButtonListeners", 0.1f);
+    }
+
+    /// <summary>
+    /// 버튼 리스너를 설정합니다.
+    /// </summary>
+    private void SetupButtonListeners()
+    {
+        // 버튼에 리스너 등록
+        attackUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.AttackPower));
+        critChanceUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.CriticalChance));
+        critDamageUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.CriticalDamage));
+        goldGainUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.GoldGainPercent));
+        autoAttackCooldownUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.AutoAttackCooldownReduce));
     }
 
     private void Update()
@@ -93,8 +102,8 @@ public class PlayerStatUI : MonoBehaviour
         critChanceValueText.text = player.GetStatValue(PlayerStatType.CriticalChance) + "%";
         critChanceCostText.text = player.GetUpgradeCost(PlayerStatType.CriticalChance) + "G";
 
-        // 치명타 데미지 %로 표시
-        critDamageValueText.text = (player.GetStatValue(PlayerStatType.CriticalDamage) * 100f).ToString("F0") + "%";
+        // 치명타 데미지 %로 표시 - PlayerData의 값을 그대로 표시
+        critDamageValueText.text = player.GetStatValue(PlayerStatType.CriticalDamage) + "%";
         critDamageCostText.text = player.GetUpgradeCost(PlayerStatType.CriticalDamage) + "G";
 
         goldGainValueText.text = player.GetStatValue(PlayerStatType.GoldGainPercent) + "%";
@@ -109,13 +118,29 @@ public class PlayerStatUI : MonoBehaviour
     /// </summary>
     private void OnUpgrade(PlayerStatType statType)
     {
-        if (player.UpgradeStat(statType, currentGold))
+        // null 체크
+        if (gameManager == null) gameManager = GameManager.Instance;
+        if (player == null) player = FindObjectOfType<Player>();
+        
+        if (gameManager == null || player == null)
         {
+            Debug.LogWarning("GameManager 또는 Player가 null입니다. 약간 후에 다시 시도해주세요.");
+            return;
+        }
+        
+        // 업그레이드 비용 계산
+        int cost = player.GetUpgradeCost(statType);
+        
+        // 골드 차감 및 스탯 업그레이드
+        if (gameManager.UseGold(cost))
+        {
+            player.UpgradeStat(statType, gameManager.playerData.Gold);
             RefreshUI();
+            Debug.Log($"{statType} 업그레이드 성공");
         }
         else
         {
-            Debug.Log("돈부족");
+            Debug.Log($"{statType} 업그레이드 실패: 골드 부족");
         }
     }
 
@@ -134,5 +159,45 @@ public class PlayerStatUI : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// 공격력 업그레이드 버튼 클릭 핸들러 (인스펙터에서 연결)
+    /// </summary>
+    public void OnAttackUpgrade()
+    {
+        OnUpgrade(PlayerStatType.AttackPower);
+    }
+
+    /// <summary>
+    /// 치명타 확률 업그레이드 버튼 클릭 핸들러 (인스펙터에서 연결)
+    /// </summary>
+    public void OnCritChanceUpgrade()
+    {
+        OnUpgrade(PlayerStatType.CriticalChance);
+    }
+
+    /// <summary>
+    /// 치명타 대미지 업그레이드 버튼 클릭 핸들러 (인스펙터에서 연결)
+    /// </summary>
+    public void OnCritDamageUpgrade()
+    {
+        OnUpgrade(PlayerStatType.CriticalDamage);
+    }
+
+    /// <summary>
+    /// 골드 획득량 업그레이드 버튼 클릭 핸들러 (인스펙터에서 연결)
+    /// </summary>
+    public void OnGoldGainUpgrade()
+    {
+        OnUpgrade(PlayerStatType.GoldGainPercent);
+    }
+
+    /// <summary>
+    /// 자동공격 쿨타임 업그레이드 버튼 클릭 핸들러 (인스펙터에서 연결)
+    /// </summary>
+    public void OnAutoAttackCooldownUpgrade()
+    {
+        OnUpgrade(PlayerStatType.AutoAttackCooldownReduce);
     }
 } 

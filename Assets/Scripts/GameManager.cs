@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public float finalGetGold;
     public int stage;
     public int damage;
-
+    public float finalAutoAttackCooldown;
 
     public int musicNumber;
 
@@ -97,12 +97,12 @@ public class GameManager : MonoBehaviour
             stage = playerData.Stage;  //스테이지 인덱스를 가져올 예정
 
             // // 테스트용 골드 추가 (골드가 0이면 10000 추가)
-            // if (playerData.Gold <= 0)
-            // {
-            //     playerData.Gold = 10000;
-            //     gold = playerData.Gold;
-            //     Debug.Log("테스트용 골드 10000 추가됨");
-            // }
+            if (playerData.Gold <= 0)
+            {
+                playerData.Gold = 10000;
+                gold = playerData.Gold;
+                Debug.Log("테스트용 골드 10000 추가됨");
+            }
 
             updateData();  //가져온 값을 게임이 실행되면 넣어주기
         }
@@ -115,16 +115,16 @@ public class GameManager : MonoBehaviour
         // playerData.Attack을 기본 공격력으로 사용하고 장착무기 공격력 추가
         int equippedWeaponAttack = GetEquippedWeaponAttack();
         finalAttack = playerData.Attack + equippedWeaponAttack;
-        
-        finalGetGold = (playerData.BonusGold * 5) / 100;  //장착무기스텟 보너스골드?
-        finalCritical = 0.5f * playerData.Critical; //+장착무기스텟 크리
-        
-        // 크리티컬 데미지 계산: finalAttack * playerData.CriticalDmg + 장착무기 크리티컬 데미지
+        finalGetGold = playerData.BonusGold; 
+        finalCritical = playerData.Critical; 
         int equippedWeaponCritDmg = GetEquippedWeaponCritDmg();
-        finalCritDmg = (int)Mathf.Round(finalAttack * (playerData.CriticalDmg / 100.0f)) + equippedWeaponCritDmg;
+        finalCritDmg = playerData.CriticalDmg + equippedWeaponCritDmg;
+        
+        
+        finalAutoAttackCooldown = playerData.AutoAttackCooldown;
 
         //저장될때마다 혹은 UI창을 열어볼때마다 등등 각종 상황에서 갱신해줄것
-        playerData.RefreshData(playerData);
+        playerData.RefreshData(playerData); 
     }
 
     /// <summary>
@@ -151,9 +151,16 @@ public class GameManager : MonoBehaviour
 
     public bool UseGold(int useGold) //재화를 사용해야되면 UseGold 함수를 호출
     { //나중에 강화석이랑 분할을 하든 업그레이드 타입에 맞춰서 변수를 변경하던 할 것
+        // uiManager가 null인 경우에도 골드 차감은 정상 처리
+        if (uiManager == null)
+        {
+            uiManager = UIManager.Instance;
+        }
+        
         if (useGold < 0)
         {
-            uiManager.ShowWarning("잘못된 호출입니다");
+            if (uiManager != null) uiManager.ShowWarning("잘못된 호출입니다");
+            else Debug.LogWarning("잘못된 호출입니다 (UIManager is null)");
             return false;
         }
 
@@ -161,12 +168,13 @@ public class GameManager : MonoBehaviour
         {
             playerData.Gold -= useGold;
             updateData();
-            uiManager.ShowGoldText();
+            if (uiManager != null) uiManager.ShowGoldText();
             return true;
         }
         else
         {
-            uiManager.ShowWarning("골드가 부족합니다\n" + uiManager.NumberText(playerData.Gold));
+            if (uiManager != null) uiManager.ShowWarning("골드가 부족합니다\n" + uiManager.NumberText(playerData.Gold));
+            else Debug.LogWarning($"골드가 부족합니다 (필요: {useGold}G, 보유: {playerData.Gold}G)");
             return false;
         }
     }
@@ -219,11 +227,10 @@ public class GameManager : MonoBehaviour
 
     public int FinalAttack(bool isCritical)
     {//공격시 bool isCritical()을 실행시켜 (공격에서 임팩트를 주기위해서 이 함수가 필요) 크리티컬 여부판단
-        //finalAttack = 전체 데미지 + (보너스 데미지 퍼센트)
         if (isCritical)//크리티컬이 발동되면
         {
-            //finalCritDmg = finalAttack * 크리티컬 데미지 보너스 퍼센트
-            damage = finalAttack + finalCritDmg; //데미지는 기존데미지 + 크리티컬로 발동된 추가데미지
+            // 크리티컬 데미지는 기본 공격력 + (기본 공격력 * 크리티컬 데미지 / 100)
+            damage = finalAttack + (int)(finalAttack * (finalCritDmg / 100f));
             return damage; //데미지값을 반환
         }
         return finalAttack;  //크리티컬이 안뜨면 그대로 finalAttack 반환

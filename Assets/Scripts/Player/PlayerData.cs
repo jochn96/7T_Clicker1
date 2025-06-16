@@ -16,7 +16,7 @@ public  class  PlayerData //임시입니다 스텟레벨을 가져올예정
     [Header("StatLevel")]
     public int Attack = 10;
     public float Critical = 20;
-    public int CriticalDmg = 50;
+    public int CriticalDmg = 150;
     public int BonusGold = 0;
     public float AutoAttackCooldown = 5f;
 

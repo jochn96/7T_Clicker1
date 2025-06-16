@@ -8,13 +8,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private PlayerStatManager statManager;
-
-    [Header("기본 능력치(초기값)")]
-    [SerializeField] private float baseAttackPower = 10f;
-    [SerializeField] private float baseCriticalChance = 20f;      // %
-    [SerializeField] private float baseCriticalDamage = 1.3f;    // 배율
-    [SerializeField] private float baseGoldGainPercent = 0f;     // %
-    [SerializeField] private float baseAutoAttackCooldownReduce = 0f; // 쿨타임 감소(초)
+    private GameManager gameManager;
 
     private void Awake()
     {
@@ -26,7 +20,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameManager.Instance;
     }
 
     // Update is called once per frame
@@ -57,34 +51,43 @@ public class Player : MonoBehaviour
     }
 
     /// <summary>
-    /// 능력치 업그레이드 시도(성공 시 true 반환)
+    /// 능력치 업그레이드 (골드 체크는 이미 UI에서 수행됨)
     /// </summary>
     public bool UpgradeStat(PlayerStatType statType, int currentGold)
     {
-        return statManager.TryUpgradeStat(statType, currentGold, out int _);
+        return statManager.TryUpgradeStat(statType, currentGold, out _);
     }
 
     /// <summary>
-    /// 특정 능력치의 현재 값을 반환합니다. (기본값 + 업그레이드 누적값, 최대치 적용)
+    /// 특정 능력치의 현재 값을 반환합니다. (PlayerData의 값 + 업그레이드 누적값, 최대치 적용)
     /// </summary>
     public float GetStatValue(PlayerStatType statType)
     {
         float upgradeValue = statManager.GetStatValue(statType);
+        
+        if (gameManager == null)
+        {
+            gameManager = GameManager.Instance;
+        }
+        
         switch (statType)
         {
             case PlayerStatType.AttackPower:
-                return baseAttackPower + upgradeValue;
+                return gameManager.playerData.Attack + upgradeValue;
             case PlayerStatType.CriticalChance:
                 // 최대 100%
-                return Mathf.Min(baseCriticalChance + upgradeValue, 100f);
+                return Mathf.Min(gameManager.playerData.Critical + upgradeValue, 100f);
             case PlayerStatType.CriticalDamage:
                 // 최대 250%
-                return Mathf.Min(baseCriticalDamage + upgradeValue, 250f);
+                
+                float critDmg = Mathf.Min(gameManager.playerData.CriticalDmg + upgradeValue, 250f);
+                
+                return critDmg;
             case PlayerStatType.GoldGainPercent:
                 // 최대 100%
-                return Mathf.Min(baseGoldGainPercent + upgradeValue, 100f);
+                return Mathf.Min(gameManager.playerData.BonusGold + upgradeValue, 100f);
             case PlayerStatType.AutoAttackCooldownReduce:
-                return baseAutoAttackCooldownReduce + upgradeValue;
+                return gameManager.playerData.AutoAttackCooldown + upgradeValue;
             default:
                 return upgradeValue;
         }
