@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Clicker : MonoBehaviour
 {
-    public bool autoAttackUnlocked = false;
+    public bool autoAttackUnlocked = false; //자동공격 구매전 비활성화
     public float autoAttackInterval = 5.0f; //자동공격 간격
 
     private Coroutine autoAttackRoutine;
@@ -25,6 +25,8 @@ public class Clicker : MonoBehaviour
     //클릭시 공격
     public void OnClickClickerButton()
     {
+        bool isCri = GameManager.Instance.isCritical();
+        int finalDamage = GameManager.Instance.FinalAttack(isCri);
         //몬스터 체력 - 플레이어 최종데미지
         AttackAnimation();
         //공격 이펙트 동작 그리고 크리티컬시 다른 이펙트 동작
@@ -58,10 +60,7 @@ public class Clicker : MonoBehaviour
     {
         if (autoAttackUnlocked && autoAttackRoutine == null)
         {
-            if (autoAttackUnlocked && autoAttackRoutine == null)
-            {
                 autoAttackRoutine = StartCoroutine(AutoClickRoutine());
-            }
         }
     }
 
