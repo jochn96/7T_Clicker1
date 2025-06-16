@@ -71,17 +71,17 @@ public class GameManager : MonoBehaviour
         soundManager.ChangeBackGroundMusic(musicNumber);
     }
 
-    public void TestUseGold()
+    public void TestUseGold(int useGold)
     {
-        if(UseGold(5000))
+        if(UseGold(useGold))
         {
             uiManager.ShowWarning("골드사용 성공");
         }
     }
 
-    public void TestAddGold()
+    public void TestAddGold(int addGold)
     {
-        GetGold(5000, 0);
+        GetGold(addGold, 0);
     }
 
     public void PlayEffect(AudioClip clip)

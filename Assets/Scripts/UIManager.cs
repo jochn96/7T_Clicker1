@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        goldText.text = $"{gameManager.playerData.Gold}";
+        goldText.text = $"{NumberText(gameManager.playerData.Gold)}";
     }
 
     public void ShowLoding()
