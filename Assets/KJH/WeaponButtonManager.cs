@@ -16,7 +16,7 @@ public class WeaponButtonManager : MonoBehaviour
     public Weapon Weapon2;
     public Weapon Weapon3;
     public Weapon Weapon4;
-    public int TestUpgradeCoin;
+    public int TestUpgradeCoin;////////////////////////임시코드
     public Button WOpenButton;
     public Button WCloseButton;
     public Button W1EquipButton;

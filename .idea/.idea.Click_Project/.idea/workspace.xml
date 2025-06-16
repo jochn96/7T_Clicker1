@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e44ed41-d675-41b0-8514-78f0e80371ff" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Click_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Click_Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KJH/WeaponButtonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KJH/WeaponButtonManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/KJH.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/KJH.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +33,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "dev",
+    "git-widget-placeholder": "KJH",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -104,7 +105,7 @@
       <workItem from="1749792883351" duration="7963000" />
       <workItem from="1749801678473" duration="2083000" />
       <workItem from="1750038914932" duration="12902000" />
-      <workItem from="1750055245122" duration="9551000" />
+      <workItem from="1750055245122" duration="10279000" />
     </task>
     <servers />
   </component>
