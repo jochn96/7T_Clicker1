@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviour
 
     public int StageMusic()
     {
-        return ((playerData.Stage - 1) % (soundManager.musicClips.Length - 1) + 1);
+        return ((playerData.StageInfo - 1) % (soundManager.musicClips.Length - 1) + 1);
     }
 
     public int FinalAttack(bool isCritical)
