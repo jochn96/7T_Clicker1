@@ -166,9 +166,10 @@ public class GameManager : MonoBehaviour
         updateData();
     }
 
-    
-
-    
+    public int StageMusic()
+    {
+        return ((playerData.Stage - 1) % (soundManager.musicClips.Length - 1) + 1);
+    }
 
     public int FinalAttack(bool isCritical)
     {//공격시 bool isCritical()을 실행시켜 (공격에서 임팩트를 주기위해서 이 함수가 필요) 크리티컬 여부판단

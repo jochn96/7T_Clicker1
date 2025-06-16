@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     [Header("System")]
     public const int MAX_VALUE = 1000000000;
     public TextMeshProUGUI goldText;
+    public const int TITLE_MUSICNUM = 0;
 
     [Header("UI")]
     public GameObject titleUI;
@@ -65,6 +66,8 @@ public class UIManager : MonoBehaviour
             StopCoroutine(lodingCoroutine);
         }
         lodingCoroutine = StartCoroutine(LodingSign(titleUI, mainUI));
+
+        soundManager.ChangeBackGroundMusic(gameManager.StageMusic());
     }
 
     public void ReturnToTitle()
@@ -74,6 +77,8 @@ public class UIManager : MonoBehaviour
             StopCoroutine(lodingCoroutine);
         }
         lodingCoroutine = StartCoroutine(LodingSign(mainUI, titleUI));
+        
+        soundManager.ChangeBackGroundMusic(TITLE_MUSICNUM);
     }
 
     private IEnumerator LodingSign(GameObject defaltObject, GameObject NextObject)
