@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public PlayerData playerData = new PlayerData();
 
     [Header("Info")]
+    public const int MAX_VALUE = 1000000000;
     private int baseAttack = 10;
     private float baseCritDmgPercent = 70;
 
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     public float finalGetGold;
     public int stage;
     public int damage;
+
 
     public int musicNumber;
 
@@ -77,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     public void TestAddGold(int addGold)
     {
-        GetGold(addGold, 0);
+        GetResource(addGold, 0);
     }
 
     public void PlayEffect(AudioClip clip)
@@ -92,10 +94,6 @@ public class GameManager : MonoBehaviour
         if (playerData != null) //실제로는 스텟을 가져올것 
         {   //임시코드입니다
             gold = playerData.Gold; //플레이어 총 골드 가져올 예정
-            finalAttack = playerData.Attack;  //플레이어 공격력 레벨 가져올예정
-            finalCritical = playerData.Critical;  //플레이어 크리티컬 레벨 가져올예정
-            finalCritDmg = playerData.CriticalDmg;  //플레이어 크리티컬 데미지 레벨 가져올 예정
-            finalGetGold = playerData.BonusGold;  //플레이어 골드 보너스 가져올 예정
             stage = playerData.Stage;  //스테이지 인덱스를 가져올 예정
 
             updateData();  //가져온 값을 게임이 실행되면 넣어주기
@@ -117,7 +115,7 @@ public class GameManager : MonoBehaviour
 
     public bool UseGold(int useGold) //재화를 사용해야되면 UseGold 함수를 호출
     { //나중에 강화석이랑 분할을 하든 업그레이드 타입에 맞춰서 변수를 변경하던 할 것
-        if (useGold <= 0)
+        if (useGold < 0)
         {
             uiManager.ShowWarning("잘못된 호출입니다");
             return false;
@@ -127,11 +125,12 @@ public class GameManager : MonoBehaviour
         {
             playerData.Gold -= useGold;
             updateData();
+            uiManager.ShowGoldText();
             return true;
         }
         else
         {
-            uiManager.ShowWarning("골드가 부족합니다" + playerData.Gold);
+            uiManager.ShowWarning("골드가 부족합니다\n" + uiManager.NumberText(playerData.Gold));
             return false;
         }
     }
@@ -157,13 +156,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GetGold(int dropGold, int enforceStone)  //몬스터가 죽으면 GetGold를 호출
+    public void GetResource(int dropGold, int enforceStone)  //몬스터가 죽으면 GetGold를 호출
     {
         finalGetGold = dropGold + (int)Mathf.Round(dropGold * (playerData.BonusGold * 5) / 100);
         playerData.Gold += Mathf.RoundToInt(finalGetGold);
         playerData.EnforceStone += enforceStone;
+
+        if (playerData.Gold >= MAX_VALUE)
+        {
+            playerData.Gold = MAX_VALUE;
+        }
+        if (playerData.EnforceStone <= MAX_VALUE)
+        {
+            playerData.EnforceStone = MAX_VALUE;
+        }
+
         uiManager.ShowWarning($"골드 획득 {dropGold} + {(int)Mathf.Round(dropGold * (playerData.BonusGold * 5) / 100)}");
         updateData();
+        uiManager.ShowGoldText();
     }
 
     public int StageMusic()

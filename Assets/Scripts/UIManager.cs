@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
 
     [Header("System")]
     public const int MAX_VALUE = 1000000000;
+    public const string MAX_VALUE_TEXT = "10억\n최대수치입니다";
     public TextMeshProUGUI goldText;
     public const int TITLE_MUSICNUM = 0;
 
@@ -51,9 +52,10 @@ public class UIManager : MonoBehaviour
         mainUI.gameObject.SetActive(false);
         lodingDisplay.gameObject.SetActive(false);
         warningText.gameObject.SetActive(false);
+        ShowGoldText();
     }
 
-    private void Update()
+    public void ShowGoldText()
     {
         goldText.text = $"{NumberText(gameManager.playerData.Gold)}";
     }
@@ -153,7 +155,7 @@ public class UIManager : MonoBehaviour
             return "0";
 
         if (value >= MAX_VALUE)
-            return MAX_VALUE.ToString();
+            return MAX_VALUE_TEXT;
 
         string[] units = { "", "만", "억" }; //문자열 배열 선언
         List<string> parts = new List<string>();  //문자열 리스트선언
