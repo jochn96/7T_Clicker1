@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
 {
     [Header("Managers")]
     public static UIManager Instance;
+    private GameManager gameManager;
 
     [Header("WarningSign")]
     public TextMeshProUGUI warningText;
@@ -19,6 +20,7 @@ public class UIManager : MonoBehaviour
 
     [Header("System")]
     public const int MAX_VALUE = 1000000000;
+    public TextMeshProUGUI goldText;
 
     private void Awake()
     {
@@ -35,8 +37,14 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.Instance;
         lodingDisplay.gameObject.SetActive(false);
         warningText.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        goldText.text = $"{gameManager.playerData.Gold}";
     }
 
     public void ShowLoding()

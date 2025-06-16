@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Connection")]
     private SoundManager soundManager;
-    PlayerData playerData = new PlayerData();
+    public PlayerData playerData = new PlayerData();
 
     [Header("Info")]
     private int baseAttack = 10;
@@ -71,6 +71,19 @@ public class GameManager : MonoBehaviour
         soundManager.ChangeBackGroundMusic(musicNumber);
     }
 
+    public void TestUseGold()
+    {
+        if(UseGold(5000))
+        {
+            uiManager.ShowWarning("골드사용 성공");
+        }
+    }
+
+    public void TestAddGold()
+    {
+        GetGold(5000, 0);
+    }
+
     public void PlayEffect(AudioClip clip)
     {
         soundManager.PlayClip(clip);
@@ -95,11 +108,6 @@ public class GameManager : MonoBehaviour
 
     public void updateData()
     {
-        //float baseAttack = statManager.GetStatValue(PlayerStatType.Attack);
-        //float baseCritical = statManager.GetStatValue(PlayerStatType.Critical);
-        //float baseCritDmg = statManager.GetStatValue(PlayerStatType.CriticalDmg);
-        //float baseBonusGold = statManager.GetStatValue(PlayerStatType.BonusGold);
-
         //Stage = 현 스테이지 인덱스? 데이터? 가져오기
 
         finalAttack = (int)Mathf.Round(baseAttack * (Mathf.Pow(1.2f, playerData.Attack)));  //*장착무기스텟 퍼뎀
@@ -108,8 +116,7 @@ public class GameManager : MonoBehaviour
         finalCritDmg = finalAttack + (int)Mathf.Round(finalAttack * (baseCritDmgPercent + (playerData.CriticalDmg * 2))/100);
 
         //저장될때마다 혹은 UI창을 열어볼때마다 등등 각종 상황에서 갱신해줄것
-
-        SaveDataToJSON.SaveUsers(playerData);
+        playerData.RefreshData(playerData);
     }
 
     public bool UseGold(int useGold) //재화를 사용해야되면 UseGold 함수를 호출
@@ -128,7 +135,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            uiManager.ShowWarning("골드가 부족합니다");
+            uiManager.ShowWarning("골드가 부족합니다" + playerData.Gold);
             return false;
         }
     }
@@ -159,6 +166,7 @@ public class GameManager : MonoBehaviour
         finalGetGold = dropGold + (int)Mathf.Round(dropGold * (playerData.BonusGold * 5) / 100);
         playerData.Gold += Mathf.RoundToInt(finalGetGold);
         playerData.EnforceStone += enforceStone;
+        uiManager.ShowWarning($"골드 획득 {dropGold} + {(int)Mathf.Round(dropGold * (playerData.BonusGold * 5) / 100)}");
         updateData();
     }
 
