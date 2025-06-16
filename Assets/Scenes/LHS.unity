@@ -1339,7 +1339,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statManager: {fileID: 0}
-  soundManager: {fileID: 1981338359}
   gold: 0
   finalAttack: 0
   finalCritical: 0
