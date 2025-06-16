@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 [System.Serializable]
 public class EquimentData
@@ -14,10 +14,11 @@ public  class  PlayerData //임시입니다 스텟레벨을 가져올예정
     public int Stage;
 
     [Header("StatLevel")]
-    public int Attack;
-    public int Critical;
-    public int CriticalDmg;
-    public int BonusGold;
+    public int Attack = 10;
+    public float Critical = 20;
+    public int CriticalDmg = 50;
+    public int BonusGold = 0;
+    public float AutoAttackCooldown = 5f;
 
     [Header("Resource")]
     public int Gold;
@@ -36,6 +37,8 @@ public  class  PlayerData //임시입니다 스텟레벨을 가져올예정
         Critical = playerdata.Critical;
         CriticalDmg = playerdata.CriticalDmg;
         BonusGold = playerdata.BonusGold;
+        AutoAttackCooldown = playerdata.AutoAttackCooldown;
+
 
         //statLevels[PlayerStatType.Attack] = playerdata.Attack;
         //statLevels[PlayerStatType.Critical] = playerdata.Critical;

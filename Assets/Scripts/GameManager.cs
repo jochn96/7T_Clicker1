@@ -13,9 +13,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Info")]
     public const int MAX_VALUE = 1000000000;
-    private int baseAttack = 10;
-    private float baseCritDmgPercent = 70;
-
+    
+    
+    
     public int gold;
     public int finalAttack;
     public float finalCritical;
@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     public void TestAddGold(int addGold)
     {
-        GetResource(addGold, 0);
+        GetResource(addGold, 100000);
     }
 
     public void PlayEffect(AudioClip clip)
@@ -96,6 +96,14 @@ public class GameManager : MonoBehaviour
             gold = playerData.Gold; //플레이어 총 골드 가져올 예정
             stage = playerData.Stage;  //스테이지 인덱스를 가져올 예정
 
+            // // 테스트용 골드 추가 (골드가 0이면 10000 추가)
+            // if (playerData.Gold <= 0)
+            // {
+            //     playerData.Gold = 10000;
+            //     gold = playerData.Gold;
+            //     Debug.Log("테스트용 골드 10000 추가됨");
+            // }
+
             updateData();  //가져온 값을 게임이 실행되면 넣어주기
         }
     }
@@ -104,13 +112,41 @@ public class GameManager : MonoBehaviour
     {
         //Stage = 현 스테이지 인덱스? 데이터? 가져오기
 
-        finalAttack = (int)Mathf.Round(baseAttack * (Mathf.Pow(1.2f, playerData.Attack)));  //*장착무기스텟 퍼뎀
+        // playerData.Attack을 기본 공격력으로 사용하고 장착무기 공격력 추가
+        int equippedWeaponAttack = GetEquippedWeaponAttack();
+        finalAttack = playerData.Attack + equippedWeaponAttack;
+        
         finalGetGold = (playerData.BonusGold * 5) / 100;  //장착무기스텟 보너스골드?
         finalCritical = 0.5f * playerData.Critical; //+장착무기스텟 크리
-        finalCritDmg = finalAttack + (int)Mathf.Round(finalAttack * (baseCritDmgPercent + (playerData.CriticalDmg * 2))/100);
+        
+        // 크리티컬 데미지 계산: finalAttack * playerData.CriticalDmg + 장착무기 크리티컬 데미지
+        int equippedWeaponCritDmg = GetEquippedWeaponCritDmg();
+        finalCritDmg = (int)Mathf.Round(finalAttack * (playerData.CriticalDmg / 100.0f)) + equippedWeaponCritDmg;
 
         //저장될때마다 혹은 UI창을 열어볼때마다 등등 각종 상황에서 갱신해줄것
         playerData.RefreshData(playerData);
+    }
+
+    /// <summary>
+    /// 현재 장착된 무기의 공격력을 반환합니다.
+    /// </summary>
+    /// <returns>장착된 무기의 공격력</returns>
+    private int GetEquippedWeaponAttack()
+    {
+        // TODO: 장착된 무기 정보를 가져와서 공격력 반환 로직 구현
+        // 현재는 임시로 0 반환
+        return 0;
+    }
+    
+    /// <summary>
+    /// 현재 장착된 무기의 크리티컬 데미지를 반환합니다.
+    /// </summary>
+    /// <returns>장착된 무기의 크리티컬 데미지</returns>
+    private int GetEquippedWeaponCritDmg()
+    {
+        // TODO: 장착된 무기의 크리티컬 데미지 반환 로직 구현
+        // 현재는 임시로 0 반환
+        return 0;
     }
 
     public bool UseGold(int useGold) //재화를 사용해야되면 UseGold 함수를 호출
@@ -190,7 +226,7 @@ public class GameManager : MonoBehaviour
             damage = finalAttack + finalCritDmg; //데미지는 기존데미지 + 크리티컬로 발동된 추가데미지
             return damage; //데미지값을 반환
         }
-        return damage;  //크리티컬이 안뜨면 그대로 데미지값 반환
+        return finalAttack;  //크리티컬이 안뜨면 그대로 finalAttack 반환
     }
 
     public bool isCritical()

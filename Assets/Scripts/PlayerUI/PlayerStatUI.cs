@@ -7,6 +7,9 @@ using TMPro;
 /// </summary>
 public class PlayerStatUI : MonoBehaviour
 {
+    [Header("골드 표시 UI")]
+    public TextMeshProUGUI currentGoldText;
+
     [Header("공격력 UI")]
     public TextMeshProUGUI attackValueText;
     public TextMeshProUGUI attackCostText;
@@ -33,11 +36,14 @@ public class PlayerStatUI : MonoBehaviour
     public Button autoAttackCooldownUpgradeButton;
 
     private Player player;
+    private GameManager gameManager;
     private int currentGold; // 실제로는 GameManager 등에서 받아와야 함
 
     private void Awake()
     {
         player = FindObjectOfType<Player>();
+        gameManager = GameManager.Instance;
+        
         // 버튼에 리스너 등록
         // attackUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.AttackPower));
         // critChanceUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.CriticalChance));
@@ -46,11 +52,41 @@ public class PlayerStatUI : MonoBehaviour
         // autoAttackCooldownUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.AutoAttackCooldownReduce));
     }
 
+    private void Start()
+    {
+        // 시작 시 UI 갱신
+        RefreshUI();
+    }
+
+    private void Update()
+    {
+        // 골드 UI 업데이트 (매 프레임마다 갱신)
+        UpdateGoldUI();
+    }
+
+    /// <summary>
+    /// 현재 골드 UI를 갱신합니다.
+    /// </summary>
+    private void UpdateGoldUI()
+    {
+        if (gameManager != null && currentGoldText != null)
+        {
+            // GameManager에서 현재 골드 정보 가져오기
+            currentGold = gameManager.playerData.Gold;
+            
+            // 골드 표시 (천 단위 콤마 포함)
+            currentGoldText.text = string.Format("{0:#,0} G", currentGold);
+        }
+    }
+
     /// <summary>
     /// UI를 갱신합니다.
     /// </summary>
     public void RefreshUI()
     {
+        // 골드 UI 갱신
+        UpdateGoldUI();
+
         attackValueText.text = player.GetStatValue(PlayerStatType.AttackPower).ToString();
         attackCostText.text = player.GetUpgradeCost(PlayerStatType.AttackPower) + "G";
 
@@ -71,17 +107,17 @@ public class PlayerStatUI : MonoBehaviour
     /// <summary>
     /// +버튼 클릭 시 업그레이드 시도 및 UI 갱신
     /// </summary>
-    // private void OnUpgrade(PlayerStatType statType)
-    // {
-    //     if (player.UpgradeStat(statType, currentGold))
-    //     {
-    //         RefreshUI();
-    //     }
-    //     else
-    //     {
-    //         Debug.Log("돈부족");
-    //     }
-    // }
+    private void OnUpgrade(PlayerStatType statType)
+    {
+        if (player.UpgradeStat(statType, currentGold))
+        {
+            RefreshUI();
+        }
+        else
+        {
+            Debug.Log("돈부족");
+        }
+    }
 
     /// <summary>
     /// PlayerStatUI 패널을 활성화(보이게) 합니다.
