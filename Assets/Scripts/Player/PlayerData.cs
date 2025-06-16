@@ -30,6 +30,14 @@ public  class  PlayerData //임시입니다 스텟레벨을 가져올예정
     {
         SaveDataToJSON.LoadUsers();
 
+        int stageIndex = playerdata.Stage;
+        int stageKey = -1;
+
+        if (stageIndex >= 0 && stageIndex < StageData.Stage.Length && StageData.Stage[stageIndex] != null)
+        {
+            stageKey = StageData.Stage[stageIndex].StageKey;
+        }
+
         Stage = playerdata.Stage;
         Gold = playerdata.Gold;
         Attack = playerdata.Attack;
@@ -45,4 +53,5 @@ public  class  PlayerData //임시입니다 스텟레벨을 가져올예정
         if (playerdata != null)
             SaveDataToJSON.SaveUsers(playerdata);
     }
+    
 }

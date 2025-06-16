@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -179,6 +180,32 @@ public class GameManager : MonoBehaviour
     public int StageMusic()
     {
         return ((playerData.Stage - 1) % (soundManager.musicClips.Length - 1) + 1);
+    }
+
+    public void OnStageClear()
+    {
+        // 스테이지 인덱스 증가
+        playerData.Stage++;
+
+        // StageKey 갱신
+        if (playerData.Stage >= 0 && playerData.Stage < StageData.Stage.Length && StageData.Stage[playerData.Stage] != null)
+        {
+            int stageKey = StageData.Stage[playerData.Stage].StageKey;
+            playerData.Stage = stageKey;
+        }
+
+        // 데이터 저장
+        playerData.RefreshData(playerData);
+    }
+
+    public StageInfo GetStageInfoByKey(int stageKey)
+    {
+        foreach (var stage in StageData.Stage)
+        {
+            if (stage != null && stage.StageKey == stageKey)
+                return stage;
+        }
+        return null;
     }
 
     public int FinalAttack(bool isCritical)
