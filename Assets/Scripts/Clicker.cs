@@ -9,18 +9,48 @@ public class Clicker : MonoBehaviour
 
     private Coroutine autoAttackRoutine;
 
+    private Animator animator;
+    private bool isAttack;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     private void Start()
     {
-        UnlockAutoClick();
+        //UnlockAutoClick();
     }
 
     //클릭시 공격
     public void OnClickClickerButton()
     {
         //몬스터 체력 - 플레이어 최종데미지
-        //캐릭터 공격 애니매이션 동작
+        AttackAnimation();
         //공격 이펙트 동작 그리고 크리티컬시 다른 이펙트 동작
         Debug.Log("클릭했습니다.");
+    }
+
+    private void AttackAnimation()
+    {
+        if (animator == null) return;
+
+        if (isAttack)
+        {
+            animator.SetTrigger("Attack1"); //어택 1 애니메이션 재생
+        }
+        else
+        {
+            animator.SetTrigger("Attack2"); //어택 2 애니메인션 재생
+        }
+
+        isAttack = !isAttack; // 1, 2 바꾸면서 재생
+    }
+
+    //애니메이션 초기화
+    public void ResetAttack()
+    {
+        isAttack = true;
     }
 
     //자동 공격 시작
