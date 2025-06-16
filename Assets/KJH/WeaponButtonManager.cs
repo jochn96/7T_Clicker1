@@ -6,6 +6,17 @@ using TMPro;
 
 public class WeaponButtonManager : MonoBehaviour
 {
+    public WeaponUpgradeManager weaponUpgradeManager1;
+    public WeaponUpgradeManager weaponUpgradeManager2;
+    public WeaponUpgradeManager weaponUpgradeManager3;
+    public WeaponUpgradeManager weaponUpgradeManager4;
+    public Weapon NowEquip;////////////////********
+    public Weapon[] weapons = new Weapon[4]; 
+    public Weapon Weapon1;
+    public Weapon Weapon2;
+    public Weapon Weapon3;
+    public Weapon Weapon4;
+    public int TestUpgradeCoin;
     public Button WOpenButton;
     public Button WCloseButton;
     public Button W1EquipButton;
@@ -75,56 +86,72 @@ public class WeaponButtonManager : MonoBehaviour
         Debug.Log("닫기");
     }
 
-    void EquipWeapon(int index) //장착 버튼 UI 코드
+    void EquipWeapon(int index) 
     {
         TMP_Text[] texts = { W1EquipText, W2EquipText, W3EquipText, W4EquipText };
         Image[] images = { W1EquipImage, W2EquipImage, W3EquipImage, W4EquipImage };
 
         for (int i = 0; i < 4; i++)
         {
-            texts[i].text = (i == index) ? "장착중" : "장착";
-            images[i].color = (i == index) ? EquipColor : UnEquipColor;
+            texts[i].text = (i == index) ? "장착중" : "장착";//장착 UI 텍스트 변경
+            images[i].color = (i == index) ? EquipColor : UnEquipColor;//장착 UI 색 변경
         }
-
-        Debug.Log($"{index + 1}장착");
+        NowEquip = weapons[index];//무기 장착
+        Debug.Log($"{index + 1}장착"); 
     }
     
     void VW2Buy() //2번무기 구매 코드
     {
-        W2Equip.SetActive(true);
-        W2Buy.SetActive(false);
-        W2Shadow.SetActive(false);
-        Debug.Log("2구매");
+        if(TestUpgradeCoin >= Weapon2.BuyPrice)
+        {
+            TestUpgradeCoin -= Weapon2.BuyPrice;
+            W2Equip.SetActive(true);
+            W2Buy.SetActive(false);
+            W2Shadow.SetActive(false);
+            Debug.Log("2구매");
+        }
     }
     void VW3Buy() //3번무기 구매 코드
     {
-        W3Equip.SetActive(true);
-        W3Buy.SetActive(false);
-        W3Shadow.SetActive(false);
-        Debug.Log("3구매");
+        if (TestUpgradeCoin >= Weapon3.BuyPrice)
+        {
+            TestUpgradeCoin -= Weapon3.BuyPrice;
+            W3Equip.SetActive(true);
+            W3Buy.SetActive(false);
+            W3Shadow.SetActive(false);
+            Debug.Log("3구매");
+        }
     }
     void VW4Buy() //4번무기 구매 코드
     {
-        W4Equip.SetActive(true);
-        W4Buy.SetActive(false);
-        W4Shadow.SetActive(false);
-        Debug.Log("4구매");
+        if (TestUpgradeCoin >= Weapon4.BuyPrice)
+        {
+            TestUpgradeCoin -= Weapon4.BuyPrice;
+            W4Equip.SetActive(true);
+            W4Buy.SetActive(false);
+            W4Shadow.SetActive(false);
+            Debug.Log("4구매");
+        }
     }
     
     void VW1Upgrade() //1번무기 업그레이드 코드
     {
+        weaponUpgradeManager1.Upgrade();
         Debug.Log("1업그레이드");
     }
     void VW2Upgrade() //2번무기 업그레이드 코드
     {
+        weaponUpgradeManager2.Upgrade();
         Debug.Log("2업그레이드");
     }
     void VW3Upgrade() //3번무기 업그레이드 코드
     {
+        weaponUpgradeManager3.Upgrade();
         Debug.Log("3업그레이드");
     }
     void VW4Upgrade() //4번무기 업그레이드 코드
     {
+        weaponUpgradeManager4.Upgrade();
         Debug.Log("4업그레이드");
     }
     
