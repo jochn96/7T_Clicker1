@@ -133,8 +133,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff63335a459482408187e3e7121f3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData:
+    Stage: 0
+    Attack: 0
+    Critical: 0
+    CriticalDmg: 0
+    BonusGold: 0
+    Gold: 0
+    EnforceStone: 0
   Weapon: {fileID: 11400000, guid: 54d211b7b54054f4ea7463d77e2f1b0c, type: 2}
-  weaponButtonManager: {fileID: 5640485777675583357}
 --- !u!114 &4141707580197278624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4047,11 +4054,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c8fbacc69151cc4c927bbc05348d653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData:
+    Stage: 0
+    Attack: 0
+    Critical: 0
+    CriticalDmg: 0
+    BonusGold: 0
+    Gold: 0
+    EnforceStone: 0
   weaponUpgradeManager1: {fileID: 8180639366506099685}
   weaponUpgradeManager2: {fileID: 4081365555275025553}
   weaponUpgradeManager3: {fileID: 4833358673359917575}
   weaponUpgradeManager4: {fileID: 7029057877791872443}
-  NowEquip: {fileID: 0}
+  NowEquip: {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}
   weapons:
   - {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}
   - {fileID: 11400000, guid: 54d211b7b54054f4ea7463d77e2f1b0c, type: 2}
@@ -4061,7 +4076,6 @@ MonoBehaviour:
   Weapon2: {fileID: 11400000, guid: 54d211b7b54054f4ea7463d77e2f1b0c, type: 2}
   Weapon3: {fileID: 11400000, guid: c0bc72fc5cb89f24e957032fe09f5362, type: 2}
   Weapon4: {fileID: 11400000, guid: c2cf7acc236d38445a68770c330ab068, type: 2}
-  TestUpgradeCoin: 1000
   WOpenButton: {fileID: 3291054015469161455}
   WCloseButton: {fileID: 6514471534344355776}
   W1EquipButton: {fileID: 444453971655157003}
@@ -5464,8 +5478,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff63335a459482408187e3e7121f3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData:
+    Stage: 0
+    Attack: 0
+    Critical: 0
+    CriticalDmg: 0
+    BonusGold: 0
+    Gold: 0
+    EnforceStone: 0
   Weapon: {fileID: 11400000, guid: c0bc72fc5cb89f24e957032fe09f5362, type: 2}
-  weaponButtonManager: {fileID: 5640485777675583357}
 --- !u!114 &7503117879478144868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6464,8 +6485,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff63335a459482408187e3e7121f3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData:
+    Stage: 0
+    Attack: 0
+    Critical: 0
+    CriticalDmg: 0
+    BonusGold: 0
+    Gold: 0
+    EnforceStone: 0
   Weapon: {fileID: 11400000, guid: c2cf7acc236d38445a68770c330ab068, type: 2}
-  weaponButtonManager: {fileID: 5640485777675583357}
 --- !u!114 &8152360295965732899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7031,8 +7059,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff63335a459482408187e3e7121f3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData:
+    Stage: 0
+    Attack: 0
+    Critical: 0
+    CriticalDmg: 0
+    BonusGold: 0
+    Gold: 0
+    EnforceStone: 0
   Weapon: {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}
-  weaponButtonManager: {fileID: 5640485777675583357}
 --- !u!114 &6328951272773132589
 MonoBehaviour:
   m_ObjectHideFlags: 0
