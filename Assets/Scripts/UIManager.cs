@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [Header("Managers")]
     public static UIManager Instance;
     private GameManager gameManager;
+    private SoundManager soundManager;
 
     [Header("WarningSign")]
     public TextMeshProUGUI warningText;
@@ -21,6 +22,12 @@ public class UIManager : MonoBehaviour
     [Header("System")]
     public const int MAX_VALUE = 1000000000;
     public TextMeshProUGUI goldText;
+
+    [Header("UI")]
+    public GameObject titleUI;
+    public Animator titleAnimator;
+    public GameObject mainUI;
+    
 
     private void Awake()
     {
@@ -38,6 +45,9 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.Instance;
+        soundManager = SoundManager.Instance;
+        titleUI.gameObject.SetActive(true);
+        mainUI.gameObject.SetActive(false);
         lodingDisplay.gameObject.SetActive(false);
         warningText.gameObject.SetActive(false);
     }
@@ -47,26 +57,36 @@ public class UIManager : MonoBehaviour
         goldText.text = $"{NumberText(gameManager.playerData.Gold)}";
     }
 
-    public void ShowLoding()
+    public void StartGame()
+    {
+        titleAnimator.SetBool("IsStart", true);
+        if (lodingCoroutine != null)
+        {
+            StopCoroutine(lodingCoroutine);
+        }
+        lodingCoroutine = StartCoroutine(LodingSign(titleUI, mainUI));
+    }
+
+    public void ReturnToTitle()
     {
         if (lodingCoroutine != null)
         {
             StopCoroutine(lodingCoroutine);
         }
-        lodingCoroutine = StartCoroutine(LodingSign());
+        lodingCoroutine = StartCoroutine(LodingSign(mainUI, titleUI));
     }
 
-    private IEnumerator LodingSign()
+    private IEnumerator LodingSign(GameObject defaltObject, GameObject NextObject)
     {
         Color color = lodingDisplay.color;
         color.a = 0;
         lodingDisplay.color = color;
 
         float effecttime = 0;
-        float duration = 0.5f;  //연출시간
+        float duration = 1f;  //연출시간
         lodingDisplay.gameObject.SetActive(true);
 
-        while (effecttime < duration / 2)  //연출시간 / 2만큼 시간동안 알파값이 1로증가
+        while (effecttime < duration)  //연출시간만큼 시간동안 알파값이 1로증가
         {
             effecttime += Time.deltaTime;
             color.a = Mathf.Lerp(0f, 1f, effecttime / (duration / 2f));
@@ -75,10 +95,13 @@ public class UIManager : MonoBehaviour
         }
         color.a = 1;
         lodingDisplay.color = color;
+
+        defaltObject.SetActive(false);
+        NextObject.SetActive(true);
         yield return new WaitForSeconds(0.25f); //증가된채로 0.25초 대기
         effecttime = 0;
 
-        while (effecttime < duration / 2)  //위와 동일코드
+        while (effecttime < duration / 2)  //연출시간 / 2 만큼 시간동안 알파값이 1로증가
         {
             effecttime += Time.deltaTime;
             color.a = Mathf.Lerp(1f, 0f, effecttime / (duration / 2f));
@@ -86,7 +109,7 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
         color.a = 0;
-        lodingDisplay.color = color;  //총 지속시간 + 대기시간동안 작동 0.75초
+        lodingDisplay.color = color;  //총 지속시간 + 대기시간동안 작동 1.75초
         lodingDisplay.gameObject.SetActive(false);  //종료
     }
 

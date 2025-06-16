@@ -48,10 +48,6 @@ public class GameManager : MonoBehaviour
         uiManager.ShowWarning("StartGame");
     }
 
-    public void TestLoding()
-    {
-        uiManager.ShowLoding();
-    }
 
     public void TestWarningSign()
     {
