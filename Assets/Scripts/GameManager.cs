@@ -89,8 +89,8 @@ public class GameManager : MonoBehaviour
         if (playerData != null) //실제로는 스텟을 가져올것 
         {   //임시코드입니다
             gold = playerData.Gold; //플레이어 총 골드 가져올 예정
-
-            finalAttack = playerData.Attack;  //플레이어 공격력 레벨 가져올예정
+            
+            finalAttack = playerData.Attack ;  //플레이어 공격력 레벨 가져올예정
             finalCritical = playerData.Critical;  //플레이어 크리티컬 레벨 가져올예정
             finalCritDmg = playerData.CriticalDmg;  //플레이어 크리티컬 데미지 레벨 가져올 예정
             finalGetGold = playerData.BonusGold;  //플레이어 골드 보너스 가져올 예정
@@ -104,8 +104,7 @@ public class GameManager : MonoBehaviour
     public void UpdateData()
     {
         //Stage = 현 스테이지 인덱스? 데이터? 가져오기
-        Debug.Log($"[updateData 시작] Attack={playerData.Attack}, Critical={playerData.Critical}, CriticalDmg={playerData.CriticalDmg}, BonusGold={playerData.BonusGold}, AutoAttackCooldown={playerData.AutoAttackCooldown}");
-
+        
         // playerData.Attack을 기본 공격력으로 사용하고 장착무기 공격력 추가
         int equippedWeaponAttack = GetEquippedWeaponAttack();
         finalAttack = playerData.Attack + equippedWeaponAttack;
@@ -118,9 +117,9 @@ public class GameManager : MonoBehaviour
         finalAutoAttackCooldown = playerData.AutoAttackCooldown;
 
         //저장될때마다 혹은 UI창을 열어볼때마다 등등 각종 상황에서 갱신해줄것
-        Debug.Log($"[RefreshData 호출 전] Attack={playerData.Attack}, Critical={playerData.Critical}, CriticalDmg={playerData.CriticalDmg}, BonusGold={playerData.BonusGold}, AutoAttackCooldown={playerData.AutoAttackCooldown}");
+        
         playerData.RefreshData(playerData); 
-        Debug.Log($"[RefreshData 호출 후] Attack={playerData.Attack}, Critical={playerData.Critical}, CriticalDmg={playerData.CriticalDmg}, BonusGold={playerData.BonusGold}, AutoAttackCooldown={playerData.AutoAttackCooldown}");
+        
     }
 
     /// <summary>
