@@ -2,7 +2,6 @@
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Managers")]
     public static GameManager Instance;
     public PlayerStatManager statManager;
     private UIManager uiManager;
@@ -10,10 +9,12 @@ public class GameManager : MonoBehaviour
     [Header("Connection")]
     private SoundManager soundManager;
     public PlayerData playerData = new PlayerData();
-    public WeaponUpgradeManager weaponUpgradeManager;
 
     [Header("Info")]
     public const int MAX_VALUE = 1000000000;
+    public const int TITLE_MUSIC = 0;
+    
+    
     
     public int gold;
     public int finalAttack;
@@ -45,10 +46,44 @@ public class GameManager : MonoBehaviour
     {
         uiManager = UIManager.Instance;
         soundManager = SoundManager.Instance;
-        soundManager.ChangeBackGroundMusic(musicNumber);  //기본 로비음악 재생
+
+        soundManager.ChangeBackGroundMusic(TITLE_MUSIC);  //기본 로비음악 재생
+ 
         uiManager.ShowWarning("StartGame");
-        weaponUpgradeManager.playerData = playerData;
     }
+
+    #region TestButtons
+    public void TestWarningSign()
+    {
+        uiManager.ShowWarning($"this Music is MusicTrack Name is\n{soundManager.musicClips[musicNumber].name}");
+    }
+
+    public void TestMusicButton()
+    {
+        if (musicNumber < soundManager.musicClips.Length - 1)
+        {
+            musicNumber++;
+        }
+        else 
+        {
+            musicNumber = 0; 
+        }
+        soundManager.ChangeBackGroundMusic(musicNumber);
+    }
+
+    public void TestUseGold(int useGold)
+    {
+        if(UseGold(useGold))
+        {
+            uiManager.ShowWarning("골드사용 성공");
+        }
+    }
+
+    public void TestAddGold(int addGold)
+    {
+        GetResource(addGold, 100000);
+    }
+    #endregion
     #region UpdateData
     public void PlayerDataLoad()
     {
@@ -56,32 +91,39 @@ public class GameManager : MonoBehaviour
 
         if (playerData != null) //실제로는 스텟을 가져올것 
         {   //임시코드입니다
+            gold = playerData.Gold; //플레이어 총 골드 가져올 예정
+
+            finalAttack = playerData.Attack;  //플레이어 공격력 레벨 가져올예정
+            finalCritical = playerData.Critical;  //플레이어 크리티컬 레벨 가져올예정
+            finalCritDmg = playerData.CriticalDmg;  //플레이어 크리티컬 데미지 레벨 가져올 예정
+            finalGetGold = playerData.BonusGold;  //플레이어 골드 보너스 가져올 예정
+            stage = playerData.StageInfo;  //스테이지 인덱스를 가져올 예정
+
             UpdateData();  //가져온 값을 게임이 실행되면 넣어주기
+
         }
     }
 
     public void UpdateData()
     {
         //Stage = 현 스테이지 인덱스? 데이터? 가져오기
-        
+        Debug.Log($"[updateData 시작] Attack={playerData.Attack}, Critical={playerData.Critical}, CriticalDmg={playerData.CriticalDmg}, BonusGold={playerData.BonusGold}, AutoAttackCooldown={playerData.AutoAttackCooldown}");
+
         // playerData.Attack을 기본 공격력으로 사용하고 장착무기 공격력 추가
         int equippedWeaponAttack = GetEquippedWeaponAttack();
-        damage = playerData.Attack + equippedWeaponAttack;
-        // finalAttack은 크리티컬 데미지가 적용된 값 (크리티컬 발동 시 데미지)
-        finalAttack = Mathf.RoundToInt(damage * (finalCritDmg / 100f));
+        finalAttack = playerData.Attack + equippedWeaponAttack;
         finalGetGold = playerData.BonusGold; 
-        finalCritical = playerData.Critical;         
-        finalCritDmg = playerData.CriticalDmg;
+        finalCritical = playerData.Critical; 
+        int equippedWeaponCritDmg = GetEquippedWeaponCritDmg();
+        finalCritDmg = playerData.CriticalDmg + equippedWeaponCritDmg;
+        
         
         finalAutoAttackCooldown = playerData.AutoAttackCooldown;
 
-        gold = playerData.Gold; //플레이어 총 골드 가져올 예정
-        stage = playerData.StageInfo;  //스테이지 인덱스를 가져올 예정
-
         //저장될때마다 혹은 UI창을 열어볼때마다 등등 각종 상황에서 갱신해줄것
-        
+        Debug.Log($"[RefreshData 호출 전] Attack={playerData.Attack}, Critical={playerData.Critical}, CriticalDmg={playerData.CriticalDmg}, BonusGold={playerData.BonusGold}, AutoAttackCooldown={playerData.AutoAttackCooldown}");
         playerData.RefreshData(playerData); 
-        
+        Debug.Log($"[RefreshData 호출 후] Attack={playerData.Attack}, Critical={playerData.Critical}, CriticalDmg={playerData.CriticalDmg}, BonusGold={playerData.BonusGold}, AutoAttackCooldown={playerData.AutoAttackCooldown}");
     }
 
     /// <summary>

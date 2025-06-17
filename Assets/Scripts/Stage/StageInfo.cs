@@ -4,6 +4,7 @@ public class StageInfo : MonoBehaviour
 {
     public int StageKey;
     public WaveData[] Waves;
+    public int StageClearCount;
 
     public StageInfo(int stageKey, WaveData[] waves)
     {
