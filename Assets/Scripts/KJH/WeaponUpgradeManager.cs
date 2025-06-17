@@ -10,6 +10,8 @@ public class WeaponUpgradeManager : MonoBehaviour
 
     public void Upgrade()
     {
+        var playerData = GameManager.Instance.playerData;
+
         switch (Weapon.WeaponLevel)
         {
             case 1:

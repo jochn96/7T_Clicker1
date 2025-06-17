@@ -9817,10 +9817,10 @@ MonoBehaviour:
     Gold: 0
     EnforceStone: 0
     IsAutoAttackUnlocked: 0
-  weaponUpgradeManager1: {fileID: 0}
-  weaponUpgradeManager2: {fileID: 0}
-  weaponUpgradeManager3: {fileID: 0}
-  weaponUpgradeManager4: {fileID: 0}
+  weaponUpgradeManager1: {fileID: 6328951272597566357}
+  weaponUpgradeManager2: {fileID: 4141707580122235160}
+  weaponUpgradeManager3: {fileID: 7503117879435615708}
+  weaponUpgradeManager4: {fileID: 8152360296191632027}
   NowEquip: {fileID: 11400000, guid: c3bd59a2a85a33a47933c4eaf14ae058, type: 2}
   weapons:
   - {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}

@@ -102,9 +102,9 @@ public class WeaponButtonManager : MonoBehaviour
     
     void VW2Buy() //2번무기 구매 코드
     {
-        if(playerData.EnforceStone >= Weapon2.BuyPrice)
+        if (GameManager.Instance.playerData.EnforceStone >= Weapon2.BuyPrice)
         {
-            playerData.EnforceStone -= Weapon2.BuyPrice;
+            GameManager.Instance.playerData.EnforceStone -= Weapon2.BuyPrice;
             W2Equip.SetActive(true);
             W2Buy.SetActive(false);
             W2Shadow.SetActive(false);
@@ -113,9 +113,9 @@ public class WeaponButtonManager : MonoBehaviour
     }
     void VW3Buy() //3번무기 구매 코드
     {
-        if (playerData.EnforceStone >= Weapon3.BuyPrice)
+        if (GameManager.Instance.playerData.EnforceStone >= Weapon3.BuyPrice)
         {
-            playerData.EnforceStone -= Weapon3.BuyPrice;
+            GameManager.Instance.playerData.EnforceStone -= Weapon3.BuyPrice;
             W3Equip.SetActive(true);
             W3Buy.SetActive(false);
             W3Shadow.SetActive(false);
@@ -124,9 +124,9 @@ public class WeaponButtonManager : MonoBehaviour
     }
     void VW4Buy() //4번무기 구매 코드
     {
-        if (playerData.EnforceStone >= Weapon4.BuyPrice)
+        if (GameManager.Instance.playerData.EnforceStone >= Weapon4.BuyPrice)
         {
-            playerData.EnforceStone -= Weapon4.BuyPrice;
+            GameManager.Instance.playerData.EnforceStone -= Weapon4.BuyPrice;
             W4Equip.SetActive(true);
             W4Buy.SetActive(false);
             W4Shadow.SetActive(false);
