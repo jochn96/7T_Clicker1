@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
-        playerDataLoad();
+        PlayerDataLoad();
     }
 
     private void Start()
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         uiManager.ShowWarning("StartGame");
     }
 
-
+    #region TestButtons
     public void TestWarningSign()
     {
         uiManager.ShowWarning($"this Music is MusicTrack Name is\n{soundManager.musicClips[musicNumber].name}");
@@ -81,13 +81,9 @@ public class GameManager : MonoBehaviour
     {
         GetResource(addGold, 0);
     }
-
-    public void PlayEffect(AudioClip clip)
-    {
-        soundManager.PlayClip(clip);
-    }
-
-    public void playerDataLoad()
+    #endregion
+    #region UpdateData
+    public void PlayerDataLoad()
     {
         playerData = SaveDataToJSON.LoadUsers();
 
@@ -101,11 +97,11 @@ public class GameManager : MonoBehaviour
             finalGetGold = playerData.BonusGold;  //플레이어 골드 보너스 가져올 예정
             stage = playerData.StageInfo;  //스테이지 인덱스를 가져올 예정
 
-            updateData();  //가져온 값을 게임이 실행되면 넣어주기
+            UpdateData();  //가져온 값을 게임이 실행되면 넣어주기
         }
     }
 
-    public void updateData()
+    public void UpdateData()
     {
         //Stage = 현 스테이지 인덱스? 데이터? 가져오기
 
@@ -117,7 +113,8 @@ public class GameManager : MonoBehaviour
         //저장될때마다 혹은 UI창을 열어볼때마다 등등 각종 상황에서 갱신해줄것
         playerData.RefreshData(playerData);
     }
-
+    #endregion
+    #region PlayerResource
     public bool UseGold(int useGold) //재화를 사용해야되면 UseGold 함수를 호출
     { //나중에 강화석이랑 분할을 하든 업그레이드 타입에 맞춰서 변수를 변경하던 할 것
         if (useGold < 0)
@@ -129,7 +126,7 @@ public class GameManager : MonoBehaviour
         if (playerData.Gold >= useGold)
         {
             playerData.Gold -= useGold;
-            updateData();
+            UpdateData();
             uiManager.ShowGoldText();
             return true;
         }
@@ -151,7 +148,7 @@ public class GameManager : MonoBehaviour
         if (playerData.EnforceStone >= enforceStone)
         {
             playerData.EnforceStone -= enforceStone;
-            updateData();
+            UpdateData();
             return true;
         }
         else
@@ -177,12 +174,34 @@ public class GameManager : MonoBehaviour
         }
 
         uiManager.ShowWarning($"골드 획득 {dropGold} + {(int)Mathf.Round(dropGold * (playerData.BonusGold * 5) / 100)}");
-        updateData();
+        UpdateData();
         uiManager.ShowGoldText();
     }
-
+    #endregion
+    #region Stage
     public int StageMusic()
     {
         return ((playerData.StageInfo - 1) % (soundManager.musicClips.Length - 1) + 1);
     }
+
+    public void ClearStage()
+    {
+        playerData.StageInfo++;
+        if (playerData.StageInfo >= StageData.Stage.Length)
+        {
+            playerData.StageInfo = 0;
+        }
+
+        UpdateData();
+        LoadStage(playerData.StageInfo);
+
+        soundManager.ChangeBackGroundMusic(playerData.StageInfo);
+    }
+
+    public void LoadStage(int stageIndex)
+    {
+        //스테이지 데이터 불러오기
+        StageInfo stageinfo = StageData.Stage[stageIndex];
+    }
+    #endregion
 }
