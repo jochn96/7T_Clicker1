@@ -1113,7 +1113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoAttackUnlocked: 0
   autoAttackInterval: 5
-  targetEnemy: {fileID: 0}
+  targetEnemy: {fileID: 5770717063183342233}
   nomalEffect: {fileID: 1317334335013377502, guid: fc4545d35d462564c8d109688e476f12, type: 3}
   criEffect: {fileID: 1597015496697396882, guid: fe24e736144dc5545a7400799f8300ce, type: 3}
   effectPivot: {fileID: 1427203163521772845}
