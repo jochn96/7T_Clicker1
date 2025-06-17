@@ -2,18 +2,18 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Enemy : MonoBehaviour 
+public class Enemy : MonoBehaviour
 {
     [SerializeField] 
-    private EnemyCenter enemyLife; // 적 체력
-
-    private EnemyCenter MaxEnemyLife; // 적 최대 체력
+    private EnemyCenter enemyCenter;
     
     public Image HPBar; // 적 체력 UI 컴포넌트
+    
+    private GameManager gameManager;
 
-
-
-    public EnemyCenter enemyCenter;
+    private int currentHP;
+    
+    
 
     // 적 현재 상태
     public void WatchEnemyInfo()
@@ -24,16 +24,13 @@ public class Enemy : MonoBehaviour
     // 마우스 왼쪽 클릭 시 적 체력 감소 구현
     public void Start()
     {
+        currentHP = enemyCenter.MaxEnemyLife;
+        gameManager = GameManager.Instance;
         if (Input.GetMouseButton(0))
         {
+           // currentHP - Damage;
             Debug.Log("공격을 맞췄다!");
-            if (enemyLife == null)
-            {
-                enemyLife = ScriptableObject.CreateInstance<EnemyCenter>();
-            }
-
-            enemyLife.EnemyLife -=  
-                
+            
             // HP 바 감소 구현 코드
            /* if (HPBar != null)
             {
@@ -43,13 +40,23 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void EnemyHP(int amount)
+}
+
+   /* public void EnemyHP(int amount)
     {
-        enemyLife -= PlayerData.Attack  * amount;
+        currentHP -= amount;
         
-        if (enemyLife <= 0)
+        if (currentHP <= 0)
         {
-            //isDie = true;
+            // isDie = true;
         }
     }
-}
+
+    public void isDie()
+    {
+        // 몬스터 죽었을 때 얻는 골드와 강화석 값
+         gameManager.GetResource(10,10);
+        
+        Destroy(gameObject);
+    } */
+

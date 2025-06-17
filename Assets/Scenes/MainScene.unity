@@ -123,6 +123,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &537269915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 537269917}
+  - component: {fileID: 537269916}
+  m_Layer: 0
+  m_Name: EnemyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &537269916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537269915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 429353f041dc89a44b93dec283c9aefc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab:
+  - {fileID: 1384859330782809618, guid: c72b4e7588656354d9f7aa54781be374, type: 3}
+  sqwnMonster:
+  - {fileID: 1384859330782809618, guid: c72b4e7588656354d9f7aa54781be374, type: 3}
+--- !u!4 &537269917
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537269915}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &772557986
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,8 +978,8 @@ Transform:
   m_GameObject: {fileID: 553013975862734623}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 138, y: 270, z: 0}
-  m_LocalScale: {x: 91.104485, y: 126.31807, z: 1}
+  m_LocalPosition: {x: 0.23, y: 1.05, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5246368367401324232}
@@ -8812,7 +8860,7 @@ Transform:
   m_GameObject: {fileID: 6546181193092063914}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.09, y: 0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9327,7 +9375,7 @@ Transform:
   m_GameObject: {fileID: 5627002802324888937}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.45, y: 1.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9580,8 +9628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494d88caaffad43458f128f1c2988cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundImage: {fileID: 7726930911450032773}
-  scrollSpeedY: 0.1
 --- !u!4 &5386664387408551511
 Transform:
   m_ObjectHideFlags: 0
@@ -10247,16 +10293,16 @@ MonoBehaviour:
   weaponUpgradeManager2: {fileID: 4081365555215851049}
   weaponUpgradeManager3: {fileID: 4833358673132830911}
   weaponUpgradeManager4: {fileID: 7029057877851178755}
-  NowEquip: {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}
+  NowEquip: {fileID: 0}
   weapons:
-  - {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}
-  - {fileID: 11400000, guid: 54d211b7b54054f4ea7463d77e2f1b0c, type: 2}
-  - {fileID: 11400000, guid: c0bc72fc5cb89f24e957032fe09f5362, type: 2}
-  - {fileID: 11400000, guid: c2cf7acc236d38445a68770c330ab068, type: 2}
-  Weapon1: {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}
-  Weapon2: {fileID: 11400000, guid: 54d211b7b54054f4ea7463d77e2f1b0c, type: 2}
-  Weapon3: {fileID: 11400000, guid: c0bc72fc5cb89f24e957032fe09f5362, type: 2}
-  Weapon4: {fileID: 11400000, guid: c2cf7acc236d38445a68770c330ab068, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Weapon1: {fileID: 0}
+  Weapon2: {fileID: 0}
+  Weapon3: {fileID: 0}
+  Weapon4: {fileID: 0}
   WOpenButton: {fileID: 3291054015409854807}
   WCloseButton: {fileID: 6514471534385704312}
   W1EquipButton: {fileID: 444453971563476915}
@@ -10464,7 +10510,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -3, y: -1}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5761580083001855910
@@ -10536,7 +10582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afb360bdf0196c4c91c4b745b37b5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLife: {fileID: 0}
+  enemyCenter: {fileID: 11400000, guid: 58c1c49cdad4577479379f4d77d5e1cf, type: 2}
 --- !u!222 &5772597170034184247
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11810,14 +11856,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c5eec103b0854a4099b5348107de1d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  warningSignPrefab: {fileID: 9085471869381567238, guid: 243758e15b43b3f479579045bef646b8, type: 3}
-  lodingDisplayPrefab: {fileID: 0}
-  lodingDisplay: {fileID: 5591288275995817642}
-  goldText: {fileID: 6650255904641979257}
-  uiContainer: {fileID: 7938600585743762562}
-  titleUI: {fileID: 6963351085722223453}
-  titleAnimator: {fileID: 7364546820838132669}
-  mainUI: {fileID: 3778520133390279721}
 --- !u!1 &6546181193092063914
 GameObject:
   m_ObjectHideFlags: 0
@@ -15130,13 +15168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e97cd5c7dc243d44b1a9c5ff3d4eed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEffectVolume: 0
-  soundEffectPitchVariance: 0
-  musicVolume: 0
-  musicClips: []
-  soundSourcePrefab: {fileID: 8277121795089965898, guid: 4cf2eeb6bd8b56f45a07d67a27369353, type: 3}
-  soundSlot: {fileID: 3886387592684688634}
-  musicVolumeSlider: {fileID: 0}
 --- !u!1 &8489128268030235733
 GameObject:
   m_ObjectHideFlags: 0
@@ -17178,3 +17209,4 @@ SceneRoots:
   - {fileID: 6739952507392192399}
   - {fileID: 573366561894938424}
   - {fileID: 7514931726823261811}
+  - {fileID: 537269917}
