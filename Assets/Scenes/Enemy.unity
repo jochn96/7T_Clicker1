@@ -428,8 +428,10 @@ MonoBehaviour:
     Critical: 0
     CriticalDmg: 0
     BonusGold: 0
+    AutoAttackCooldown: 5
     Gold: 0
     EnforceStone: 0
+    IsAutoAttackUnlocked: 0
   gold: 0
   finalAttack: 0
   finalCritical: 0
@@ -437,6 +439,7 @@ MonoBehaviour:
   finalGetGold: 0
   stage: 10
   damage: 0
+  finalAutoAttackCooldown: 0
   musicNumber: 0
 --- !u!4 &963713238
 Transform:
