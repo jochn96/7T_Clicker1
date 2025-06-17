@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     {
         uiManager = UIManager.Instance;
         soundManager = SoundManager.Instance;
-        soundManager.ChangeBackGroundMusic(musicNumber);  //기본 로비음악 재생
+       soundManager.ChangeBackGroundMusic(musicNumber);  //기본 로비음악 재생
         uiManager.ShowWarning("StartGame");
     }
 

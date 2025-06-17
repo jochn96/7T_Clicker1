@@ -16,7 +16,7 @@ public class EnemyCenter : ScriptableObject
 
     private int enemyLife = 5;
 
-    public int EnemyLife;
+    public int EnemyLife { get { return enemyLife; } }
    
     [Header("적 최대 체력")]
     [Tooltip("값을 수정하여 적의 최대 체력량을 바꾼다")]

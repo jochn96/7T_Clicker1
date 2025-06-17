@@ -17,7 +17,7 @@ public class EnemyManager : MonoBehaviour
       enemyPrefab = new List<GameObject>();
       foreach (var VARIABLE in enemyPrefab)
       {
-         // enemyPrefab[prefab.name] = prefab;
+        
       }
    }
    private void enemySpawn(string prefabName)
