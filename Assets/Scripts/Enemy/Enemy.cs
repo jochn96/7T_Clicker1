@@ -1,6 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
