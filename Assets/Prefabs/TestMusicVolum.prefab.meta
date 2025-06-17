@@ -1,5 +1,4 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 <<<<<<<< HEAD:Assets/KJH.meta
 guid: 4f411bf87ba8b7c4f95ee86092931954
 folderAsset: yes
@@ -8,11 +7,6 @@ DefaultImporter:
 guid: fa7feee59663fac4e84fda6ba345be8d
 PrefabImporter:
 >>>>>>>> 23525f68659e7572a7d8277750c027566f28d85e:Assets/Prefabs/TestMusicVolum.prefab.meta
-=======
-guid: 6df42dc56242e0a4ebff358e9f5adacb
-folderAsset: yes
-DefaultImporter:
->>>>>>> 23525f68659e7572a7d8277750c027566f28d85e
   externalObjects: {}
   userData: 
   assetBundleName: 
