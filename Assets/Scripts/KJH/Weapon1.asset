@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponLevel: 1
   atk: 5
-  criticalChance: 0.05
+  criticalChance: 5
   Lv1atk: 5
   Lv2atk: 7
   Lv3atk: 9
   Lv4atk: 11
   Lv5atk: 13
-  Lv1CriticalChance: 0.05
-  Lv2CriticalChance: 0.05
-  Lv3CriticalChance: 0.1
-  Lv4CriticalChance: 0.1
-  Lv5CriticalChance: 0.15
+  Lv1CriticalChance: 5
+  Lv2CriticalChance: 5
+  Lv3CriticalChance: 10
+  Lv4CriticalChance: 10
+  Lv5CriticalChance: 15
   BuyPrice: 0
   UpgradePrice: 2
   Lv1price: 2

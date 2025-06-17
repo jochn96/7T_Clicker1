@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -18,7 +15,7 @@ public class WeaponDisplayManager : MonoBehaviour
         {
             infoText.text =
                 $"공격력: {Weapon.atk}\n" +
-                $"치명타 확률: {Weapon.criticalChance * 100f}%";
+                $"치명타 확률: +{Weapon.criticalChance}%";
         }
 
         if (BuyMaterialPriceText != null)
