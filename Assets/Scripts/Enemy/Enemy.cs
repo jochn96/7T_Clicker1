@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
+            Debug.Log("공격을 맞추다!");
             //EnemyCenter.CreateInstance(Maxenemylife maxenemyLife) - Player.Attack = enemyLife;
         }
     }
