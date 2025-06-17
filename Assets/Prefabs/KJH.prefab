@@ -134,13 +134,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData:
-    Stage: 0
+    StageInfo: 0
     Attack: 0
     Critical: 0
     CriticalDmg: 0
     BonusGold: 0
+    AutoAttackCooldown: 5
     Gold: 0
     EnforceStone: 0
+    IsAutoAttackUnlocked: 0
   Weapon: {fileID: 11400000, guid: 54d211b7b54054f4ea7463d77e2f1b0c, type: 2}
 --- !u!114 &4141707580197278624
 MonoBehaviour:
@@ -160,13 +162,15 @@ MonoBehaviour:
   UpgradeMaterialPriceText: {fileID: 687923019379334745}
   EnforceStoneText: {fileID: 0}
   playerData:
-    Stage: 0
+    StageInfo: 0
     Attack: 0
     Critical: 0
     CriticalDmg: 0
     BonusGold: 0
+    AutoAttackCooldown: 5
     Gold: 0
     EnforceStone: 0
+    IsAutoAttackUnlocked: 0
 --- !u!222 &2221789725336927476
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1060,13 +1064,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108159586073911240}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8601669974314042924}
-  m_Father: {fileID: 8318094975505162739}
+  m_Father: {fileID: 5972836377239345226}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2396,13 +2400,15 @@ MonoBehaviour:
   UpgradeMaterialPriceText: {fileID: 0}
   EnforceStoneText: {fileID: 9210466001424571360}
   playerData:
-    Stage: 0
+    StageInfo: 0
     Attack: 0
     Critical: 0
     CriticalDmg: 0
     BonusGold: 0
+    AutoAttackCooldown: 5
     Gold: 0
     EnforceStone: 0
+    IsAutoAttackUnlocked: 0
 --- !u!222 &6361585340488062999
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4224,13 +4230,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData:
-    Stage: 0
+    StageInfo: 0
     Attack: 0
     Critical: 0
     CriticalDmg: 0
     BonusGold: 0
+    AutoAttackCooldown: 5
     Gold: 0
     EnforceStone: 0
+    IsAutoAttackUnlocked: 0
   weaponUpgradeManager1: {fileID: 8180639366506099685}
   weaponUpgradeManager2: {fileID: 4081365555275025553}
   weaponUpgradeManager3: {fileID: 4833358673359917575}
@@ -4654,7 +4662,6 @@ RectTransform:
   m_Children:
   - {fileID: 4723870252926268451}
   - {fileID: 5972836377239345226}
-  - {fileID: 5794381597761205234}
   m_Father: {fileID: 1659232325092849743}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5649,13 +5656,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData:
-    Stage: 0
+    StageInfo: 0
     Attack: 0
     Critical: 0
     CriticalDmg: 0
     BonusGold: 0
+    AutoAttackCooldown: 5
     Gold: 0
     EnforceStone: 0
+    IsAutoAttackUnlocked: 0
   Weapon: {fileID: 11400000, guid: c0bc72fc5cb89f24e957032fe09f5362, type: 2}
 --- !u!114 &7503117879478144868
 MonoBehaviour:
@@ -5675,13 +5684,15 @@ MonoBehaviour:
   UpgradeMaterialPriceText: {fileID: 206313944400177024}
   EnforceStoneText: {fileID: 0}
   playerData:
-    Stage: 0
+    StageInfo: 0
     Attack: 0
     Critical: 0
     CriticalDmg: 0
     BonusGold: 0
+    AutoAttackCooldown: 5
     Gold: 0
     EnforceStone: 0
+    IsAutoAttackUnlocked: 0
 --- !u!222 &1563135416532048954
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6665,13 +6676,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData:
-    Stage: 0
+    StageInfo: 0
     Attack: 0
     Critical: 0
     CriticalDmg: 0
     BonusGold: 0
+    AutoAttackCooldown: 5
     Gold: 0
     EnforceStone: 0
+    IsAutoAttackUnlocked: 0
   Weapon: {fileID: 11400000, guid: c2cf7acc236d38445a68770c330ab068, type: 2}
 --- !u!114 &8152360295965732899
 MonoBehaviour:
@@ -6691,13 +6704,15 @@ MonoBehaviour:
   UpgradeMaterialPriceText: {fileID: 940816615373301686}
   EnforceStoneText: {fileID: 0}
   playerData:
-    Stage: 0
+    StageInfo: 0
     Attack: 0
     Critical: 0
     CriticalDmg: 0
     BonusGold: 0
+    AutoAttackCooldown: 5
     Gold: 0
     EnforceStone: 0
+    IsAutoAttackUnlocked: 0
 --- !u!222 &167329818733079465
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7248,13 +7263,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData:
-    Stage: 0
+    StageInfo: 0
     Attack: 0
     Critical: 0
     CriticalDmg: 0
     BonusGold: 0
+    AutoAttackCooldown: 5
     Gold: 0
     EnforceStone: 0
+    IsAutoAttackUnlocked: 0
   Weapon: {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}
 --- !u!114 &6328951272773132589
 MonoBehaviour:
@@ -7274,13 +7291,15 @@ MonoBehaviour:
   UpgradeMaterialPriceText: {fileID: 4291132004467282538}
   EnforceStoneText: {fileID: 0}
   playerData:
-    Stage: 0
+    StageInfo: 0
     Attack: 0
     Critical: 0
     CriticalDmg: 0
     BonusGold: 0
+    AutoAttackCooldown: 5
     Gold: 0
     EnforceStone: 0
+    IsAutoAttackUnlocked: 0
 --- !u!222 &3776929061315344011
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7350,6 +7369,7 @@ RectTransform:
   - {fileID: 7219763828840097719}
   - {fileID: 5124420251052939667}
   - {fileID: 5769401977492654350}
+  - {fileID: 5794381597761205234}
   - {fileID: 1649539748849793346}
   - {fileID: 8877444906667656098}
   - {fileID: 8957557740503904278}

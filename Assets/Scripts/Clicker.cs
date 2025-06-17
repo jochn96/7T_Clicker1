@@ -17,6 +17,7 @@ public class Clicker : MonoBehaviour
 
     private Animator animator;
     private bool isAttack;
+    private GameManager gameManager;
 
     private void Awake()
     {
@@ -25,19 +26,45 @@ public class Clicker : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.Instance;
         //UnlockAutoClick();
     }
 
     //클릭시 공격
     public void OnClickClickerButton()
     {
-        bool isCri = GameManager.Instance.isCritical();
-        int finalDamage = GameManager.Instance.FinalAttack(isCri);
-        //몬스터 체력 - 플레이어 최종데미지
-        AttackAnimation();
-        Effect(isCri);
+        bool isCri = isCritical();
+        int Damage = FinalDamage(isCri);
+        //몬스터 체력 - Damage;
         //공격 이펙트 동작 그리고 크리티컬시 다른 이펙트 동작
         Debug.Log("클릭했습니다.");
+    }
+
+    public int FinalDamage(bool isCri)
+    {//공격시 bool isCritical()을 실행시켜 (공격에서 임팩트를 주기위해서 이 함수가 필요) 크리티컬 여부판단
+        if (isCri)//크리티컬이 발동되면
+        {
+            AttackAnimation();
+            Effect(isCri);
+            gameManager.damage = gameManager.finalCritDmg; //데미지는 기존데미지 + 크리티컬로 발동된 추가데미지
+            return gameManager.damage; //데미지값을 반환
+        }
+        AttackAnimation();
+        Effect(isCri);
+        return gameManager.damage;  //크리티컬이 안뜨면 그대로 데미지값 반환
+    }
+    public bool isCritical()
+    {
+        float CriticalRange = Random.Range(0f, 100f); //float값으로 랜덤을 돌려서
+        Debug.Log($"{gameManager.finalCritical},{gameManager},{gameManager.damage},{CriticalRange}");
+        if (CriticalRange <= gameManager.finalCritical) //나온숫자가 크리티컬 수치보다 작거나 같다면
+        {
+            return true;  //크리티컬 발동을위해 true반환
+        }
+        else
+        {
+            return false;  //아니라면 false반환
+        }
     }
 
     private void AttackAnimation()
