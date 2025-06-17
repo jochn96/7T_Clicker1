@@ -21,8 +21,8 @@ public class EnemyCenter : ScriptableObject
     [Tooltip("값을 수정하여 적의 최대 체력량을 바꾼다")]
     [SerializeField]
    
-    private int maxenemyLife = 30;
-    public int MaxenemyLife { get { return maxenemyLife; } }
+    private int maxEnemyLife = 30;
+    public int MaxEnemyLife { get { return maxEnemyLife; } }
 
     [Header("적 경험치")] 
     [Tooltip("적을 쓰러뜨릴 때 얻는 경험치")] 
