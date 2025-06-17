@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [Header("Connection")]
     private SoundManager soundManager;
     public PlayerData playerData = new PlayerData();
+    public WeaponUpgradeManager weaponUpgradeManager;
 
     [Header("Info")]
     public const int MAX_VALUE = 1000000000;
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
         soundManager = SoundManager.Instance;
         soundManager.ChangeBackGroundMusic(musicNumber);  //기본 로비음악 재생
         uiManager.ShowWarning("StartGame");
+        weaponUpgradeManager.playerData = playerData;
     }
     #region UpdateData
     public void PlayerDataLoad()
