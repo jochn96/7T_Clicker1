@@ -32,7 +32,6 @@ public class SoundManager : MonoBehaviour
         musicAudioSource = GetComponent<AudioSource>();
 
         musicAudioSource.volume = DEFALT_VOLUME;
-
         musicAudioSource.loop = true;
         musicAudioSource.volume = musicVolume;
     }
