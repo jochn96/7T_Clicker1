@@ -99,6 +99,10 @@ public class Clicker : MonoBehaviour
             spawnedEffect.transform.localScale = scale;
         }
 
+        //약간의 랜덤 Z 회전 (예: -45도 ~ +45도)
+        float randomZ = Random.Range(-45f, 45f);
+        spawnedEffect.transform.Rotate(0f, 0f, randomZ);
+
         //0.5초후 삭제
         Destroy(spawnedEffect, 0.5f);
     }
