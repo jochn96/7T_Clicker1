@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
     [Header("Info")]
     public const int MAX_VALUE = 1000000000;
     
-    
-    
     public int gold;
     public int finalAttack;
     public float finalCritical;
@@ -48,39 +46,6 @@ public class GameManager : MonoBehaviour
         soundManager.ChangeBackGroundMusic(musicNumber);  //기본 로비음악 재생
         uiManager.ShowWarning("StartGame");
     }
-
-    #region TestButtons
-    public void TestWarningSign()
-    {
-        uiManager.ShowWarning($"this Music is MusicTrack Name is\n{soundManager.musicClips[musicNumber].name}");
-    }
-
-    public void TestMusicButton()
-    {
-        if (musicNumber < soundManager.musicClips.Length - 1)
-        {
-            musicNumber++;
-        }
-        else 
-        {
-            musicNumber = 0; 
-        }
-        soundManager.ChangeBackGroundMusic(musicNumber);
-    }
-
-    public void TestUseGold(int useGold)
-    {
-        if(UseGold(useGold))
-        {
-            uiManager.ShowWarning("골드사용 성공");
-        }
-    }
-
-    public void TestAddGold(int addGold)
-    {
-        GetResource(addGold, 100000);
-    }
-    #endregion
     #region UpdateData
     public void PlayerDataLoad()
     {
@@ -113,7 +78,6 @@ public class GameManager : MonoBehaviour
         finalCritical = playerData.Critical; 
         int equippedWeaponCritDmg = GetEquippedWeaponCritDmg();
         finalCritDmg = playerData.CriticalDmg + equippedWeaponCritDmg;
-        
         
         finalAutoAttackCooldown = playerData.AutoAttackCooldown;
 

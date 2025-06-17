@@ -200,7 +200,7 @@ public class UIManager : MonoBehaviour
         Destroy(warningUI);
     }
 
-    public string NumberText(int value) //예시 10조 1000억 1000만 이란 숫자가 들어오면
+    public string NumberText(int value) //예시 10억 1000만 1000 이란 숫자가 들어오면
     {
         if (value <= 0)  //0이면 0출력(0을 나누면 오류남)
             return "0";
@@ -218,7 +218,7 @@ public class UIManager : MonoBehaviour
             int part = value % 10000; //10000으로 나누고 나서 나머지 값을 파츠에 저장
             if (part > 0)  //파츠가 남아있으면
             {
-                parts.Insert(0, $"{part}{units[unitIndex]} "); //맨뒤에 있던 0000이 저장 다음 1000(), 1000, 10을저장
+                parts.Insert(0, $"{part}{units[unitIndex]} "); //맨뒤에 있던 0000이 저장 다음 1000(), 10을저장
             }
             value /= 10000;
             unitIndex++;  //몇번 셌는지 카운팅
