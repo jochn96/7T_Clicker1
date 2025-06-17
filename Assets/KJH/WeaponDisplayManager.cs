@@ -11,7 +11,7 @@ public class WeaponDisplayManager : MonoBehaviour
     public TMP_Text BuyMaterialPriceText;
     public TMP_Text UpgradeMaterialPriceText;
     public TMP_Text EnforceStoneText;
-    public PlayerData playerData = new PlayerData();
+    public PlayerData playerData;
     private void Update()
     {
         if (Weapon != null && infoText != null)

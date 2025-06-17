@@ -2528,7 +2528,6 @@ MonoBehaviour:
     Gold: 0
     EnforceStone: 0
     IsAutoAttackUnlocked: 0
-  weaponUpgradeManager: {fileID: 0}
   gold: 0
   finalAttack: 0
   finalCritical: 50
@@ -2705,10 +2704,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetButton: {fileID: 5497047434428076209}
-  Weapon1: {fileID: 0}
-  Weapon2: {fileID: 0}
-  Weapon3: {fileID: 0}
-  Weapon4: {fileID: 0}
+  Weapon1: {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}
+  Weapon2: {fileID: 11400000, guid: 54d211b7b54054f4ea7463d77e2f1b0c, type: 2}
+  Weapon3: {fileID: 11400000, guid: c0bc72fc5cb89f24e957032fe09f5362, type: 2}
+  Weapon4: {fileID: 11400000, guid: c2cf7acc236d38445a68770c330ab068, type: 2}
 --- !u!224 &1203029500041700488
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3481,6 +3480,22 @@ RectTransform:
   m_AnchoredPosition: {x: 410, y: 760}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &1659232325017807607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8560934863424868677}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5532681269375209734}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1689113939260796267
 GameObject:
   m_ObjectHideFlags: 0
@@ -5206,7 +5221,6 @@ MonoBehaviour:
     Gold: 0
     EnforceStone: 0
     IsAutoAttackUnlocked: 0
-  weaponUpgradeManager: {fileID: 0}
   gold: 0
   finalAttack: 0
   finalCritical: 0
@@ -5692,9 +5706,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1750129708343821724}
-  - {fileID: 4723870253002352283}
   - {fileID: 5972836377315298034}
+  - {fileID: 4723870253002352283}
+  - {fileID: 1750129708343821724}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5897,7 +5911,7 @@ MonoBehaviour:
   infoText: {fileID: 0}
   BuyMaterialPriceText: {fileID: 0}
   UpgradeMaterialPriceText: {fileID: 0}
-  EnforceStoneText: {fileID: 9210466001499474264}
+  EnforceStoneText: {fileID: 0}
   playerData:
     StageInfo: 0
     Attack: 10
@@ -7073,7 +7087,7 @@ MonoBehaviour:
     Gold: 0
     EnforceStone: 0
     IsAutoAttackUnlocked: 0
-  Weapon: {fileID: 11400000, guid: 54d211b7b54054f4ea7463d77e2f1b0c, type: 2}
+  Weapon: {fileID: 0}
 --- !u!222 &4083122548537316479
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7180,10 +7194,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 11400000, guid: 54d211b7b54054f4ea7463d77e2f1b0c, type: 2}
-  infoText: {fileID: 1260246320254336106}
-  BuyMaterialPriceText: {fileID: 4249526106623840173}
-  UpgradeMaterialPriceText: {fileID: 687923019588455649}
+  Weapon: {fileID: 0}
+  infoText: {fileID: 0}
+  BuyMaterialPriceText: {fileID: 0}
+  UpgradeMaterialPriceText: {fileID: 0}
   EnforceStoneText: {fileID: 0}
   playerData:
     StageInfo: 0
@@ -8394,7 +8408,7 @@ MonoBehaviour:
     Gold: 0
     EnforceStone: 0
     IsAutoAttackUnlocked: 0
-  Weapon: {fileID: 11400000, guid: c0bc72fc5cb89f24e957032fe09f5362, type: 2}
+  Weapon: {fileID: 0}
 --- !u!1 &4898496493095196271
 GameObject:
   m_ObjectHideFlags: 0
@@ -9367,7 +9381,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1659232325017807607}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5534351001675774073
 GameObject:
@@ -10920,10 +10934,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}
-  infoText: {fileID: 4384526463142000895}
+  Weapon: {fileID: 0}
+  infoText: {fileID: 0}
   BuyMaterialPriceText: {fileID: 0}
-  UpgradeMaterialPriceText: {fileID: 4291132004409016530}
+  UpgradeMaterialPriceText: {fileID: 0}
   EnforceStoneText: {fileID: 0}
   playerData:
     StageInfo: 0
@@ -12229,7 +12243,7 @@ MonoBehaviour:
     Gold: 0
     EnforceStone: 0
     IsAutoAttackUnlocked: 0
-  Weapon: {fileID: 11400000, guid: c2cf7acc236d38445a68770c330ab068, type: 2}
+  Weapon: {fileID: 0}
 --- !u!114 &7055422358219233237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13054,10 +13068,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 11400000, guid: c0bc72fc5cb89f24e957032fe09f5362, type: 2}
-  infoText: {fileID: 8965567011160295620}
-  BuyMaterialPriceText: {fileID: 765852615521366945}
-  UpgradeMaterialPriceText: {fileID: 206313944357778744}
+  Weapon: {fileID: 0}
+  infoText: {fileID: 0}
+  BuyMaterialPriceText: {fileID: 0}
+  UpgradeMaterialPriceText: {fileID: 0}
   EnforceStoneText: {fileID: 0}
   playerData:
     StageInfo: 0
@@ -13945,9 +13959,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 11400000, guid: c2cf7acc236d38445a68770c330ab068, type: 2}
-  infoText: {fileID: 940816615196685582}
-  BuyMaterialPriceText: {fileID: 4383254183484875483}
+  Weapon: {fileID: 0}
+  infoText: {fileID: 0}
+  BuyMaterialPriceText: {fileID: 0}
   UpgradeMaterialPriceText: {fileID: 0}
   EnforceStoneText: {fileID: 0}
   playerData:
@@ -14058,7 +14072,7 @@ MonoBehaviour:
     Gold: 0
     EnforceStone: 0
     IsAutoAttackUnlocked: 0
-  Weapon: {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}
+  Weapon: {fileID: 0}
 --- !u!224 &8187741256122519988
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14833,6 +14847,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8560934863424868677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1659232325017807607}
+  m_Layer: 0
+  m_Name: KJH
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!224 &8584439520314278331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16243,7 +16273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &9123306559649407194
 GameObject:
   m_ObjectHideFlags: 0
@@ -16641,7 +16671,7 @@ SceneRoots:
   - {fileID: 1427203163521772845}
   - {fileID: 5246368367401324232}
   - {fileID: 1260797410860861630}
-  - {fileID: 5532681269375209734}
-  - {fileID: 6739952507392192399}
   - {fileID: 5386664387408551511}
+  - {fileID: 6739952507392192399}
   - {fileID: 573366561894938424}
+  - {fileID: 1659232325017807607}
