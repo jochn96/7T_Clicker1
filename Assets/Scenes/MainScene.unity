@@ -1479,6 +1479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoAttackUnlocked: 0
   autoAttackInterval: 5
+  targetEnemy: {fileID: 0}
   nomalEffect: {fileID: 1317334335013377502, guid: fc4545d35d462564c8d109688e476f12, type: 3}
   criEffect: {fileID: 1597015496697396882, guid: fe24e736144dc5545a7400799f8300ce, type: 3}
   effectPivot: {fileID: 1427203163521772845}
@@ -5950,6 +5951,8 @@ MonoBehaviour:
     Gold: 0
     EnforceStone: 0
     IsAutoAttackUnlocked: 0
+  weaponUpgradeManager: {fileID: 0}
+  weaponButtonManager: {fileID: 0}
   gold: 0
   finalAttack: 0
   finalCritical: 0
@@ -5958,6 +5961,7 @@ MonoBehaviour:
   stage: 0
   damage: 0
   finalAutoAttackCooldown: 0
+  equippedWeapon: {fileID: 0}
   musicNumber: 0
 --- !u!222 &2984341259750191727
 CanvasRenderer:
@@ -11088,8 +11092,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317cfdf12ef3fc047b8f3c0af196f7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   enemyLife: {fileID: 0}
 
+=======
+  enemyCenter: {fileID: 11400000, guid: a4c0b458b7650954cbefaf7f7a03fad9, type: 2}
+  HPBar: {fileID: 8558091808537080226}
+  currentHP: 0
+  clicker: {fileID: 417287980434670471}
+>>>>>>> Stashed changes
 --- !u!222 &5772597170034184247
 CanvasRenderer:
   m_ObjectHideFlags: 0
