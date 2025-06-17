@@ -2703,11 +2703,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf19233948a14f4796fd0af2a30d0dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetButton: {fileID: 5497047434428076209}
-  Weapon1: {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}
-  Weapon2: {fileID: 11400000, guid: 54d211b7b54054f4ea7463d77e2f1b0c, type: 2}
-  Weapon3: {fileID: 11400000, guid: c0bc72fc5cb89f24e957032fe09f5362, type: 2}
-  Weapon4: {fileID: 11400000, guid: c2cf7acc236d38445a68770c330ab068, type: 2}
 --- !u!224 &1203029500041700488
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5953,21 +5948,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 0}
-  infoText: {fileID: 0}
-  BuyMaterialPriceText: {fileID: 0}
-  UpgradeMaterialPriceText: {fileID: 0}
-  EnforceStoneText: {fileID: 9210466001499474264}
-  playerData:
-    StageInfo: 0
-    Attack: 0
-    Critical: 0
-    CriticalDmg: 0
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
 --- !u!114 &3504611508223170377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6789,6 +6769,7 @@ GameObject:
   - component: {fileID: 7993941401809592396}
   - component: {fileID: 6372398160652097322}
   - component: {fileID: 5602476185700676867}
+  - component: {fileID: 7993941401809592398}
   m_Layer: 5
   m_Name: BackGround
   m_TagString: Untagged
@@ -7122,17 +7103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff63335a459482408187e3e7121f3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData:
-    StageInfo: 0
-    Attack: 0
-    Critical: 0
-    CriticalDmg: 0
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
-  Weapon: {fileID: 11400000, guid: 54d211b7b54054f4ea7463d77e2f1b0c, type: 2}
 --- !u!222 &4083122548537316479
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7239,21 +7209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 11400000, guid: 54d211b7b54054f4ea7463d77e2f1b0c, type: 2}
-  infoText: {fileID: 1260246320254336106}
-  BuyMaterialPriceText: {fileID: 4249526106623840173}
-  UpgradeMaterialPriceText: {fileID: 687923019588455649}
-  EnforceStoneText: {fileID: 0}
-  playerData:
-    StageInfo: 0
-    Attack: 0
-    Critical: 0
-    CriticalDmg: 0
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
 --- !u!222 &4200011245513452546
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8443,17 +8398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff63335a459482408187e3e7121f3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData:
-    StageInfo: 0
-    Attack: 0
-    Critical: 0
-    CriticalDmg: 0
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
-  Weapon: {fileID: 11400000, guid: c0bc72fc5cb89f24e957032fe09f5362, type: 2}
 --- !u!1 &4898496493095196271
 GameObject:
   m_ObjectHideFlags: 0
@@ -9230,6 +9174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494d88caaffad43458f128f1c2988cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundImage: {fileID: 7726930911450032773}
+  scrollSpeedY: 0.1
 --- !u!4 &5386664387408551511
 Transform:
   m_ObjectHideFlags: 0
@@ -9754,7 +9700,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6529490421048240402}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
@@ -9766,7 +9712,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8486516253087602617}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: PlayClip
         m_Mode: 2
@@ -10184,7 +10130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afb360bdf0196c4c91c4b745b37b5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLife: {fileID: 0}
 --- !u!222 &5772597170034184247
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10874,7 +10819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -10999,21 +10944,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}
-  infoText: {fileID: 4384526463142000895}
-  BuyMaterialPriceText: {fileID: 0}
-  UpgradeMaterialPriceText: {fileID: 4291132004409016530}
-  EnforceStoneText: {fileID: 0}
-  playerData:
-    StageInfo: 0
-    Attack: 0
-    Critical: 0
-    CriticalDmg: 0
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
 --- !u!114 &6329585791106833774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11437,6 +11367,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c5eec103b0854a4099b5348107de1d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  warningSignPrefab: {fileID: 9085471869381567238, guid: 243758e15b43b3f479579045bef646b8, type: 3}
+  lodingDisplayPrefab: {fileID: 0}
+  lodingDisplay: {fileID: 5591288275995817642}
+  goldText: {fileID: 6650255904641979257}
+  uiContainer: {fileID: 7938600585743762562}
+  titleUI: {fileID: 6963351085722223453}
+  titleAnimator: {fileID: 7364546820838132669}
+  mainUI: {fileID: 3778520133390279721}
 --- !u!1 &6546181193092063914
 GameObject:
   m_ObjectHideFlags: 0
@@ -12298,17 +12236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff63335a459482408187e3e7121f3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData:
-    StageInfo: 0
-    Attack: 0
-    Critical: 0
-    CriticalDmg: 0
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
-  Weapon: {fileID: 11400000, guid: c2cf7acc236d38445a68770c330ab068, type: 2}
 --- !u!114 &7055422358219233237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13133,21 +13060,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 11400000, guid: c0bc72fc5cb89f24e957032fe09f5362, type: 2}
-  infoText: {fileID: 8965567011160295620}
-  BuyMaterialPriceText: {fileID: 765852615521366945}
-  UpgradeMaterialPriceText: {fileID: 206313944357778744}
-  EnforceStoneText: {fileID: 0}
-  playerData:
-    StageInfo: 0
-    Attack: 0
-    Critical: 0
-    CriticalDmg: 0
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
 --- !u!1 &7508663796786432827
 GameObject:
   m_ObjectHideFlags: 0
@@ -13542,7 +13454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -13870,6 +13782,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3898032654474553634}
   m_CullTransparentMesh: 1
+--- !u!114 &7993941401809592398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3898032654474553634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b81f18ea73f56a9449887ac5daeb1337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8015673957056897863
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14012,21 +13936,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 11400000, guid: c2cf7acc236d38445a68770c330ab068, type: 2}
-  infoText: {fileID: 6392820907182011318}
-  BuyMaterialPriceText: {fileID: 4383254183484875483}
-  UpgradeMaterialPriceText: {fileID: 940816615196685582}
-  EnforceStoneText: {fileID: 0}
-  playerData:
-    StageInfo: 0
-    Attack: 0
-    Critical: 0
-    CriticalDmg: 0
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
 --- !u!222 &8152534399244821804
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14115,17 +14024,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff63335a459482408187e3e7121f3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData:
-    StageInfo: 0
-    Attack: 0
-    Critical: 0
-    CriticalDmg: 0
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
-  Weapon: {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}
 --- !u!224 &8187741256122519988
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14748,6 +14646,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e97cd5c7dc243d44b1a9c5ff3d4eed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEffectVolume: 0
+  soundEffectPitchVariance: 0
+  musicVolume: 0
+  musicClips: []
+  soundSourcePrefab: {fileID: 8277121795089965898, guid: 4cf2eeb6bd8b56f45a07d67a27369353, type: 3}
+  soundSlot: {fileID: 3886387592684688634}
+  musicVolumeSlider: {fileID: 0}
 --- !u!1 &8489128268030235733
 GameObject:
   m_ObjectHideFlags: 0
@@ -15030,7 +14935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -16381,7 +16286,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -16754,14 +16659,14 @@ SceneRoots:
   - {fileID: 8332254361355781916}
   - {fileID: 2412563326218983951}
   - {fileID: 5285415184194823245}
-  - {fileID: 6739952507392192399}
   - {fileID: 3886387592684688634}
-  - {fileID: 1260797410860861630}
   - {fileID: 7938600585743762562}
   - {fileID: 3894606888326210606}
   - {fileID: 3287475783029684371}
   - {fileID: 435086153639728635}
   - {fileID: 4908148661804190693}
   - {fileID: 1427203163521772845}
-  - {fileID: 573366561894938424}
   - {fileID: 5246368367401324232}
+  - {fileID: 1260797410860861630}
+  - {fileID: 6739952507392192399}
+  - {fileID: 573366561894938424}
