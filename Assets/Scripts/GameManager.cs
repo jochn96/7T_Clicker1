@@ -185,29 +185,4 @@ public class GameManager : MonoBehaviour
     {
         return ((playerData.StageInfo - 1) % (soundManager.musicClips.Length - 1) + 1);
     }
-
-    public int FinalAttack(bool isCritical)
-    {//공격시 bool isCritical()을 실행시켜 (공격에서 임팩트를 주기위해서 이 함수가 필요) 크리티컬 여부판단
-        //finalAttack = 전체 데미지 + (보너스 데미지 퍼센트)
-        if (isCritical)//크리티컬이 발동되면
-        {
-            //finalCritDmg = finalAttack * 크리티컬 데미지 보너스 퍼센트
-            damage = finalAttack + finalCritDmg; //데미지는 기존데미지 + 크리티컬로 발동된 추가데미지
-            return damage; //데미지값을 반환
-        }
-        return damage;  //크리티컬이 안뜨면 그대로 데미지값 반환
-    }
-
-    public bool isCritical()
-    {
-        float isCritical = Random.Range(0f, 100f); //float값으로 랜덤을 돌려서
-        if (isCritical <= finalCritical) //나온숫자가 크리티컬 수치보다 작거나 같다면
-        {
-            return true;  //크리티컬 발동을위해 true반환
-        }
-        else
-        {
-            return false;  //아니라면 false반환
-        }
-    }
 }
