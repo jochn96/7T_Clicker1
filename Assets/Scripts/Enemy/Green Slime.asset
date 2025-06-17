@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Green Slime
   m_EditorClassIdentifier: 
   enemyLife: 10
-  maxenemyLife: 10
+  EnemyLife: 0
+  maxEnemyLife: 10
   enemyExp: 0
   enenmyType: 1
   stageCount: 1
