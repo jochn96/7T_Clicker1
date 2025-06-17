@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         if (playerData != null) //실제로는 스텟을 가져올것 
         {   //임시코드입니다
             gold = playerData.Gold; //플레이어 총 골드 가져올 예정
-            
+            damage = playerData.Attack; //플레이어 기본 공격력
             finalAttack = playerData.Attack ;  //플레이어 공격력 레벨 가져올예정
             finalCritical = playerData.Critical;  //플레이어 크리티컬 레벨 가져올예정
             finalCritDmg = playerData.CriticalDmg;  //플레이어 크리티컬 데미지 레벨 가져올 예정
@@ -75,11 +75,12 @@ public class GameManager : MonoBehaviour
         
         // playerData.Attack을 기본 공격력으로 사용하고 장착무기 공격력 추가
         int equippedWeaponAttack = GetEquippedWeaponAttack();
-        finalAttack = playerData.Attack + equippedWeaponAttack;
+        damage = playerData.Attack + equippedWeaponAttack;
+        // finalAttack은 크리티컬 데미지가 적용된 값 (크리티컬 발동 시 데미지)
+        finalAttack = Mathf.RoundToInt(damage * (finalCritDmg / 100f));
         finalGetGold = playerData.BonusGold; 
-        finalCritical = playerData.Critical; 
-        int equippedWeaponCritDmg = GetEquippedWeaponCritDmg();
-        finalCritDmg = playerData.CriticalDmg + equippedWeaponCritDmg;
+        finalCritical = playerData.Critical;         
+        finalCritDmg = playerData.CriticalDmg;
         
         finalAutoAttackCooldown = playerData.AutoAttackCooldown;
 
