@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField][Range(0f, 1f)] private float soundEffectPitchVariance;
     [SerializeField][Range(0f, 1f)] public float musicVolume;
 
+    public const float DEFALT_VOLUME = 0.3f;
     private AudioSource musicAudioSource;
     public AudioClip[] musicClips;  //배경음악을 배열로 저장
     public SoundSource soundSourcePrefab;
@@ -42,6 +43,12 @@ public class SoundManager : MonoBehaviour
 
     public void MusicVolume()
     {
+        if (musicVolumeSlider == null)
+        {
+            musicVolume = DEFALT_VOLUME;
+            return;
+        }
+
         musicVolume = musicVolumeSlider.value;
         musicAudioSource.volume = musicVolume;
     }

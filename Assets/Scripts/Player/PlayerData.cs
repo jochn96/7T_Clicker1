@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class EquimentData
@@ -46,12 +46,6 @@ public  class  PlayerData //임시입니다 스텟레벨을 가져올예정
         BonusGold = playerdata.BonusGold;
         AutoAttackCooldown = playerdata.AutoAttackCooldown;
         IsAutoAttackUnlocked = playerdata.IsAutoAttackUnlocked;
-
-
-        //statLevels[PlayerStatType.Attack] = playerdata.Attack;
-        //statLevels[PlayerStatType.Critical] = playerdata.Critical;
-        //statLevels[PlayerStatType.CriticalDmg] = playerdata.CriticalDmg;
-        //statLevels[PlayerStatType.BonusGold] = playerdata.BonusGold;
         
         Debug.Log($"[RefreshData 내부 완료] 변경 후: Attack={Attack}, Critical={Critical}, CriticalDmg={CriticalDmg}, BonusGold={BonusGold}, AutoAttackCooldown={AutoAttackCooldown}");
         
