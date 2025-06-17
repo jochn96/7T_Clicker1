@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     private float autoAttackTimer = 0f; // 자동 공격 타이머
     public int autoAttackUnlockCost = 5000; // 자동 공격 해금 비용
 
+    [Header("클릭 관련")]
+    private Clicker clicker; // Clicker 컴포넌트 참조 추가
+
     private void Awake()
     {
         // StatManager 컴포넌트 캐싱
@@ -27,6 +30,13 @@ public class Player : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.Instance;
+        
+        // Clicker 컴포넌트 찾기
+        clicker = FindObjectOfType<Clicker>();
+        if (clicker == null)
+        {
+            Debug.LogError("Clicker 컴포넌트를 찾을 수 없습니다!");
+        }
         
         // 저장된 데이터에서 자동 공격 잠금 해제 상태 불러오기
         if (gameManager != null && gameManager.playerData != null)
@@ -94,7 +104,7 @@ public class Player : MonoBehaviour
             Debug.Log($"자동 공격 구매 성공: 남은 골드={gameManager.playerData.Gold}G");
             isAutoAttackUnlocked = true;
             gameManager.playerData.IsAutoAttackUnlocked = true;
-            gameManager.updateData(); // 데이터 저장
+            gameManager.UpdateData(); // 데이터 저장
             ActivateAutoAttack(); // 즉시 활성화
             return true;
         }
@@ -133,11 +143,11 @@ public class Player : MonoBehaviour
     /// </summary>
     public void Attack()
     {
-        if (gameManager != null)
+        if (gameManager != null && clicker != null)
         {
-            // GameManager를 통한 크리티컬 판정 및 데미지 계산
-            bool isCrit = gameManager.isCritical();
-            int damage = gameManager.FinalAttack(isCrit);
+            // Clicker를 통한 크리티컬 판정 및 데미지 계산
+            bool isCrit = clicker.isCritical();
+            int damage = clicker.FinalDamage(isCrit);
             
             // 데미지 로그 출력
             if (isCrit)
@@ -153,7 +163,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("GameManager가 null입니다. 공격 로직을 실행할 수 없습니다.");
+            Debug.LogWarning("GameManager 또는 Clicker가 null입니다. 공격 로직을 실행할 수 없습니다.");
         }
     }
 
