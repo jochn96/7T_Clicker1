@@ -18,7 +18,6 @@ public class UIManager : MonoBehaviour
     private const int MAX_WARNING_SIGNS = 3;
 
     [Header("LodingDisplay")]
-    public GameObject lodingDisplayPrefab;
     public Image lodingDisplay;
     private Coroutine lodingCoroutine;
 
@@ -162,9 +161,10 @@ public class UIManager : MonoBehaviour
         lodingDisplay.gameObject.SetActive(false);  //종료
     }
 
+    //워닝사인 동적 생성 및 배열선언으로 최대 워닝사인 갯수보다 많으면 삭제
     public void ShowWarning(string mesege)
     {
-        if (warningList.Count >= MAX_WARNING_SIGNS)
+        if (warningList.Count >= MAX_WARNING_SIGNS)  
         {
             GameObject oldSign = warningList[0];
             warningList.RemoveAt(0);

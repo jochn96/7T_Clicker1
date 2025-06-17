@@ -2,6 +2,7 @@
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Managers")]
     public static GameManager Instance;
     public PlayerStatManager statManager;
     private UIManager uiManager;
