@@ -94,7 +94,12 @@ public class GameManager : MonoBehaviour
         if (playerData != null) //실제로는 스텟을 가져올것 
         {   //임시코드입니다
             gold = playerData.Gold; //플레이어 총 골드 가져올 예정
-            stage = playerData.Stage;  //스테이지 인덱스를 가져올 예정
+
+            finalAttack = playerData.Attack;  //플레이어 공격력 레벨 가져올예정
+            finalCritical = playerData.Critical;  //플레이어 크리티컬 레벨 가져올예정
+            finalCritDmg = playerData.CriticalDmg;  //플레이어 크리티컬 데미지 레벨 가져올 예정
+            finalGetGold = playerData.BonusGold;  //플레이어 골드 보너스 가져올 예정
+            stage = playerData.StageInfo;  //스테이지 인덱스를 가져올 예정
 
             // // 테스트용 골드 추가 (골드가 0이면 10000 추가)
             if (playerData.Gold <= 0)
@@ -225,7 +230,7 @@ public class GameManager : MonoBehaviour
 
     public int StageMusic()
     {
-        return ((playerData.Stage - 1) % (soundManager.musicClips.Length - 1) + 1);
+        return ((playerData.StageInfo - 1) % (soundManager.musicClips.Length - 1) + 1);
     }
 
     public int FinalAttack(bool isCritical)

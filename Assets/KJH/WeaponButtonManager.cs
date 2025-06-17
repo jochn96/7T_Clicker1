@@ -6,6 +6,7 @@ using TMPro;
 
 public class WeaponButtonManager : MonoBehaviour
 {
+    public PlayerData playerData = new PlayerData();
     public WeaponUpgradeManager weaponUpgradeManager1;
     public WeaponUpgradeManager weaponUpgradeManager2;
     public WeaponUpgradeManager weaponUpgradeManager3;
@@ -16,7 +17,6 @@ public class WeaponButtonManager : MonoBehaviour
     public Weapon Weapon2;
     public Weapon Weapon3;
     public Weapon Weapon4;
-    public int TestUpgradeCoin;////////////////////////임시코드
     public Button WOpenButton;
     public Button WCloseButton;
     public Button W1EquipButton;
@@ -102,9 +102,9 @@ public class WeaponButtonManager : MonoBehaviour
     
     void VW2Buy() //2번무기 구매 코드
     {
-        if(TestUpgradeCoin >= Weapon2.BuyPrice)
+        if(playerData.EnforceStone >= Weapon2.BuyPrice)
         {
-            TestUpgradeCoin -= Weapon2.BuyPrice;
+            playerData.EnforceStone -= Weapon2.BuyPrice;
             W2Equip.SetActive(true);
             W2Buy.SetActive(false);
             W2Shadow.SetActive(false);
@@ -113,9 +113,9 @@ public class WeaponButtonManager : MonoBehaviour
     }
     void VW3Buy() //3번무기 구매 코드
     {
-        if (TestUpgradeCoin >= Weapon3.BuyPrice)
+        if (playerData.EnforceStone >= Weapon3.BuyPrice)
         {
-            TestUpgradeCoin -= Weapon3.BuyPrice;
+            playerData.EnforceStone -= Weapon3.BuyPrice;
             W3Equip.SetActive(true);
             W3Buy.SetActive(false);
             W3Shadow.SetActive(false);
@@ -124,9 +124,9 @@ public class WeaponButtonManager : MonoBehaviour
     }
     void VW4Buy() //4번무기 구매 코드
     {
-        if (TestUpgradeCoin >= Weapon4.BuyPrice)
+        if (playerData.EnforceStone >= Weapon4.BuyPrice)
         {
-            TestUpgradeCoin -= Weapon4.BuyPrice;
+            playerData.EnforceStone -= Weapon4.BuyPrice;
             W4Equip.SetActive(true);
             W4Buy.SetActive(false);
             W4Shadow.SetActive(false);
@@ -137,22 +137,18 @@ public class WeaponButtonManager : MonoBehaviour
     void VW1Upgrade() //1번무기 업그레이드 코드
     {
         weaponUpgradeManager1.Upgrade();
-        Debug.Log("1업그레이드");
     }
     void VW2Upgrade() //2번무기 업그레이드 코드
     {
         weaponUpgradeManager2.Upgrade();
-        Debug.Log("2업그레이드");
     }
     void VW3Upgrade() //3번무기 업그레이드 코드
     {
         weaponUpgradeManager3.Upgrade();
-        Debug.Log("3업그레이드");
     }
     void VW4Upgrade() //4번무기 업그레이드 코드
     {
         weaponUpgradeManager4.Upgrade();
-        Debug.Log("4업그레이드");
     }
     
     
