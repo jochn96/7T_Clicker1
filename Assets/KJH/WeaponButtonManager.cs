@@ -6,7 +6,7 @@ using TMPro;
 
 public class WeaponButtonManager : MonoBehaviour
 {
-    public PlayerData playerData = new PlayerData();
+    public PlayerData playerData;
     public WeaponUpgradeManager weaponUpgradeManager1;
     public WeaponUpgradeManager weaponUpgradeManager2;
     public WeaponUpgradeManager weaponUpgradeManager3;
