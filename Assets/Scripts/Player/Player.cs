@@ -133,10 +133,28 @@ public class Player : MonoBehaviour
     /// </summary>
     public void Attack()
     {
-        float attackPower = statManager.GetStatValue(PlayerStatType.AttackPower);
-        float critChance = statManager.GetStatValue(PlayerStatType.CriticalChance);
-        float critDamage = statManager.GetStatValue(PlayerStatType.CriticalDamage);
-        // 실제 공격 로직 구현
+        if (gameManager != null)
+        {
+            // GameManager를 통한 크리티컬 판정 및 데미지 계산
+            bool isCrit = gameManager.isCritical();
+            int damage = gameManager.FinalAttack(isCrit);
+            
+            // 데미지 로그 출력
+            if (isCrit)
+            {
+                Debug.Log($"크리티컬 공격! 데미지: {damage}");
+            }
+            else
+            {
+                Debug.Log($"일반 공격. 데미지: {damage}");
+            }
+            
+            // TODO: 적에게 데미지 주기 등 실제 공격 로직 구현
+        }
+        else
+        {
+            Debug.LogWarning("GameManager가 null입니다. 공격 로직을 실행할 수 없습니다.");
+        }
     }
 
     /// <summary>
