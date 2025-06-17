@@ -9,25 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a08ae7d29aa0a409c5d7724589cf48, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f38f44679d03c45a465017beb075c3, type: 3}
   m_Name: Weapon4
   m_EditorClassIdentifier: 
-  WeaponLevel: 1
-  atk: 23
-  criticalChance: 0.2
-  Lv1atk: 23
-  Lv2atk: 28
-  Lv3atk: 33
-  Lv4atk: 38
-  Lv5atk: 43
-  Lv1CriticalChance: 0.2
-  Lv2CriticalChance: 0.2
-  Lv3CriticalChance: 0.25
-  Lv4CriticalChance: 0.25
-  Lv5CriticalChance: 0.3
-  BuyPrice: 10
-  UpgradePrice: 5
-  Lv1price: 5
-  Lv2price: 10
-  Lv3price: 15
-  Lv4price: 20
+  WeaponLevel: 0
+  atk: 0
+  criticalChance: 0
+  Lv1atk: 0
+  Lv2atk: 0
+  Lv3atk: 0
+  Lv4atk: 0
+  Lv5atk: 0
+  Lv1CriticalChance: 0
+  Lv2CriticalChance: 0
+  Lv3CriticalChance: 0
+  Lv4CriticalChance: 0
+  Lv5CriticalChance: 0
+  BuyPrice: 0
+  UpgradePrice: 0
+  Lv1price: 0
+  Lv2price: 0
+  Lv3price: 0
+  Lv4price: 0
