@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            //EnemyCenter.CreateInstance<int>(maxEnemyLife) - Player.Attack = enemyLife;
+            //EnemyCenter.CreateInstance(Maxenemylife maxenemyLife) - Player.Attack = enemyLife;
         }
     }
 }
