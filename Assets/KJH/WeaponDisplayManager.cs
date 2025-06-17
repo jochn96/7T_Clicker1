@@ -10,7 +10,8 @@ public class WeaponDisplayManager : MonoBehaviour
     public TMP_Text infoText;
     public TMP_Text BuyMaterialPriceText;
     public TMP_Text UpgradeMaterialPriceText;
-
+    public TMP_Text EnforceStoneText;
+    public PlayerData playerData = new PlayerData();
     private void Update()
     {
         if (Weapon != null && infoText != null)
@@ -47,6 +48,11 @@ public class WeaponDisplayManager : MonoBehaviour
                     
             }
             
+        }
+
+        if (EnforceStoneText != null)
+        {
+            EnforceStoneText.text = $"현재 강화석 수: {playerData.EnforceStone}";
         }
     }
 }

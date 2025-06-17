@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c4eb8bed27f41541a8818b9882504d6, type: 3}
-  m_Name: EnemyCenter
+  m_Name: Red Slime
   m_EditorClassIdentifier: 
-  enemyLife: 5
-  maxenemyLife: 30
+  enemyLife: 20
+  maxenemyLife: 20
   enemyExp: 0
-  enenmyType: 10
-  stageCount: 10
+  enenmyType: 2
+  stageCount: 2
