@@ -12,10 +12,13 @@ public class UIManager : MonoBehaviour
     private SoundManager soundManager;
 
     [Header("WarningSign")]
-    public TextMeshProUGUI warningText;
+    public GameObject warningSignPrefab;
     private Coroutine warningCoroutine;
+    private List<GameObject> warningList = new List<GameObject>();
+    private const int MAX_WARNING_SIGNS = 3;
 
     [Header("LodingDisplay")]
+    public GameObject lodingDisplayPrefab;
     public Image lodingDisplay;
     private Coroutine lodingCoroutine;
 
@@ -26,6 +29,7 @@ public class UIManager : MonoBehaviour
     public const int TITLE_MUSICNUM = 0;
 
     [Header("UI")]
+    public Transform uiContainer;
     public GameObject titleUI;
     public Animator titleAnimator;
     public GameObject mainUI;
@@ -51,7 +55,7 @@ public class UIManager : MonoBehaviour
         titleUI.gameObject.SetActive(true);
         mainUI.gameObject.SetActive(false);
         lodingDisplay.gameObject.SetActive(false);
-        warningText.gameObject.SetActive(false);
+        //warningText.gameObject.SetActive(false);
         ShowGoldText();
     }
 
@@ -122,18 +126,26 @@ public class UIManager : MonoBehaviour
 
     public void ShowWarning(string mesege)
     {
-        if (warningCoroutine != null)
+        if (warningList.Count >= MAX_WARNING_SIGNS)
         {
-            StopCoroutine(warningCoroutine);
+            GameObject oldSign = warningList[0];
+            warningList.RemoveAt(0);
+            Destroy(oldSign);
         }
-        warningCoroutine = StartCoroutine(WarningSign(mesege));
+
+        GameObject warningUI = Instantiate(warningSignPrefab, uiContainer);
+        warningList.Add(warningUI);
+
+        var text = warningUI.GetComponentInChildren<TextMeshProUGUI>();
+        text.text = mesege;
+
+        warningCoroutine = StartCoroutine(WarningSign(warningUI));
     }
 
-    private IEnumerator WarningSign(string message)
+    private IEnumerator WarningSign(GameObject warningUI)
     {
-        warningText.alpha = 1;  //알파값 1로 초기화
-        warningText.text = message;  //메세지를 미리 바꾸고
-        warningText.gameObject.SetActive(true);  //게임오브젝트 활성화
+        var text = warningUI.GetComponent<TextMeshProUGUI>();
+        text.alpha = 1;  //알파값 1로 초기화
 
         yield return new WaitForSeconds(0.5f);
 
@@ -143,10 +155,11 @@ public class UIManager : MonoBehaviour
         while (endEffect < duration)  //임팩트 시간이 지속시간보다 짧을 때 까지
         {
             endEffect += Time.deltaTime;  //임팩트 시간변수에 시간마다 ++
-            warningText.alpha = Mathf.Lerp(1f, 0f, endEffect / duration);  //투명도가 1f에서 0f로 가는 간격의 비율 임팩트시간/지속시간
+            text.alpha = Mathf.Lerp(1f, 0f, endEffect / duration);  //투명도가 1f에서 0f로 가는 간격의 비율 임팩트시간/지속시간
             yield return null;  //결론 투명도는 임팩트시간/지속시간
         }
-        warningText.gameObject.SetActive(false);  //투명도가 0이될쯤 종료
+        warningList.Remove(warningUI);
+        Destroy(warningUI);
     }
 
     public string NumberText(int value) //예시 10조 1000억 1000만 이란 숫자가 들어오면
