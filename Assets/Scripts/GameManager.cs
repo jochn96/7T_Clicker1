@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
     public void updateData()
     {
         //Stage = 현 스테이지 인덱스? 데이터? 가져오기
+        Debug.Log($"[updateData 시작] Attack={playerData.Attack}, Critical={playerData.Critical}, CriticalDmg={playerData.CriticalDmg}, BonusGold={playerData.BonusGold}, AutoAttackCooldown={playerData.AutoAttackCooldown}");
 
         // playerData.Attack을 기본 공격력으로 사용하고 장착무기 공격력 추가
         int equippedWeaponAttack = GetEquippedWeaponAttack();
@@ -124,7 +125,9 @@ public class GameManager : MonoBehaviour
         finalAutoAttackCooldown = playerData.AutoAttackCooldown;
 
         //저장될때마다 혹은 UI창을 열어볼때마다 등등 각종 상황에서 갱신해줄것
+        Debug.Log($"[RefreshData 호출 전] Attack={playerData.Attack}, Critical={playerData.Critical}, CriticalDmg={playerData.CriticalDmg}, BonusGold={playerData.BonusGold}, AutoAttackCooldown={playerData.AutoAttackCooldown}");
         playerData.RefreshData(playerData); 
+        Debug.Log($"[RefreshData 호출 후] Attack={playerData.Attack}, Critical={playerData.Critical}, CriticalDmg={playerData.CriticalDmg}, BonusGold={playerData.BonusGold}, AutoAttackCooldown={playerData.AutoAttackCooldown}");
     }
 
     /// <summary>

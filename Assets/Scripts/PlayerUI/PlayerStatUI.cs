@@ -34,6 +34,12 @@ public class PlayerStatUI : MonoBehaviour
     public TextMeshProUGUI autoAttackCooldownValueText;
     public TextMeshProUGUI autoAttackCooldownCostText;
     public Button autoAttackCooldownUpgradeButton;
+    public GameObject autoAttackCooldownUpgradePanel; // 자동공격 쿨타임 업그레이드 패널
+    
+    [Header("자동공격 구매 UI")]
+    public GameObject autoAttackPurchasePanel;
+    public TextMeshProUGUI autoAttackPurchaseCostText;
+    public Button autoAttackPurchaseButton;
 
     private Player player;
     private GameManager gameManager;
@@ -65,6 +71,12 @@ public class PlayerStatUI : MonoBehaviour
         critDamageUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.CriticalDamage));
         goldGainUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.GoldGainPercent));
         autoAttackCooldownUpgradeButton.onClick.AddListener(() => OnUpgrade(PlayerStatType.AutoAttackCooldownReduce));
+        
+        // 자동 공격 구매 버튼 리스너 등록
+        if (autoAttackPurchaseButton != null)
+        {
+            autoAttackPurchaseButton.onClick.AddListener(OnAutoAttackPurchase);
+        }
     }
 
     private void Update()
@@ -109,8 +121,39 @@ public class PlayerStatUI : MonoBehaviour
         goldGainValueText.text = player.GetStatValue(PlayerStatType.GoldGainPercent) + "%";
         goldGainCostText.text = player.GetUpgradeCost(PlayerStatType.GoldGainPercent) + "G";
 
-        autoAttackCooldownValueText.text = player.GetStatValue(PlayerStatType.AutoAttackCooldownReduce).ToString();
+        // 자동공격 쿨타임 감소 값을 소수점 첫째자리까지만 표시
+        autoAttackCooldownValueText.text = player.GetStatValue(PlayerStatType.AutoAttackCooldownReduce).ToString("F1");
         autoAttackCooldownCostText.text = player.GetUpgradeCost(PlayerStatType.AutoAttackCooldownReduce) + "G";
+        
+        // 자동 공격 UI 갱신
+        UpdateAutoAttackUI();
+    }
+    
+    /// <summary>
+    /// 자동 공격 관련 UI를 갱신합니다.
+    /// </summary>
+    private void UpdateAutoAttackUI()
+    {
+        if (player == null) return;
+        
+        // 자동 공격 구매 비용 표시
+        if (autoAttackPurchaseCostText != null)
+        {
+            autoAttackPurchaseCostText.text = player.autoAttackUnlockCost + "G";
+        }
+        
+        // 자동 공격 잠금 해제 상태에 따라 UI 패널 표시/숨김
+        if (autoAttackPurchasePanel != null && autoAttackCooldownUpgradePanel != null)
+        {
+            bool isUnlocked = player.isAutoAttackUnlocked;
+            autoAttackPurchasePanel.SetActive(!isUnlocked);
+            
+            // 자동공격 기능이 잠금 해제되었을 때만 쿨타임 업그레이드 패널 표시
+            if (autoAttackCooldownUpgradePanel != null)
+            {
+                autoAttackCooldownUpgradePanel.SetActive(isUnlocked);
+            }
+        }
     }
 
     /// <summary>
@@ -141,6 +184,26 @@ public class PlayerStatUI : MonoBehaviour
         else
         {
             Debug.Log($"{statType} 업그레이드 실패: 골드 부족");
+        }
+    }
+    
+    /// <summary>
+    /// 자동 공격 구매 버튼 클릭 핸들러
+    /// </summary>
+    private void OnAutoAttackPurchase()
+    {
+        if (player == null) return;
+        
+        // 자동 공격 기능 구매 시도
+        if (player.TryUnlockAutoAttack())
+        {
+            // 구매 성공 시 UI 갱신
+            RefreshUI();
+            Debug.Log("자동 공격 기능 구매 성공!");
+        }
+        else
+        {
+            Debug.Log("자동 공격 기능 구매 실패: 골드 부족");
         }
     }
 
