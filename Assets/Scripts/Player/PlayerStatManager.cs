@@ -99,7 +99,7 @@ public class PlayerStatManager : MonoBehaviour
             }
             
             // 값이 변경되었으므로 GameManager의 내부 값 갱신
-            gameManager.updateData();
+            gameManager.UpdateData();
         }
         
         return true;
