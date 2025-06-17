@@ -18,7 +18,6 @@ public class UIManager : MonoBehaviour
     private const int MAX_WARNING_SIGNS = 3;
 
     [Header("LodingDisplay")]
-    public GameObject lodingDisplayPrefab;
     public Image lodingDisplay;
     private Coroutine lodingCoroutine;
 
@@ -27,6 +26,9 @@ public class UIManager : MonoBehaviour
     public const string MAX_VALUE_TEXT = "10억\n최대수치입니다";
     public TextMeshProUGUI goldText;
     public const int TITLE_MUSICNUM = 0;
+
+    [Header("Sounds")]
+    public GameObject soundUI;
 
     [Header("UI")]
     public Transform uiContainer;
@@ -162,9 +164,10 @@ public class UIManager : MonoBehaviour
         lodingDisplay.gameObject.SetActive(false);  //종료
     }
 
+    //워닝사인 동적 생성 및 배열선언으로 최대 워닝사인 갯수보다 많으면 삭제
     public void ShowWarning(string mesege)
     {
-        if (warningList.Count >= MAX_WARNING_SIGNS)
+        if (warningList.Count >= MAX_WARNING_SIGNS)  
         {
             GameObject oldSign = warningList[0];
             warningList.RemoveAt(0);
@@ -200,7 +203,7 @@ public class UIManager : MonoBehaviour
         Destroy(warningUI);
     }
 
-    public string NumberText(int value) //예시 10조 1000억 1000만 이란 숫자가 들어오면
+    public string NumberText(int value) //예시 10억 1000만 1000 이란 숫자가 들어오면
     {
         if (value <= 0)  //0이면 0출력(0을 나누면 오류남)
             return "0";
@@ -218,7 +221,7 @@ public class UIManager : MonoBehaviour
             int part = value % 10000; //10000으로 나누고 나서 나머지 값을 파츠에 저장
             if (part > 0)  //파츠가 남아있으면
             {
-                parts.Insert(0, $"{part}{units[unitIndex]} "); //맨뒤에 있던 0000이 저장 다음 1000(), 1000, 10을저장
+                parts.Insert(0, $"{part}{units[unitIndex]} "); //맨뒤에 있던 0000이 저장 다음 1000(), 10을저장
             }
             value /= 10000;
             unitIndex++;  //몇번 셌는지 카운팅
@@ -227,5 +230,15 @@ public class UIManager : MonoBehaviour
             return $"{parts[0]}\n{parts[1]}";
         else  //그렇지않으면 하위파츠만 출력 예시 1456면 1456출력
             return parts[0];
+    }
+
+    public void OnClickSetting()
+    {
+        soundUI.gameObject.SetActive(true);
+    }
+
+    public void OnClickSetCancle()
+    {
+        soundUI.gameObject.SetActive(false);
     }
 }

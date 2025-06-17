@@ -46,12 +46,13 @@ public class Clicker : MonoBehaviour
         {
             AttackAnimation();
             Effect(isCri);
-            gameManager.damage = gameManager.finalCritDmg; //데미지는 기존데미지 + 크리티컬로 발동된 추가데미지
-            return gameManager.damage; //데미지값을 반환
+            // 크리티컬 발동 시 finalAttack 사용 (이미 크리티컬 데미지가 적용된 값)
+            return gameManager.finalAttack;
         }
         AttackAnimation();
         Effect(isCri);
-        return gameManager.damage;  //크리티컬이 안뜨면 그대로 데미지값 반환
+        // 일반 공격 시 damage 사용 (기본 공격력 + 장비 공격력)
+        return gameManager.damage;
     }
     public bool isCritical()
     {
@@ -98,6 +99,10 @@ public class Clicker : MonoBehaviour
             scale.x *= -1;
             spawnedEffect.transform.localScale = scale;
         }
+
+        //약간의 랜덤 Z 회전 (예: -45도 ~ +45도)
+        float randomZ = Random.Range(-45f, 45f);
+        spawnedEffect.transform.Rotate(0f, 0f, randomZ);
 
         //0.5초후 삭제
         Destroy(spawnedEffect, 0.5f);
