@@ -30,15 +30,17 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
         musicAudioSource = GetComponent<AudioSource>();
-        musicAudioSource.volume = musicVolume;
+        if (musicVolume == 0) musicVolume = DEFALT_VOLUME;
         musicAudioSource.loop = true;
+        musicAudioSource.volume = musicVolume;
     }
     
     private void Start()
     {
+        MusicVolume();
         musicVolumeSlider.minValue = 0f;
         musicVolumeSlider.maxValue = 1f;
-        musicVolumeSlider.value = musicVolume;
+        musicVolumeSlider.value = DEFALT_VOLUME;
     }
 
     public void MusicVolume()

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Info")]
     public const int MAX_VALUE = 1000000000;
+    public const int TITLE_MUSIC = 0;
     
     
     
@@ -45,7 +46,9 @@ public class GameManager : MonoBehaviour
     {
         uiManager = UIManager.Instance;
         soundManager = SoundManager.Instance;
-       soundManager.ChangeBackGroundMusic(musicNumber);  //기본 로비음악 재생
+
+        soundManager.ChangeBackGroundMusic(TITLE_MUSIC);  //기본 로비음악 재생
+ 
         uiManager.ShowWarning("StartGame");
     }
 
