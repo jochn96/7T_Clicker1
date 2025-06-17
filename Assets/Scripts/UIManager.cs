@@ -27,6 +27,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI goldText;
     public const int TITLE_MUSICNUM = 0;
 
+    [Header("Sounds")]
+    public GameObject soundUI;
+
     [Header("UI")]
     public Transform uiContainer;
     public GameObject titleUI;
@@ -227,5 +230,15 @@ public class UIManager : MonoBehaviour
             return $"{parts[0]}\n{parts[1]}";
         else  //그렇지않으면 하위파츠만 출력 예시 1456면 1456출력
             return parts[0];
+    }
+
+    public void OnClickSetting()
+    {
+        soundUI.gameObject.SetActive(true);
+    }
+
+    public void OnClickSetCancle()
+    {
+        soundUI.gameObject.SetActive(false);
     }
 }
