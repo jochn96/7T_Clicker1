@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     {
         // StatManager 컴포넌트 캐싱
         statManager = GetComponent<PlayerStatManager>();
-        Debug.Log(statManager == null ? "PlayerStatManager is NULL!" : "PlayerStatManager is OK!");
+//        Debug.Log(statManager == null ? "PlayerStatManager is NULL!" : "PlayerStatManager is OK!");
     }
 
     // Start is called before the first frame update

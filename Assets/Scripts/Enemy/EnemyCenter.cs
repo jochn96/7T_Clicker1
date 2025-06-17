@@ -15,6 +15,7 @@ public class EnemyCenter : ScriptableObject
     [SerializeField]
 
     private int enemyLife = 5;
+
     public int EnemyLife { get { return enemyLife; } }
    
     [Header("적 최대 체력")]
@@ -44,4 +45,6 @@ public class EnemyCenter : ScriptableObject
 
     private int stageCount = 10;
     public int StageCount { get { return stageCount; } }
+
+    
 }

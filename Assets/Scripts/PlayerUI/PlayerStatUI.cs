@@ -49,6 +49,7 @@ public class PlayerStatUI : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         gameManager = GameManager.Instance;
+        
     }
 
     private void Start()
