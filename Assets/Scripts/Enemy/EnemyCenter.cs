@@ -15,7 +15,8 @@ public class EnemyCenter : ScriptableObject
     [SerializeField]
 
     private int enemyLife = 5;
-    public int EnemyLife { get { return enemyLife; } }
+
+    public int EnemyLife;
    
     [Header("적 최대 체력")]
     [Tooltip("값을 수정하여 적의 최대 체력량을 바꾼다")]
@@ -44,4 +45,6 @@ public class EnemyCenter : ScriptableObject
 
     private int stageCount = 10;
     public int StageCount { get { return stageCount; } }
+
+    
 }
