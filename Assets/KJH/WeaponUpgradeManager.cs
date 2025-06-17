@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class WeaponUpgradeManager : MonoBehaviour
 {
-    public PlayerData playerData = new PlayerData();
+    public PlayerData playerData;
     public Weapon Weapon;
 
     public void Upgrade()
