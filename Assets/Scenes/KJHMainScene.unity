@@ -123,6 +123,108 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &312323016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 312323020}
+  - component: {fileID: 312323019}
+  - component: {fileID: 312323018}
+  - component: {fileID: 312323017}
+  m_Layer: 5
+  m_Name: Player_Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &312323017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312323016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &312323018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312323016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1080, y: 1920}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &312323019
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312323016}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 50
+  m_TargetDisplay: 0
+--- !u!224 &312323020
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312323016}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1750129708343821724}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &772557986
 GameObject:
   m_ObjectHideFlags: 0
@@ -2528,6 +2630,7 @@ MonoBehaviour:
     Gold: 0
     EnforceStone: 0
     IsAutoAttackUnlocked: 0
+  weaponUpgradeManager: {fileID: 0}
   gold: 0
   finalAttack: 0
   finalCritical: 50
@@ -2703,11 +2806,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf19233948a14f4796fd0af2a30d0dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetButton: {fileID: 5497047434428076209}
-  Weapon1: {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}
-  Weapon2: {fileID: 11400000, guid: 54d211b7b54054f4ea7463d77e2f1b0c, type: 2}
-  Weapon3: {fileID: 11400000, guid: c0bc72fc5cb89f24e957032fe09f5362, type: 2}
-  Weapon4: {fileID: 11400000, guid: c2cf7acc236d38445a68770c330ab068, type: 2}
 --- !u!224 &1203029500041700488
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3552,19 +3650,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4476871741954197708}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8399263322207408011}
   - {fileID: 2753071470803157794}
-  m_Father: {fileID: 3287475783029684371}
+  m_Father: {fileID: 312323020}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1080, y: 1917.1812}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1761857385401171393
 CanvasRenderer:
@@ -5221,6 +5319,7 @@ MonoBehaviour:
     Gold: 0
     EnforceStone: 0
     IsAutoAttackUnlocked: 0
+  weaponUpgradeManager: {fileID: 0}
   gold: 0
   finalAttack: 0
   finalCritical: 0
@@ -5708,7 +5807,6 @@ RectTransform:
   m_Children:
   - {fileID: 5972836377315298034}
   - {fileID: 4723870253002352283}
-  - {fileID: 1750129708343821724}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5907,21 +6005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 0}
-  infoText: {fileID: 0}
-  BuyMaterialPriceText: {fileID: 0}
-  UpgradeMaterialPriceText: {fileID: 0}
-  EnforceStoneText: {fileID: 0}
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
 --- !u!114 &3504611508223170377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6557,7 +6640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &3781246769470927800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7077,17 +7160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff63335a459482408187e3e7121f3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
-  Weapon: {fileID: 0}
 --- !u!222 &4083122548537316479
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7194,21 +7266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 0}
-  infoText: {fileID: 0}
-  BuyMaterialPriceText: {fileID: 0}
-  UpgradeMaterialPriceText: {fileID: 0}
-  EnforceStoneText: {fileID: 0}
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
 --- !u!222 &4200011245513452546
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8398,17 +8455,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff63335a459482408187e3e7121f3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
-  Weapon: {fileID: 0}
 --- !u!1 &4898496493095196271
 GameObject:
   m_ObjectHideFlags: 0
@@ -10934,21 +10980,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 0}
-  infoText: {fileID: 0}
-  BuyMaterialPriceText: {fileID: 0}
-  UpgradeMaterialPriceText: {fileID: 0}
-  EnforceStoneText: {fileID: 0}
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
 --- !u!114 &6329585791106833774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12233,17 +12264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff63335a459482408187e3e7121f3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
-  Weapon: {fileID: 0}
 --- !u!114 &7055422358219233237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13068,21 +13088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 0}
-  infoText: {fileID: 0}
-  BuyMaterialPriceText: {fileID: 0}
-  UpgradeMaterialPriceText: {fileID: 0}
-  EnforceStoneText: {fileID: 0}
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
 --- !u!1 &7508663796786432827
 GameObject:
   m_ObjectHideFlags: 0
@@ -13959,21 +13964,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 0}
-  infoText: {fileID: 0}
-  BuyMaterialPriceText: {fileID: 0}
-  UpgradeMaterialPriceText: {fileID: 0}
-  EnforceStoneText: {fileID: 0}
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
 --- !u!222 &8152534399244821804
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14062,17 +14052,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff63335a459482408187e3e7121f3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
-  Weapon: {fileID: 0}
 --- !u!224 &8187741256122519988
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16666,6 +16645,7 @@ SceneRoots:
   - {fileID: 7938600585743762562}
   - {fileID: 3894606888326210606}
   - {fileID: 3287475783029684371}
+  - {fileID: 312323020}
   - {fileID: 435086153639728635}
   - {fileID: 4908148661804190693}
   - {fileID: 1427203163521772845}
