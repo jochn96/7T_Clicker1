@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
         {
             playerData.Gold -= useGold;
 
-            updateData();
+            UpdateData();
             if (uiManager != null) uiManager.ShowGoldText();
 
             return true;

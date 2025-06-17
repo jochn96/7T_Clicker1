@@ -57,7 +57,6 @@ public class UIManager : MonoBehaviour
         titleUI.gameObject.SetActive(true);
         mainUI.gameObject.SetActive(false);
         lodingDisplay.gameObject.SetActive(false);
-        warningText.gameObject.SetActive(false);
         
         // GameManager가 초기화된 경우에만 골드 표시
         if (gameManager != null)
@@ -72,9 +71,7 @@ public class UIManager : MonoBehaviour
         }
     }
     
-    /// <summary>
-    /// GameManager 초기화 후 골드 표시 시도
-    /// </summary>
+
     private void TryShowGoldText()
     {
         gameManager = GameManager.Instance;
