@@ -1630,7 +1630,7 @@ GameObject:
   - component: {fileID: 4634023923285350585}
   - component: {fileID: 7443466397666048079}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: Player_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2704,11 +2704,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf19233948a14f4796fd0af2a30d0dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetButton: {fileID: 5497047434428076209}
-  Weapon1: {fileID: 0}
-  Weapon2: {fileID: 0}
-  Weapon3: {fileID: 0}
-  Weapon4: {fileID: 0}
 --- !u!224 &1203029500041700488
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5893,21 +5888,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 0}
-  infoText: {fileID: 0}
-  BuyMaterialPriceText: {fileID: 0}
-  UpgradeMaterialPriceText: {fileID: 0}
-  EnforceStoneText: {fileID: 9210466001499474264}
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
 --- !u!114 &3504611508223170377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7063,17 +7043,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff63335a459482408187e3e7121f3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
-  Weapon: {fileID: 11400000, guid: 54d211b7b54054f4ea7463d77e2f1b0c, type: 2}
 --- !u!222 &4083122548537316479
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7180,21 +7149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 11400000, guid: 54d211b7b54054f4ea7463d77e2f1b0c, type: 2}
-  infoText: {fileID: 1260246320254336106}
-  BuyMaterialPriceText: {fileID: 4249526106623840173}
-  UpgradeMaterialPriceText: {fileID: 687923019588455649}
-  EnforceStoneText: {fileID: 0}
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
 --- !u!222 &4200011245513452546
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8384,17 +8338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff63335a459482408187e3e7121f3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
-  Weapon: {fileID: 11400000, guid: c0bc72fc5cb89f24e957032fe09f5362, type: 2}
 --- !u!1 &4898496493095196271
 GameObject:
   m_ObjectHideFlags: 0
@@ -10920,21 +10863,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}
-  infoText: {fileID: 4384526463142000895}
-  BuyMaterialPriceText: {fileID: 0}
-  UpgradeMaterialPriceText: {fileID: 4291132004409016530}
-  EnforceStoneText: {fileID: 0}
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
 --- !u!114 &6329585791106833774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12219,17 +12147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff63335a459482408187e3e7121f3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
-  Weapon: {fileID: 11400000, guid: c2cf7acc236d38445a68770c330ab068, type: 2}
 --- !u!114 &7055422358219233237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13054,21 +12971,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 11400000, guid: c0bc72fc5cb89f24e957032fe09f5362, type: 2}
-  infoText: {fileID: 8965567011160295620}
-  BuyMaterialPriceText: {fileID: 765852615521366945}
-  UpgradeMaterialPriceText: {fileID: 206313944357778744}
-  EnforceStoneText: {fileID: 0}
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
 --- !u!1 &7508663796786432827
 GameObject:
   m_ObjectHideFlags: 0
@@ -13759,7 +13661,7 @@ GameObject:
   - component: {fileID: 8607021761169123120}
   - component: {fileID: 4946791189134670897}
   m_Layer: 0
-  m_Name: Q
+  m_Name: Player_stat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13945,21 +13847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61d24e84d5bb9647823666144783b26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 11400000, guid: c2cf7acc236d38445a68770c330ab068, type: 2}
-  infoText: {fileID: 940816615196685582}
-  BuyMaterialPriceText: {fileID: 4383254183484875483}
-  UpgradeMaterialPriceText: {fileID: 0}
-  EnforceStoneText: {fileID: 0}
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
 --- !u!222 &8152534399244821804
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14048,17 +13935,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff63335a459482408187e3e7121f3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData:
-    StageInfo: 0
-    Attack: 10
-    Critical: 20
-    CriticalDmg: 150
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
-  Weapon: {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}
 --- !u!224 &8187741256122519988
 RectTransform:
   m_ObjectHideFlags: 0
