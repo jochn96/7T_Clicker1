@@ -52,16 +52,57 @@ public class UIManager : MonoBehaviour
     {
         gameManager = GameManager.Instance;
         soundManager = SoundManager.Instance;
+        
+        // UI 초기 설정
         titleUI.gameObject.SetActive(true);
         mainUI.gameObject.SetActive(false);
         lodingDisplay.gameObject.SetActive(false);
-        //warningText.gameObject.SetActive(false);
-        ShowGoldText();
+        warningText.gameObject.SetActive(false);
+        
+        // GameManager가 초기화된 경우에만 골드 표시
+        if (gameManager != null)
+        {
+            ShowGoldText();
+        }
+        else
+        {
+            Debug.LogWarning("UIManager: GameManager.Instance is null");
+            // GameManager가 초기화될 때까지 잠시 대기
+            Invoke("TryShowGoldText", 0.2f);
+        }
+    }
+    
+    /// <summary>
+    /// GameManager 초기화 후 골드 표시 시도
+    /// </summary>
+    private void TryShowGoldText()
+    {
+        gameManager = GameManager.Instance;
+        if (gameManager != null)
+        {
+            ShowGoldText();
+        }
+        else
+        {
+            Debug.LogError("UIManager: GameManager.Instance is still null after delay");
+        }
     }
 
     public void ShowGoldText()
     {
-        goldText.text = $"{NumberText(gameManager.playerData.Gold)}";
+        if (gameManager == null)
+        {
+            gameManager = GameManager.Instance;
+        }
+        
+        if (gameManager != null && goldText != null)
+        {
+            goldText.text = $"{NumberText(gameManager.playerData.Gold)}";
+        }
+        else
+        {
+            Debug.LogWarning("ShowGoldText: GameManager is null or goldText is null");
+        }
     }
 
     public void StartGame()
