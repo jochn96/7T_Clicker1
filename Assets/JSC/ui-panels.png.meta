@@ -136,43 +136,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: white_btn
+      name: white_pannel
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 31
         width: 32
-        height: 32
+        height: 33
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 1, y: 1, z: 1, w: 1}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6faccbb98a432a6439005e446cfddb1a
-      internalID: 653940399
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: black_btn
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63b4f3d49d1f5b447b01986b32c6e8b2
-      internalID: 619236543
+      spriteID: 55a8f2eaf3376d545b82e10cb9decf6a
+      internalID: 982809180
       vertices: []
       indices: 
       edges: []
@@ -190,6 +169,7 @@ TextureImporter:
     nameFileIdTable:
       black_btn: 619236543
       white_btn: 653940399
+      white_pannel: 982809180
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
