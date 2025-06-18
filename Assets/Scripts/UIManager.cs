@@ -235,7 +235,7 @@ public class UIManager : MonoBehaviour
             unitIndex++;  //몇번 셌는지 카운팅
         }
         if (parts.Count >= 2)  //최상위 두개만 출력
-            return $"{parts[0]}\n{parts[1]}";
+            return $"{parts[0]}{parts[1]}";
         else  //그렇지않으면 하위파츠만 출력 예시 1456면 1456출력
             return parts[0];
     }
