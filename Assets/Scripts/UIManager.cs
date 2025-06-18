@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     [Header("LodingDisplay")]
     public Image lodingDisplay;
     private Coroutine lodingCoroutine;
+    private bool isLoding = false;
 
     [Header("System")]
     public const int MAX_VALUE = 1000000000;
@@ -106,6 +107,10 @@ public class UIManager : MonoBehaviour
 
     public void StartGame()
     {
+        if(isLoding)
+            return;
+
+        isLoding = true;
         titleAnimator.SetBool("IsStart", true);
         if (lodingCoroutine != null)
         {
@@ -129,6 +134,7 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator LodingSign(GameObject defaltObject, GameObject NextObject)
     {
+
         Color color = lodingDisplay.color;
         color.a = 0;
         lodingDisplay.color = color;
@@ -161,6 +167,7 @@ public class UIManager : MonoBehaviour
         }
         color.a = 0;
         lodingDisplay.color = color;  //총 지속시간 + 대기시간동안 작동 1.75초
+        isLoding = false;
         lodingDisplay.gameObject.SetActive(false);  //종료
     }
 
