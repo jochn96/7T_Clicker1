@@ -19,24 +19,14 @@ public class Enemy : MonoBehaviour
     private int currentHP;
     
     public Clicker clicker;
-
-    // 적 현재 상태
-    public void WatchEnemyInfo()
-    {
-        //Debug.Log("적 체력::" + EnemyCenter.MaxenemyLife);
-    }
-
+    
     // 마우스 왼쪽 클릭 시 적 체력 감소 구현
     private void Start()
     {
         currentHP = enemyCenter.MaxEnemyLife - enemyCenter.EnemyLife;
         gameManager = GameManager.Instance;
     }
-
-    private void Update()
-    {
-        
-    }
+    
 
     public void TakeDamage(int damage)
     {
