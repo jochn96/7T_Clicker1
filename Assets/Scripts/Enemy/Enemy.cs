@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     // 마우스 왼쪽 클릭 시 적 체력 감소 구현
     private void Start()
     {
-        currentHP = enemyCenter.MaxEnemyLife - enemyCenter.EnemyLife;
+        currentHP = enemyCenter.MaxEnemyLife;
         gameManager = GameManager.Instance;
     }
     
@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
         // HP 바 업데이트
         if (HPBar != null)
         {
-            float healthPercentage = (float)currentHP / enemyCenter.MaxEnemyLife - enemyCenter.EnemyLife;
+            float healthPercentage = (float)currentHP / enemyCenter.MaxEnemyLife;
             HPBar.fillAmount = healthPercentage;
         }
 
