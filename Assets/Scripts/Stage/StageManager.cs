@@ -8,6 +8,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] private Enemy enemy;
     [SerializeField] private Transform target; // 적이 소환될 위치
     public int thisStageEnemy;
+    public EnemyCenter enemyCenter;
 
     private GameManager gameManager;
 
@@ -57,16 +58,17 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    // 적 스폰 로직
     private void SpawnEnemies()
     {
-        if (enemyCenters.Length == 0)
+        if (enemyCenter.Length == 0)
             return;
         if (thisStageEnemy < stageInfos[gameManager.playerData.StageInfo].Waves.Length)
         {
             thisStageEnemy++;
-            int randomEnemy = Random.Range(0, enemyCenters.Length);
+            int randomEnemy = Random.Range(0, enemyCenter.Length);
 
-            Instantiate(enemyCenters[randomEnemy].ememyPrefab, target);
+            Instantiate(enemyCenter.Length, enemy, target);
         }
         else if(thisStageEnemy == stageInfos[gameManager.playerData.StageInfo].Waves.Length)
         {
