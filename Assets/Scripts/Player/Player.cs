@@ -222,9 +222,8 @@ public class Player : MonoBehaviour
                 // 최대 100%
                 return Mathf.Min(gameManager.playerData.BonusGold + upgradeValue, 100f);
             case PlayerStatType.AutoAttackCooldownReduce:
-                // 최대 25번 업그레이드 (쿨다운 1초 감소)
-                float maxCooldownReduction = 1.0f; // 최대 25번 업그레이드 (-0.1 * 25 = -2.5)
-                return Mathf.Min(gameManager.playerData.AutoAttackCooldown + upgradeValue, maxCooldownReduction);
+                // 자동공격 쿨다운 감소값 반환 (음수값)
+                return upgradeValue * statManager.GetStatLevel(PlayerStatType.AutoAttackCooldownReduce);
             default:
                 return upgradeValue;
         }

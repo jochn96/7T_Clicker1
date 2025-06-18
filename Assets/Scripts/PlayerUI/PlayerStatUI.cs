@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 /// <summary>
 /// 플레이어 능력치 UI를 관리합니다.
@@ -53,7 +54,7 @@ public class PlayerStatUI : MonoBehaviour
     private const float MAX_CRIT_CHANCE = 100f;
     private const float MAX_CRIT_DAMAGE = 250f;
     private const float MAX_GOLD_GAIN = 100f;
-    private const float MAX_AUTO_ATTACK_COOLDOWN = 1f;
+    private const float MAX_AUTO_ATTACK_COOLDOWN = 1.0f;
 
     private Player player;
     private GameManager gameManager;
@@ -61,8 +62,8 @@ public class PlayerStatUI : MonoBehaviour
 
     private void Awake()
     {
-        player = FindObjectOfType<Player>();
-        gameManager = GameManager.Instance;
+        // Player 및 GameManager 초기화 - 여러 번 시도
+        StartCoroutine(InitializeManagers());
         
         // 골드 부족 패널 초기 설정
         if (notEnoughGoldPanel != null)
@@ -74,6 +75,34 @@ public class PlayerStatUI : MonoBehaviour
         InitializeMaxTexts();
     }
     
+    /// <summary>
+    /// Player와 GameManager를 초기화하는 코루틴
+    /// </summary>
+    private System.Collections.IEnumerator InitializeManagers()
+    {
+        // 최대 5번 시도
+        int attempts = 0;
+        while (attempts < 5)
+        {
+            player = FindObjectOfType<Player>();
+            gameManager = GameManager.Instance;
+            
+            if (player != null && gameManager != null)
+            {
+                Debug.Log("PlayerStatUI: Player와 GameManager 초기화 성공");
+                break;
+            }
+            
+            attempts++;
+            yield return new WaitForSeconds(0.1f);
+        }
+        
+        if (player == null || gameManager == null)
+        {
+            Debug.LogError("PlayerStatUI: Player 또는 GameManager 초기화 실패");
+        }
+    }
+
     /// <summary>
     /// MAX 텍스트 초기화
     /// </summary>
@@ -87,11 +116,38 @@ public class PlayerStatUI : MonoBehaviour
 
     private void Start()
     {
+        // GameManager 초기화 확인
+        if (gameManager == null)
+        {
+            gameManager = GameManager.Instance;
+            
+            if (gameManager == null)
+            {
+                Debug.LogError("GameManager.Instance is null! PlayerStatUI 초기화 실패");
+                return;
+            }
+        }
+        
+        // Player 초기화 확인
+        if (player == null)
+        {
+            player = FindObjectOfType<Player>();
+            
+            if (player == null)
+            {
+                Debug.LogError("Player를 찾을 수 없습니다! PlayerStatUI 초기화 실패");
+                return;
+            }
+        }
+        
         // 시작 시 UI 갱신
         RefreshUI();
         
         // 약간의 지연 후 버튼 리스너 등록 (모든 매니저가 초기화된 후)
         Invoke("SetupButtonListeners", 0.1f);
+        
+        // 디버그 로그
+        Debug.Log($"PlayerStatUI 초기화 완료. 현재 골드: {gameManager.playerData.Gold}");
     }
 
     /// <summary>
@@ -124,15 +180,64 @@ public class PlayerStatUI : MonoBehaviour
     /// </summary>
     private void UpdateGoldUI()
     {
-        if (gameManager != null && currentGoldText != null)
+        // GameManager 체크 및 재시도
+        if (gameManager == null)
         {
-            // GameManager에서 현재 골드 정보 가져오기
-            currentGold = gameManager.playerData.Gold;
-            
-            // 골드 표시 (천 단위 콤마 포함)
-            currentGoldText.text = string.Format("{0:#,0} G", currentGold);
+            gameManager = GameManager.Instance;
+            if (gameManager == null)
+            {
+                Debug.LogWarning("UpdateGoldUI: GameManager is null");
+                return;
+            }
+        }
+        
+        if (currentGoldText != null)
+        {
+            try
+            {
+                // GameManager에서 현재 골드 정보 가져오기
+                currentGold = gameManager.playerData.Gold;
+                
+                // 골드 표시 (천 단위 콤마 포함)
+                if (currentGold <= 0)
+                {
+                    currentGoldText.text = "0 G";
+                }
+                else if (currentGold >= 1000000000) // 10억 이상
+                {
+                    currentGoldText.text = "10억 G";
+                }
+                else
+                {
+                    currentGoldText.text = string.Format("{0:#,##0} G", currentGold);
+                }
+                
+                // 디버그 로그
+                Debug.Log($"골드 UI 갱신: {currentGoldText.text} (원래 값: {currentGold})");
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"UpdateGoldUI 오류: {e.Message}");
+            }
         }
     }
+
+    //  public void ShowGoldText()
+    // {
+    //     if (gameManager == null)
+    //     {
+    //         gameManager = GameManager.Instance;
+    //     }
+        
+    //     if (gameManager != null && goldText != null)
+    //     {
+    //         goldText.text = $"{NumberText(gameManager.playerData.Gold)}";
+    //     }
+    //     else
+    //     {
+    //         Debug.LogWarning("ShowGoldText: GameManager is null or goldText is null");
+    //     }
+    // }
 
     /// <summary>
     /// UI를 갱신합니다.
@@ -180,12 +285,14 @@ public class PlayerStatUI : MonoBehaviour
         if (isGoldGainMax) goldGainCostText.text = "MAX";
 
         // 자동공격 쿨타임 UI 갱신
-        float autoAttackCooldown = player.GetStatValue(PlayerStatType.AutoAttackCooldownReduce);
-        autoAttackCooldownValueText.text = autoAttackCooldown.ToString("F1");
+        // 실제 쿨다운 시간을 표시 (5초 - 감소량)
+        float autoAttackCooldownReduction = player.GetStatValue(PlayerStatType.AutoAttackCooldownReduce);
+        float actualCooldown = Mathf.Max(1.0f, 5.0f - Mathf.Abs(autoAttackCooldownReduction));
+        autoAttackCooldownValueText.text = actualCooldown.ToString("F1") + "초";
         autoAttackCooldownCostText.text = player.GetUpgradeCost(PlayerStatType.AutoAttackCooldownReduce) + "G";
         
         // 자동공격 쿨타임 최대치 확인 및 UI 업데이트
-        bool isAutoAttackCooldownMax = autoAttackCooldown >= MAX_AUTO_ATTACK_COOLDOWN;
+        bool isAutoAttackCooldownMax = actualCooldown <= 1.0f;
         if (autoAttackCooldownUpgradeButton != null) autoAttackCooldownUpgradeButton.interactable = !isAutoAttackCooldownMax;
         if (autoAttackCooldownMaxText != null) autoAttackCooldownMaxText.SetActive(isAutoAttackCooldownMax);
         if (isAutoAttackCooldownMax) autoAttackCooldownCostText.text = "MAX";
