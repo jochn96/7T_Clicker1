@@ -16,8 +16,6 @@ public class GameManager : MonoBehaviour
     public const int MAX_VALUE = 1000000000;
     public const int TITLE_MUSIC = 0;
     
-    
-    
     public int gold;
     public int finalAttack;
     public float finalCritical;
@@ -51,8 +49,6 @@ public class GameManager : MonoBehaviour
         soundManager = SoundManager.Instance;
 
         soundManager.ChangeBackGroundMusic(TITLE_MUSIC);  //기본 로비음악 재생
- 
-        uiManager.ShowWarning("StartGame");
     }
 
     #region TestButtons
@@ -88,15 +84,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     #region UpdateData
-    private void Update()
-    {
-        equippedWeapon = weaponButtonManager.NowEquip;
-        UpdateData();
-        if (weaponButtonManager.NowEquip == null)
-        {
-            Debug.Log("장착되지 않음");
-        }
-    }
+
     public void PlayerDataLoad()
     {
         playerData = SaveDataToJSON.LoadUsers();
@@ -118,26 +106,26 @@ public class GameManager : MonoBehaviour
 
     public void UpdateData()
     {
-        //Stage = 현 스테이지 인덱스? 데이터? 가져오기
-        Debug.Log($"[updateData 시작] Attack={playerData.Attack}, Critical={playerData.Critical}, CriticalDmg={playerData.CriticalDmg}, BonusGold={playerData.BonusGold}, AutoAttackCooldown={playerData.AutoAttackCooldown}");
-
+        stage = playerData.StageInfo;
+        if (weaponButtonManager.NowEquip != null)
+        {
+            equippedWeapon = weaponButtonManager.NowEquip;
+        }
+        
         // playerData.Attack을 기본 공격력으로 사용하고 장착무기 공격력 추가
         int equippedWeaponAttack = GetEquippedWeaponAttack();
         finalAttack = playerData.Attack + equippedWeaponAttack;
-        finalGetGold = playerData.BonusGold; 
+        finalGetGold = playerData.BonusGold;
 
-        finalCritical = playerData.Critical + equippedWeapon.criticalChance; 
-        int equippedWeaponCritDmg = GetEquippedWeaponCritDmg();
-        finalCritDmg = playerData.CriticalDmg + equippedWeaponCritDmg;
+        float equippedWeaponCritChance = GetEquippedWeaponCriticalChance();
+        finalCritical = playerData.Critical + equippedWeaponCritChance;
+        
+        finalCritDmg = playerData.CriticalDmg;
         
         finalAutoAttackCooldown = playerData.AutoAttackCooldown;
 
         //저장될때마다 혹은 UI창을 열어볼때마다 등등 각종 상황에서 갱신해줄것       
-        playerData.RefreshData(playerData);
-        Debug.Log($"[RefreshData 호출 전] Attack={playerData.Attack}, Critical={playerData.Critical}, CriticalDmg={playerData.CriticalDmg}, BonusGold={playerData.BonusGold}, AutoAttackCooldown={playerData.AutoAttackCooldown}");
-        playerData.RefreshData(playerData); 
-        Debug.Log($"[RefreshData 호출 후] Attack={playerData.Attack}, Critical={playerData.Critical}, CriticalDmg={playerData.CriticalDmg}, BonusGold={playerData.BonusGold}, AutoAttackCooldown={playerData.AutoAttackCooldown}");
-
+        playerData.RefreshData(playerData);  //플레이어 데이터를 '저장'해서 '저장을 갱신'하기 위한 코드
     }
 
     /// <summary>
@@ -156,11 +144,12 @@ public class GameManager : MonoBehaviour
     /// 현재 장착된 무기의 크리티컬 데미지를 반환합니다.
     /// </summary>
     /// <returns>장착된 무기의 크리티컬 데미지</returns>
-    private int GetEquippedWeaponCritDmg()
+    private float GetEquippedWeaponCriticalChance()
     {
-        // TODO: 장착된 무기의 크리티컬 데미지 반환 로직 구현
-        // 현재는 임시로 0 반환
-        return 0;
+        if (equippedWeapon != null)
+            return equippedWeapon.criticalChance;
+        else
+            return 0;
     }
     #endregion
     #region PlayerResource
