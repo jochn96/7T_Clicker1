@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab:
-  - {fileID: 2952584566759187724, guid: 85b45cf21d545ef4eb80124c5c27095c, type: 3}
+  - {fileID: 2625392516185505593, guid: 01827dcb8a4005b4eac51af53a1b9dd8, type: 3}
   - {fileID: 2952584566759187724, guid: 004a8c428f8821542a8709cffe603744, type: 3}
   sqwnMonster:
-  - {fileID: 2952584566759187724, guid: 85b45cf21d545ef4eb80124c5c27095c, type: 3}
+  - {fileID: 2625392516185505593, guid: 01827dcb8a4005b4eac51af53a1b9dd8, type: 3}
   - {fileID: 2952584566759187724, guid: 004a8c428f8821542a8709cffe603744, type: 3}
