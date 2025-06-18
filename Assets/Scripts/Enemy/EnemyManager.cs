@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,8 +9,9 @@ public class EnemyManager : MonoBehaviour
    
    GameManager gameManager;
    private bool EnemySpawn;
+   private Clicker clicker;
 
-   public void Init(GameManager gameManager)
+    public void Init(GameManager gameManager)
    {
       this.gameManager = gameManager;
       
@@ -22,19 +23,20 @@ public class EnemyManager : MonoBehaviour
    }
    private void enemySpawn(string prefabName)
    {
-      // GameObject enemySqawn = Instantiate(enemyPrefabs[0], transform.position, Quaternion.identity);
-     /* if (enemyPrefabs.Count == 0)
-      {
-         Debug.Log("적이 처치되었습니다.");
-         return;
-      }
+        // GameObject enemySqawn = Instantiate(enemyPrefabs[0], transform.position, Quaternion.identity);
+        //clicker.targetEnemy = newEnemy.GetComponent<Enemy>();
+        /* if (enemyPrefabs.Count == 0)
+         {
+            Debug.Log("적이 처치되었습니다.");
+            return;
+         }
 
-      GameObject enemyPrefab;
-      if (prefabName == null)
-      {
-         enemyPrefab = enemyPrefab[Random.Range(0, enemyPrefab.Count)];
-         
-      } */
-      
-   }
+         GameObject enemyPrefab;
+         if (prefabName == null)
+         {
+            enemyPrefab = enemyPrefab[Random.Range(0, enemyPrefab.Count)];
+
+         } */
+
+    }
 }

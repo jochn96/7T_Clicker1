@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class WeaponUpgradeManager : MonoBehaviour
@@ -8,6 +5,15 @@ public class WeaponUpgradeManager : MonoBehaviour
     public PlayerData playerData;
     public Weapon Weapon;
 
+    public void Start()
+    {
+        if(Weapon.WeaponLevel == 1)
+        {
+            Weapon.atk = Weapon.Lv1atk;
+            Weapon.criticalChance = Weapon.Lv1CriticalChance;
+            Weapon.UpgradePrice = Weapon.Lv1price;
+        }
+    }
     public void Upgrade()
     {
         var playerData = GameManager.Instance.playerData;

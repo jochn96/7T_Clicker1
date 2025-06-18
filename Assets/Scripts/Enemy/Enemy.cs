@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
@@ -35,17 +35,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))
-        {
-            // OnClickClickerButton()을 호출하여 데미지를 받아옵니다
-            clicker.OnClickClickerButton();
-            int damage = clicker.FinalDamage(clicker.isCritical());
         
-            // TakeDamage 메서드를 통해 데미지를 적용합니다
-            TakeDamage(damage);
-        
-            Debug.Log($"공격을 맞췄다! 데미지: {damage}");
-        }
     }
 
     public void TakeDamage(int damage)

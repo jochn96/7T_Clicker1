@@ -7,6 +7,7 @@ public class Clicker : MonoBehaviour
 {
     public bool autoAttackUnlocked = false; //자동공격 구매전 비활성화
     public float autoAttackInterval = 5.0f; //자동공격 간격
+    public Enemy targetEnemy;
 
     [Header("이펙트")]
     public GameObject nomalEffect;
@@ -35,7 +36,10 @@ public class Clicker : MonoBehaviour
     {
         bool isCri = isCritical();
         int Damage = FinalDamage(isCri);
-        //몬스터 체력 - Damage;
+        if (targetEnemy != null)
+        {
+            targetEnemy.TakeDamage(Damage); //몬스터 체력 - Damage;
+        }
         //공격 이펙트 동작 그리고 크리티컬시 다른 이펙트 동작
         Debug.Log("클릭했습니다.");
     }
