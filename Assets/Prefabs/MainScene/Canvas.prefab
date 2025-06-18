@@ -6128,19 +6128,25 @@ MonoBehaviour:
   critChanceValueText: {fileID: 2582938738745800251}
   critChanceCostText: {fileID: 4528999394354566238}
   critChanceUpgradeButton: {fileID: 3629331225274251312}
+  critChanceMaxText: {fileID: 0}
   critDamageValueText: {fileID: 8785841941985011059}
   critDamageCostText: {fileID: 1956142442567284740}
   critDamageUpgradeButton: {fileID: 3233317985786589612}
+  critDamageMaxText: {fileID: 0}
   goldGainValueText: {fileID: 6782634028920836148}
   goldGainCostText: {fileID: 485600708884156029}
   goldGainUpgradeButton: {fileID: 5185101937606159151}
+  goldGainMaxText: {fileID: 0}
   autoAttackCooldownValueText: {fileID: 8469035546363702237}
   autoAttackCooldownCostText: {fileID: 9157586941860589376}
   autoAttackCooldownUpgradeButton: {fileID: 8121265519965677741}
+  autoAttackCooldownMaxText: {fileID: 0}
   autoAttackCooldownUpgradePanel: {fileID: 5624863270318460414}
   autoAttackPurchasePanel: {fileID: 5570807647363499021}
   autoAttackPurchaseCostText: {fileID: 8357359340129209386}
   autoAttackPurchaseButton: {fileID: 6426120656778811977}
+  notEnoughGoldPanel: {fileID: 0}
+  notEnoughGoldText: {fileID: 0}
 --- !u!1 &3594184921380346711
 GameObject:
   m_ObjectHideFlags: 0
