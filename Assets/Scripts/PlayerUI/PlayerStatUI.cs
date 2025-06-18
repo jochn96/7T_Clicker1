@@ -203,10 +203,6 @@ public class PlayerStatUI : MonoBehaviour
                 {
                     currentGoldText.text = "0 G";
                 }
-                else if (currentGold >= 1000000000) // 10억 이상
-                {
-                    currentGoldText.text = "10억 G";
-                }
                 else
                 {
                     currentGoldText.text = string.Format("{0:#,##0} G", currentGold);
