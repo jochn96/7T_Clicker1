@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 9035552677741065708}
   - component: {fileID: 3124178833717059012}
   - component: {fileID: 7393089461664789531}
+  - component: {fileID: 3736475258646618586}
   m_Layer: 5
   m_Name: Stage
   m_TagString: Untagged
@@ -372,6 +373,26 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3736475258646618586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5155696259403155454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd561f28a4865344bb904c0803a94fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StageKey: 0
+  Waves:
+  - enemies:
+    - enemyType: slime
+      spawnCount: 1
+    hasboss: 0
+    bosstype: 
+  StageClearCount: 0
 --- !u!1 &5185258390006506282
 GameObject:
   m_ObjectHideFlags: 0
