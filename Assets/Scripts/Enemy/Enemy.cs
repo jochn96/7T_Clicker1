@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     private int currentHP;
     
     public Clicker clicker;
+    public Transform HitEffectPivot;
     
     // 마우스 왼쪽 클릭 시 적 체력 감소 구현
     private void Start()
