@@ -63,6 +63,7 @@ public class Enemy : MonoBehaviour
         
     private void Die()  // Die 처리문
         {
+            Debug.Log("죽었습니다.");
             if (gameManager == null)
             {
                 gameManager = GameManager.Instance;
