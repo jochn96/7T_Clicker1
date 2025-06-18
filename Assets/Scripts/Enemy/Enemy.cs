@@ -10,14 +10,15 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] 
     private EnemyCenter enemyCenter;
+    
     public Image HPBar; // 적 체력 UI 컴포넌트
+    
     GameManager gameManager;
+
     [SerializeField]
     private int currentHP;
-    public Clicker clicker;
-    public GameObject gameObject;
-    public Transform hitEffectPivot;
     
+    public Clicker clicker;
 
 
     // 마우스 왼쪽 클릭 시 적 체력 감소 구현
