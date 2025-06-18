@@ -47,8 +47,6 @@ public  class  PlayerData //임시입니다 스텟레벨을 가져올예정
         AutoAttackCooldown = playerdata.AutoAttackCooldown;
         IsAutoAttackUnlocked = playerdata.IsAutoAttackUnlocked;
         
-        Debug.Log($"[RefreshData 내부 완료] 변경 후: Attack={Attack}, Critical={Critical}, CriticalDmg={CriticalDmg}, BonusGold={BonusGold}, AutoAttackCooldown={AutoAttackCooldown}");
-        
         if (playerdata != null)
             SaveDataToJSON.SaveUsers(playerdata);
     }
