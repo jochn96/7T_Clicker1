@@ -1,11 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
     [SerializeField] private StageInfo[] stageInfos;
     [SerializeField] private int stageKey;
-    [SerializeField] private EnemyCenter enemyCenter;
+    [SerializeField] private EnemyCenter[] enemyCenters;
     [SerializeField] private Enemy enemy;
+    [SerializeField] private Transform target; // 적이 소환될 위치
+    public int thisStageEnemy;
 
     private GameManager gameManager;
 
@@ -25,6 +27,7 @@ public class StageManager : MonoBehaviour
         {
             Debug.LogError($"잘못된 스테이지 키: {stageKey}");
         }
+        thisStageEnemy = 0;
     }
 
     private void InitializeStage(StageInfo stageInfo)
@@ -56,7 +59,26 @@ public class StageManager : MonoBehaviour
 
     private void SpawnEnemies()
     {
+        if (enemyCenters.Length == 0)
+            return;
+        if (thisStageEnemy < stageInfos[gameManager.playerData.StageInfo].Waves.Length)
+        {
+            thisStageEnemy++;
+            int randomEnemy = Random.Range(0, enemyCenters.Length);
 
+            Instantiate(enemyCenters[randomEnemy].ememyPrefab, target);
+        }
+        else if(thisStageEnemy == stageInfos[gameManager.playerData.StageInfo].Waves.Length)
+        {
+            StageClear();
+        }
+    }
+
+    private void StageClear()
+    {
+        gameManager.playerData.StageInfo++;
+        thisStageEnemy = 0;
+        SpawnEnemies();
     }
 
     private void SpawnBoss()
