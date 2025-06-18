@@ -820,6 +820,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCenter: {fileID: 11400000, guid: a4c0b458b7650954cbefaf7f7a03fad9, type: 2}
-  HPBar: {fileID: 0}
+  HPBar: {fileID: 7858402372224723969}
   currentHP: 0
   clicker: {fileID: 0}
