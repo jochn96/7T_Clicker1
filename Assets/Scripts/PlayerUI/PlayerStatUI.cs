@@ -42,7 +42,7 @@ public class PlayerStatUI : MonoBehaviour
     public Button autoAttackPurchaseButton;
     
     [Header("골드 부족 UI")]
-    public GameObject notEnoughGoldPanel; // 골드 부족 알림 패널
+    public Image notEnoughGoldPanel; // 골드 부족 알림 패널
     public TextMeshProUGUI notEnoughGoldText; // 골드 부족 알림 텍스트
 
     private Player player;
@@ -57,7 +57,7 @@ public class PlayerStatUI : MonoBehaviour
         // 골드 부족 패널 초기 설정
         if (notEnoughGoldPanel != null)
         {
-            notEnoughGoldPanel.SetActive(false);
+            notEnoughGoldPanel.gameObject.SetActive(false);
         }
     }
 
@@ -227,7 +227,7 @@ public class PlayerStatUI : MonoBehaviour
         if (notEnoughGoldPanel == null) return;
         
         // 골드 부족 패널 활성화
-        notEnoughGoldPanel.SetActive(true);
+        notEnoughGoldPanel.gameObject.SetActive(true);
         
         // 텍스트 설정
         if (notEnoughGoldText != null)
@@ -244,7 +244,7 @@ public class PlayerStatUI : MonoBehaviour
     {
         if (notEnoughGoldPanel != null)
         {
-            notEnoughGoldPanel.SetActive(false);
+            notEnoughGoldPanel.gameObject.SetActive(false);
         }
     }
     
@@ -254,7 +254,7 @@ public class PlayerStatUI : MonoBehaviour
     public void OnClickAnywhere()
     {
         // 골드 부족 패널이 활성화되어 있다면 닫기
-        if (notEnoughGoldPanel != null && notEnoughGoldPanel.activeSelf)
+        if (notEnoughGoldPanel != null && notEnoughGoldPanel.gameObject.activeSelf)
         {
             CloseNotEnoughGoldPanel();
         }
