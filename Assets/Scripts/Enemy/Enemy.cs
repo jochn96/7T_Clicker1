@@ -19,36 +19,26 @@ public class Enemy : MonoBehaviour
     private int currentHP;
     
     public Clicker clicker;
-
-    // 적 현재 상태
-    public void WatchEnemyInfo()
-    {
-        //Debug.Log("적 체력::" + EnemyCenter.MaxenemyLife);
-    }
-
+    
     // 마우스 왼쪽 클릭 시 적 체력 감소 구현
     private void Start()
     {
-        currentHP = enemyCenter.MaxEnemyLife;
+        currentHP = enemyCenter.MaxEnemyLife - enemyCenter.EnemyLife;
         gameManager = GameManager.Instance;
     }
-
-    private void Update()
-    {
-        
-    }
+    
 
     public void TakeDamage(int damage)
     {
         currentHP = Mathf.Max(0, currentHP - damage);
-    
+
         // HP 바 업데이트
         if (HPBar != null)
         {
-            float healthPercentage = (float)currentHP / enemyCenter.MaxEnemyLife;
+            float healthPercentage = (float)currentHP / enemyCenter.MaxEnemyLife - enemyCenter.EnemyLife;
             HPBar.fillAmount = healthPercentage;
         }
-    
+
         // HP가 0 이하면 사망 처리
         if (currentHP <= 0)
         {
@@ -60,6 +50,7 @@ public class Enemy : MonoBehaviour
         
     private void Die()  // Die 처리문
         {
+            Debug.Log("죽었습니다.");
             if (gameManager == null)
             {
                 gameManager = GameManager.Instance;
@@ -68,7 +59,7 @@ public class Enemy : MonoBehaviour
             // 리소스 획득
             if (gameManager != null)
             {
-                gameManager.GetResource(10, 10);
+                gameManager.GetResource(100, 100);
             }
             else 
             {

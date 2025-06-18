@@ -11,6 +11,7 @@ public class WeaponDisplayManager : MonoBehaviour
     public PlayerData playerData;
     private void Update()
     {
+        var playerData = GameManager.Instance.playerData;
         if (Weapon != null && infoText != null)
         {
             infoText.text =

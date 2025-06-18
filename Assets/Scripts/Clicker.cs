@@ -19,6 +19,7 @@ public class Clicker : MonoBehaviour
     private Animator animator;
     private bool isAttack;
     private GameManager gameManager;
+    public Transform target;
 
     private void Awake()
     {
@@ -37,6 +38,17 @@ public class Clicker : MonoBehaviour
         bool isCri = isCritical();
         int Damage = FinalDamage(isCri);
         Debug.Log($"크리티컬 {isCri}, 데미지 {Damage}");
+
+        Transform child = target.GetChild(0);
+        if (child.TryGetComponent<Enemy>(out Enemy enemy))
+        {
+            targetEnemy = enemy;
+        }
+        else
+        {
+            targetEnemy = null;
+        }
+
         if (targetEnemy != null)
         {
             targetEnemy.TakeDamage(Damage); //몬스터 체력 - Damage;
