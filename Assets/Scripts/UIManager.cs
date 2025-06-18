@@ -107,6 +107,9 @@ public class UIManager : MonoBehaviour
 
     public void StartGame()
     {
+        if(isLoding)
+            return;
+
         isLoding = true;
         titleAnimator.SetBool("IsStart", true);
         if (lodingCoroutine != null)
