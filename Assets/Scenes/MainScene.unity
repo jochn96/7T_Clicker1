@@ -823,6 +823,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2806158032396539775, guid: fd85ea13f2cef6c4eb60c1954d8b258e, type: 3}
+      propertyPath: notEnoughGoldText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806158032396539775, guid: fd85ea13f2cef6c4eb60c1954d8b258e, type: 3}
+      propertyPath: notEnoughGoldPanel
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2847709943276734961, guid: fd85ea13f2cef6c4eb60c1954d8b258e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -917,6 +925,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2901665574966743743, guid: fd85ea13f2cef6c4eb60c1954d8b258e, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158606460713214613, guid: fd85ea13f2cef6c4eb60c1954d8b258e, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4262835552549481083, guid: fd85ea13f2cef6c4eb60c1954d8b258e, type: 3}
