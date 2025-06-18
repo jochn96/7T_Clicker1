@@ -59,6 +59,7 @@ public class UIManager : MonoBehaviour
         // UI 초기 설정
         titleUI.gameObject.SetActive(true);
         mainUI.gameObject.SetActive(false);
+        soundUI.gameObject.SetActive(false);
         lodingDisplay.gameObject.SetActive(false);
         
         // GameManager가 초기화된 경우에만 골드 표시
@@ -241,11 +242,7 @@ public class UIManager : MonoBehaviour
 
     public void OnClickSetting()
     {
-        soundUI.gameObject.SetActive(true);
+        soundUI.SetActive(!soundUI.activeSelf);
     }
 
-    public void OnClickSetCancle()
-    {
-        soundUI.gameObject.SetActive(false);
-    }
 }
