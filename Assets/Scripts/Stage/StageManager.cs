@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UIElements;
 
 public class StageManager : MonoBehaviour
 {
@@ -67,8 +68,10 @@ public class StageManager : MonoBehaviour
         {
             thisStageEnemy++;
             int randomEnemy = Random.Range(0, enemyCenter.Length);
-
-            Instantiate(enemyCenter.Length, enemy, target);
+            for (int i = 0; i <= 10; i++)
+            {
+                Instantiate (enemy, target);
+            }
         }
         else if(thisStageEnemy == stageInfos[gameManager.playerData.StageInfo].Waves.Length)
         {
