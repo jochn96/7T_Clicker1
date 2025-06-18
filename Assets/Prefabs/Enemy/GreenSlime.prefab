@@ -227,6 +227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2788214325984841871}
+  - component: {fileID: 426651654968692523}
   m_Layer: 0
   m_Name: GreenSlime
   m_TagString: Untagged
@@ -251,6 +252,22 @@ Transform:
   - {fileID: 6415377819667120441}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &426651654968692523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2625392516185505593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317cfdf12ef3fc047b8f3c0af196f7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCenter: {fileID: 11400000, guid: a4c0b458b7650954cbefaf7f7a03fad9, type: 2}
+  HPBar: {fileID: 7858402372224723969}
+  currentHP: 0
+  clicker: {fileID: 0}
 --- !u!1 &4495653023941056141
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,7 +798,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1922696829701623398}
-  - component: {fileID: 7591592542153935990}
   m_Layer: 0
   m_Name: 'Dummy Slime 1  '
   m_TagString: Untagged
@@ -807,19 +823,3 @@ Transform:
   - {fileID: 1381046330780655492}
   m_Father: {fileID: 2788214325984841871}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7591592542153935990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8606082883882669674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 317cfdf12ef3fc047b8f3c0af196f7f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyCenter: {fileID: 11400000, guid: a4c0b458b7650954cbefaf7f7a03fad9, type: 2}
-  HPBar: {fileID: 7858402372224723969}
-  currentHP: 0
-  clicker: {fileID: 0}
