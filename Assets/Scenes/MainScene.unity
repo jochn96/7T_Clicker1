@@ -636,23 +636,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1199006566028310198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4299295203117215918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39519749975d01f41ada64786c6f5806, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resetButton: {fileID: 5497047434428076209}
-  Weapon1: {fileID: 11400000, guid: c3bd59a2a85a33a47933c4eaf14ae058, type: 2}
-  Weapon2: {fileID: 11400000, guid: 3f0713f42ac99194cb84db39808aa6e7, type: 2}
-  Weapon3: {fileID: 11400000, guid: bcd26fb95eb92704fa75a4ff822791ec, type: 2}
-  Weapon4: {fileID: 11400000, guid: f78480cf7b86e63429f0291ffe60a8ea, type: 2}
 --- !u!4 &1427203163521772845 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 290949709406419105, guid: ad0df21fbdcd3b34ba4dde9f102852f3, type: 3}
@@ -1301,6 +1284,207 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &3901442579159034416
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2085472954139961046, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: resetButton
+      value: 
+      objectReference: {fileID: 5497047434428076209}
+    - target: {fileID: 2267679448634317188, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 27.87706
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267679448634317188, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1128.709
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267679448634317188, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.5969751
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267679448634317188, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267679448634317188, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267679448634317188, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267679448634317188, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267679448634317188, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267679448634317188, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2267679448634317188, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5286869499791118546, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: m_Name
+      value: KJHButtonManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W2Buy
+      value: 
+      objectReference: {fileID: 6043419195857053788}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W3Buy
+      value: 
+      objectReference: {fileID: 3287044070606064518}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W4Buy
+      value: 
+      objectReference: {fileID: 2129652647802909674}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W2Equip
+      value: 
+      objectReference: {fileID: 6766341855576770808}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W3Equip
+      value: 
+      objectReference: {fileID: 8654424557959743143}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W4Equip
+      value: 
+      objectReference: {fileID: 1640481588278840354}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W2Shadow
+      value: 
+      objectReference: {fileID: 1939410243307336704}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W3Shadow
+      value: 
+      objectReference: {fileID: 6783906313388770145}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W4Shadow
+      value: 
+      objectReference: {fileID: 4345722036574661977}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W1EquipText
+      value: 
+      objectReference: {fileID: 7712544920266989014}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W2BuyButton
+      value: 
+      objectReference: {fileID: 5631038555618189034}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W2EquipText
+      value: 
+      objectReference: {fileID: 6792657769161746465}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W3BuyButton
+      value: 
+      objectReference: {fileID: 5871679134820523640}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W3EquipText
+      value: 
+      objectReference: {fileID: 3330084171642352255}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W4BuyButton
+      value: 
+      objectReference: {fileID: 2177442227725390457}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W4EquipText
+      value: 
+      objectReference: {fileID: 922610086052389754}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: WOpenButton
+      value: 
+      objectReference: {fileID: 3291054015409854807}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: WeaponInven
+      value: 
+      objectReference: {fileID: 9110638912416233458}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W1EquipImage
+      value: 
+      objectReference: {fileID: 7335908189350149938}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W2EquipImage
+      value: 
+      objectReference: {fileID: 446886434161137240}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W3EquipImage
+      value: 
+      objectReference: {fileID: 9011531020754975400}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W4EquipImage
+      value: 
+      objectReference: {fileID: 2320547562229267295}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: WCloseButton
+      value: 
+      objectReference: {fileID: 6514471534385704312}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W1EquipButton
+      value: 
+      objectReference: {fileID: 444453971563476915}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W2EquipButton
+      value: 
+      objectReference: {fileID: 628041523405457026}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W3EquipButton
+      value: 
+      objectReference: {fileID: 4278672284868721467}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W4EquipButton
+      value: 
+      objectReference: {fileID: 6802615050251955982}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W1UpgradeButton
+      value: 
+      objectReference: {fileID: 1436243689900348695}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W2UpgradeButton
+      value: 
+      objectReference: {fileID: 7912768504136333629}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W3UpgradeButton
+      value: 
+      objectReference: {fileID: 7022164749150566708}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: W4UpgradeButton
+      value: 
+      objectReference: {fileID: 4956850711497978591}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: weaponUpgradeManager1
+      value: 
+      objectReference: {fileID: 6328951272597566357}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: weaponUpgradeManager2
+      value: 
+      objectReference: {fileID: 4141707580122235160}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: weaponUpgradeManager3
+      value: 
+      objectReference: {fileID: 7503117879435615708}
+    - target: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+      propertyPath: weaponUpgradeManager4
+      value: 
+      objectReference: {fileID: 8152360296191632027}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
 --- !u!224 &3954512602726087099
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1381,24 +1565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &4299295203117215918
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5386664387408551511}
-  - component: {fileID: 1199006566028310198}
-  - component: {fileID: 5640485777884835269}
-  m_Layer: 0
-  m_Name: KJHButtonManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1001 &4340536000244917824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1712,21 +1878,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 7726930911450032773}
   scrollSpeedY: 0.1
---- !u!4 &5386664387408551511
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4299295203117215918}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.87706, y: 1128.709, z: 1.5969751}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5497047434428076209 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1434928122903279776, guid: ad0df21fbdcd3b34ba4dde9f102852f3, type: 3}
@@ -1902,73 +2053,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5640485777884835269
+--- !u!114 &5640485777884835269 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6937136359359274038, guid: 59faa91d783c03c41b6784373f8ced3b, type: 3}
+  m_PrefabInstance: {fileID: 3901442579159034416}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4299295203117215918}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c8fbacc69151cc4c927bbc05348d653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData:
-    StageInfo: 0
-    Attack: 0
-    Critical: 0
-    CriticalDmg: 0
-    BonusGold: 0
-    AutoAttackCooldown: 5
-    Gold: 0
-    EnforceStone: 0
-    IsAutoAttackUnlocked: 0
-  weaponUpgradeManager1: {fileID: 6328951272597566357}
-  weaponUpgradeManager2: {fileID: 4141707580122235160}
-  weaponUpgradeManager3: {fileID: 7503117879435615708}
-  weaponUpgradeManager4: {fileID: 8152360296191632027}
-  NowEquip: {fileID: 11400000, guid: c3bd59a2a85a33a47933c4eaf14ae058, type: 2}
-  weapons:
-  - {fileID: 11400000, guid: 505c2cdec920d12408ab513b54f7c87b, type: 2}
-  - {fileID: 11400000, guid: 54d211b7b54054f4ea7463d77e2f1b0c, type: 2}
-  - {fileID: 11400000, guid: c0bc72fc5cb89f24e957032fe09f5362, type: 2}
-  - {fileID: 11400000, guid: c2cf7acc236d38445a68770c330ab068, type: 2}
-  Weapon1: {fileID: 11400000, guid: c3bd59a2a85a33a47933c4eaf14ae058, type: 2}
-  Weapon2: {fileID: 11400000, guid: 3f0713f42ac99194cb84db39808aa6e7, type: 2}
-  Weapon3: {fileID: 11400000, guid: bcd26fb95eb92704fa75a4ff822791ec, type: 2}
-  Weapon4: {fileID: 11400000, guid: f78480cf7b86e63429f0291ffe60a8ea, type: 2}
-  WOpenButton: {fileID: 3291054015409854807}
-  WCloseButton: {fileID: 6514471534385704312}
-  W1EquipButton: {fileID: 444453971563476915}
-  W2EquipButton: {fileID: 628041523405457026}
-  W3EquipButton: {fileID: 4278672284868721467}
-  W4EquipButton: {fileID: 6802615050251955982}
-  W2BuyButton: {fileID: 5631038555618189034}
-  W3BuyButton: {fileID: 5871679134820523640}
-  W4BuyButton: {fileID: 2177442227725390457}
-  W1UpgradeButton: {fileID: 1436243689900348695}
-  W2UpgradeButton: {fileID: 7912768504136333629}
-  W3UpgradeButton: {fileID: 7022164749150566708}
-  W4UpgradeButton: {fileID: 4956850711497978591}
-  WeaponInven: {fileID: 9110638912416233458}
-  W2Shadow: {fileID: 1939410243307336704}
-  W3Shadow: {fileID: 6783906313388770145}
-  W4Shadow: {fileID: 4345722036574661977}
-  W2Buy: {fileID: 6043419195857053788}
-  W3Buy: {fileID: 3287044070606064518}
-  W4Buy: {fileID: 2129652647802909674}
-  W2Equip: {fileID: 6766341855576770808}
-  W3Equip: {fileID: 8654424557959743143}
-  W4Equip: {fileID: 1640481588278840354}
-  W1EquipText: {fileID: 7712544920266989014}
-  W2EquipText: {fileID: 6792657769161746465}
-  W3EquipText: {fileID: 3330084171642352255}
-  W4EquipText: {fileID: 922610086052389754}
-  W1EquipImage: {fileID: 7335908189350149938}
-  W2EquipImage: {fileID: 446886434161137240}
-  W3EquipImage: {fileID: 9011531020754975400}
-  W4EquipImage: {fileID: 2320547562229267295}
 --- !u!224 &5753344283302852102
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2946,7 +3041,7 @@ SceneRoots:
   - {fileID: 3894606888326210606}
   - {fileID: 5532681269375209734}
   - {fileID: 7074074605875344353}
-  - {fileID: 5386664387408551511}
+  - {fileID: 3901442579159034416}
   - {fileID: 823215555463940641}
   - {fileID: 3197744178518399804}
   - {fileID: 7057770430203719860}
