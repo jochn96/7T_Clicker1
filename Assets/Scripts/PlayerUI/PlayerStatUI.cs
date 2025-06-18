@@ -19,21 +19,25 @@ public class PlayerStatUI : MonoBehaviour
     public TextMeshProUGUI critChanceValueText;
     public TextMeshProUGUI critChanceCostText;
     public Button critChanceUpgradeButton;
+    public GameObject critChanceMaxText; // 최대 업그레이드 시 표시할 MAX 텍스트
 
     [Header("치명타 대미지 UI")]
     public TextMeshProUGUI critDamageValueText;
     public TextMeshProUGUI critDamageCostText;
     public Button critDamageUpgradeButton;
+    public GameObject critDamageMaxText; // 최대 업그레이드 시 표시할 MAX 텍스트
 
     [Header("골드 획득량 UI")]
     public TextMeshProUGUI goldGainValueText;
     public TextMeshProUGUI goldGainCostText;
     public Button goldGainUpgradeButton;
+    public GameObject goldGainMaxText; // 최대 업그레이드 시 표시할 MAX 텍스트
 
     [Header("자동공격 쿨타임 UI")]
     public TextMeshProUGUI autoAttackCooldownValueText;
     public TextMeshProUGUI autoAttackCooldownCostText;
     public Button autoAttackCooldownUpgradeButton;
+    public GameObject autoAttackCooldownMaxText; // 최대 업그레이드 시 표시할 MAX 텍스트
     public GameObject autoAttackCooldownUpgradePanel; // 자동공격 쿨타임 업그레이드 패널
     
     [Header("자동공격 구매 UI")]
@@ -44,6 +48,12 @@ public class PlayerStatUI : MonoBehaviour
     [Header("골드 부족 UI")]
     public Image notEnoughGoldPanel; // 골드 부족 알림 패널
     public TextMeshProUGUI notEnoughGoldText; // 골드 부족 알림 텍스트
+    
+    // 최대 업그레이드 값 상수
+    private const float MAX_CRIT_CHANCE = 100f;
+    private const float MAX_CRIT_DAMAGE = 250f;
+    private const float MAX_GOLD_GAIN = 100f;
+    private const float MAX_AUTO_ATTACK_COOLDOWN = 1f;
 
     private Player player;
     private GameManager gameManager;
@@ -59,6 +69,20 @@ public class PlayerStatUI : MonoBehaviour
         {
             notEnoughGoldPanel.gameObject.SetActive(false);
         }
+        
+        // MAX 텍스트 초기 설정
+        InitializeMaxTexts();
+    }
+    
+    /// <summary>
+    /// MAX 텍스트 초기화
+    /// </summary>
+    private void InitializeMaxTexts()
+    {
+        if (critChanceMaxText != null) critChanceMaxText.SetActive(false);
+        if (critDamageMaxText != null) critDamageMaxText.SetActive(false);
+        if (goldGainMaxText != null) goldGainMaxText.SetActive(false);
+        if (autoAttackCooldownMaxText != null) autoAttackCooldownMaxText.SetActive(false);
     }
 
     private void Start()
@@ -118,22 +142,53 @@ public class PlayerStatUI : MonoBehaviour
         // 골드 UI 갱신
         UpdateGoldUI();
 
+        // 공격력 UI 갱신
         attackValueText.text = player.GetStatValue(PlayerStatType.AttackPower).ToString();
         attackCostText.text = player.GetUpgradeCost(PlayerStatType.AttackPower) + "G";
 
-        critChanceValueText.text = player.GetStatValue(PlayerStatType.CriticalChance) + "%";
+        // 치명타 확률 UI 갱신
+        float critChance = player.GetStatValue(PlayerStatType.CriticalChance);
+        critChanceValueText.text = critChance + "%";
         critChanceCostText.text = player.GetUpgradeCost(PlayerStatType.CriticalChance) + "G";
+        
+        // 치명타 확률 최대치 확인 및 UI 업데이트
+        bool isCritChanceMax = critChance >= MAX_CRIT_CHANCE;
+        if (critChanceUpgradeButton != null) critChanceUpgradeButton.interactable = !isCritChanceMax;
+        if (critChanceMaxText != null) critChanceMaxText.SetActive(isCritChanceMax);
+        if (isCritChanceMax) critChanceCostText.text = "MAX";
 
-        // 치명타 데미지 %로 표시 - PlayerData의 값을 그대로 표시
-        critDamageValueText.text = player.GetStatValue(PlayerStatType.CriticalDamage) + "%";
+        // 치명타 데미지 UI 갱신
+        float critDamage = player.GetStatValue(PlayerStatType.CriticalDamage);
+        critDamageValueText.text = critDamage + "%";
         critDamageCostText.text = player.GetUpgradeCost(PlayerStatType.CriticalDamage) + "G";
+        
+        // 치명타 데미지 최대치 확인 및 UI 업데이트
+        bool isCritDamageMax = critDamage >= MAX_CRIT_DAMAGE;
+        if (critDamageUpgradeButton != null) critDamageUpgradeButton.interactable = !isCritDamageMax;
+        if (critDamageMaxText != null) critDamageMaxText.SetActive(isCritDamageMax);
+        if (isCritDamageMax) critDamageCostText.text = "MAX";
 
-        goldGainValueText.text = player.GetStatValue(PlayerStatType.GoldGainPercent) + "%";
+        // 골드 획득량 UI 갱신
+        float goldGain = player.GetStatValue(PlayerStatType.GoldGainPercent);
+        goldGainValueText.text = goldGain + "%";
         goldGainCostText.text = player.GetUpgradeCost(PlayerStatType.GoldGainPercent) + "G";
+        
+        // 골드 획득량 최대치 확인 및 UI 업데이트
+        bool isGoldGainMax = goldGain >= MAX_GOLD_GAIN;
+        if (goldGainUpgradeButton != null) goldGainUpgradeButton.interactable = !isGoldGainMax;
+        if (goldGainMaxText != null) goldGainMaxText.SetActive(isGoldGainMax);
+        if (isGoldGainMax) goldGainCostText.text = "MAX";
 
-        // 자동공격 쿨타임 감소 값을 소수점 첫째자리까지만 표시
-        autoAttackCooldownValueText.text = player.GetStatValue(PlayerStatType.AutoAttackCooldownReduce).ToString("F1");
+        // 자동공격 쿨타임 UI 갱신
+        float autoAttackCooldown = player.GetStatValue(PlayerStatType.AutoAttackCooldownReduce);
+        autoAttackCooldownValueText.text = autoAttackCooldown.ToString("F1");
         autoAttackCooldownCostText.text = player.GetUpgradeCost(PlayerStatType.AutoAttackCooldownReduce) + "G";
+        
+        // 자동공격 쿨타임 최대치 확인 및 UI 업데이트
+        bool isAutoAttackCooldownMax = autoAttackCooldown >= MAX_AUTO_ATTACK_COOLDOWN;
+        if (autoAttackCooldownUpgradeButton != null) autoAttackCooldownUpgradeButton.interactable = !isAutoAttackCooldownMax;
+        if (autoAttackCooldownMaxText != null) autoAttackCooldownMaxText.SetActive(isAutoAttackCooldownMax);
+        if (isAutoAttackCooldownMax) autoAttackCooldownCostText.text = "MAX";
         
         // 자동 공격 UI 갱신
         UpdateAutoAttackUI();
