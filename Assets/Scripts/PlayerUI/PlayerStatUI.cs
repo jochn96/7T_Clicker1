@@ -99,7 +99,7 @@ public class PlayerStatUI : MonoBehaviour
         
         if (player == null || gameManager == null)
         {
-            Debug.LogError("PlayerStatUI: Player 또는 GameManager 초기화 실패");
+        
         }
     }
 
@@ -213,11 +213,11 @@ public class PlayerStatUI : MonoBehaviour
                 }
                 
                 // 디버그 로그
-                Debug.Log($"골드 UI 갱신: {currentGoldText.text} (원래 값: {currentGold})");
+                
             }
             catch (System.Exception e)
             {
-                Debug.LogError($"UpdateGoldUI 오류: {e.Message}");
+               
             }
         }
     }
