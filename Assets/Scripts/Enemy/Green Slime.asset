@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c4eb8bed27f41541a8818b9882504d6, type: 3}
   m_Name: Green Slime
   m_EditorClassIdentifier: 
+  Length: 10
+  ememyPrefab: {fileID: 2625392516185505593, guid: 01827dcb8a4005b4eac51af53a1b9dd8, type: 3}
   enemyLife: 10
   maxEnemyLife: 100
   enemyExp: 0

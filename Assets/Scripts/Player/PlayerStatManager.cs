@@ -46,6 +46,18 @@ public class PlayerStatManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 특정 능력치의 현재 레벨(업그레이드 횟수) 반환
+    /// </summary>
+    public int GetStatLevel(PlayerStatType statType)
+    {
+        if (statLevels.TryGetValue(statType, out var level))
+        {
+            return level;
+        }
+        return 0;
+    }
+
+    /// <summary>
     /// 특정 능력치의 현재 업그레이드 비용 반환
     /// </summary>
     public int GetUpgradeCost(PlayerStatType statType)

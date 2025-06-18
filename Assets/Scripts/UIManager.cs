@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     [Header("LodingDisplay")]
     public Image lodingDisplay;
     private Coroutine lodingCoroutine;
+    private bool isLoding = false;
 
     [Header("System")]
     public const int MAX_VALUE = 1000000000;
@@ -58,6 +59,7 @@ public class UIManager : MonoBehaviour
         // UI 초기 설정
         titleUI.gameObject.SetActive(true);
         mainUI.gameObject.SetActive(false);
+        soundUI.gameObject.SetActive(false);
         lodingDisplay.gameObject.SetActive(false);
         
         // GameManager가 초기화된 경우에만 골드 표시
@@ -106,6 +108,10 @@ public class UIManager : MonoBehaviour
 
     public void StartGame()
     {
+        if(isLoding)
+            return;
+
+        isLoding = true;
         titleAnimator.SetBool("IsStart", true);
         if (lodingCoroutine != null)
         {
@@ -129,6 +135,7 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator LodingSign(GameObject defaltObject, GameObject NextObject)
     {
+
         Color color = lodingDisplay.color;
         color.a = 0;
         lodingDisplay.color = color;
@@ -161,6 +168,7 @@ public class UIManager : MonoBehaviour
         }
         color.a = 0;
         lodingDisplay.color = color;  //총 지속시간 + 대기시간동안 작동 1.75초
+        isLoding = false;
         lodingDisplay.gameObject.SetActive(false);  //종료
     }
 
@@ -227,18 +235,14 @@ public class UIManager : MonoBehaviour
             unitIndex++;  //몇번 셌는지 카운팅
         }
         if (parts.Count >= 2)  //최상위 두개만 출력
-            return $"{parts[0]}\n{parts[1]}";
+            return $"{parts[0]}{parts[1]}";
         else  //그렇지않으면 하위파츠만 출력 예시 1456면 1456출력
             return parts[0];
     }
 
     public void OnClickSetting()
     {
-        soundUI.gameObject.SetActive(true);
+        soundUI.SetActive(!soundUI.activeSelf);
     }
 
-    public void OnClickSetCancle()
-    {
-        soundUI.gameObject.SetActive(false);
-    }
 }
