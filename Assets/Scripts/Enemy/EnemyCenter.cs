@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// 적의 체력 최소, 최대량을 정의합니다.
@@ -10,6 +10,12 @@ using UnityEngine;
 
 public class EnemyCenter : ScriptableObject
 {
+    [Header("적 프리팹")]
+    [Tooltip("프리팹을 불러와 적을 소환한다")]
+    [SerializeField]
+
+    public GameObject ememyPrefab;
+
     [Header("적 기초 체력")] 
     [Tooltip("값을 수정하여 적의 기초 체력량을 바꾼다")] 
     [SerializeField]
