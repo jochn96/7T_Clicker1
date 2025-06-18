@@ -52,6 +52,7 @@ MonoBehaviour:
   enemyCenters:
   - {fileID: 11400000, guid: a4c0b458b7650954cbefaf7f7a03fad9, type: 2}
   - {fileID: 11400000, guid: e83df52f7e3baeb4aac56f08c4111aab, type: 2}
-  enemy: {fileID: 2640769902087629519, guid: 01827dcb8a4005b4eac51af53a1b9dd8, type: 3}
-  target: {fileID: 2788214325984841871, guid: 01827dcb8a4005b4eac51af53a1b9dd8, type: 3}
+  enemy: {fileID: 0}
+  target: {fileID: 0}
   thisStageEnemy: 0
+  enemyCenter: {fileID: 11400000, guid: a4c0b458b7650954cbefaf7f7a03fad9, type: 2}
