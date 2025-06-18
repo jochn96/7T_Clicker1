@@ -596,7 +596,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &4828111512520419399
 MonoBehaviour:
@@ -880,7 +880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1591963765258235604, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 450.00012
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1887414887564969102, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
       propertyPath: m_Pivot.x
@@ -968,15 +968,15 @@ PrefabInstance:
       objectReference: {fileID: 467773607, guid: a11ea103d81f8dd4b896a5dcd08d3fcc, type: 3}
     - target: {fileID: 2818527521443126916, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2818527521443126916, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2818527521443126916, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2821131719617079852, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1048,7 +1048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3919891281763775834, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
       propertyPath: m_VerticalScrollbarVisibility
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4163040090438268695, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1348,11 +1348,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7869290727712516811, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
       propertyPath: m_Size
-      value: 0.625
+      value: 0.62499994
       objectReference: {fileID: 0}
     - target: {fileID: 7869290727712516811, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7988594734045572141, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
       propertyPath: m_Type
@@ -1482,6 +1482,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4262408775220748016, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2035115760278514408}
+    - targetCorrespondingSourceObject: {fileID: 8752992738233654125, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4537516038502161884}
   m_SourcePrefab: {fileID: 100100000, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
 --- !u!114 &582378280780799258 stripped
 MonoBehaviour:
@@ -1565,3 +1568,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6336383539187219104 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8752992738233654125, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
+  m_PrefabInstance: {fileID: 3357358501979447757}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4537516038502161884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6336383539187219104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
