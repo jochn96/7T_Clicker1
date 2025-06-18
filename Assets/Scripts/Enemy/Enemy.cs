@@ -40,19 +40,22 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHP = Mathf.Max(0, currentHP - damage);
-    
-        // HP 바 업데이트
-        if (HPBar != null)
+        if (Input.GetMouseButtonDown(0))
         {
-            float healthPercentage = (float)currentHP / enemyCenter.MaxEnemyLife;
-            HPBar.fillAmount = healthPercentage;
-        }
-    
-        // HP가 0 이하면 사망 처리
-        if (currentHP <= 0)
-        {
-            Die();
+            currentHP = Mathf.Max(0, currentHP - damage);
+
+            // HP 바 업데이트
+            if (HPBar != null)
+            {
+                float healthPercentage = (float)currentHP / enemyCenter.MaxEnemyLife - enemyCenter.EnemyLife;
+                HPBar.fillAmount = healthPercentage;
+            }
+
+            // HP가 0 이하면 사망 처리
+            if (currentHP <= 0)
+            {
+                Die();
+            }
         }
     }
 
@@ -68,7 +71,7 @@ public class Enemy : MonoBehaviour
             // 리소스 획득
             if (gameManager != null)
             {
-                gameManager.GetResource(10, 10);
+                gameManager.GetResource(100, 100);
             }
             else 
             {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Red Slime
   m_EditorClassIdentifier: 
   enemyLife: 20
-  maxenemyLife: 20
+  maxEnemyLife: 250
   enemyExp: 0
   enenmyType: 2
   stageCount: 2
