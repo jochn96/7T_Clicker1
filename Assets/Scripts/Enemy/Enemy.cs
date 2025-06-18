@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     // 마우스 왼쪽 클릭 시 적 체력 감소 구현
     private void Start()
     {
-        currentHP = enemyCenter.MaxEnemyLife;
+        currentHP = enemyCenter.MaxEnemyLife - enemyCenter.EnemyLife;
         gameManager = GameManager.Instance;
     }
 
