@@ -44,6 +44,11 @@ public class EnemyCenter : ScriptableObject
 
     private int enenmyType = 10;
     public int EnenmyType { get { return enenmyType; } }
+    
+    [Header("적 길이")]
+    [Tooltip("적이 출력되는 길이를 표기한다")]
+    [SerializeField]
+    public int Length = 10;
 
     [Header("스테이지 종류")] 
     [Tooltip("스테이지의 총 종류를 수정한다")] 
@@ -51,6 +56,12 @@ public class EnemyCenter : ScriptableObject
 
     private int stageCount = 10;
     public int StageCount { get { return stageCount; } }
+    
+    [Header("스테이지 숫자")]
+    [Tooltip("현재 스테이지의 숫자를 표기한다")]
+    [SerializeField]
+    private int stageKey = 0;
+    public int StageKey { get { return stageKey; } }
 
     
 }
