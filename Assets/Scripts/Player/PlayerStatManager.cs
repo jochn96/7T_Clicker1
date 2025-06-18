@@ -37,7 +37,24 @@ public class PlayerStatManager : MonoBehaviour
     /// </summary>
     public float GetStatValue(PlayerStatType statType)
     {
-        return statValues.TryGetValue(statType, out var value) ? value : 0f;
+        if (statValues.TryGetValue(statType, out var value))
+        {
+            
+            return value;
+        }
+        return 0f;
+    }
+
+    /// <summary>
+    /// 특정 능력치의 현재 레벨(업그레이드 횟수) 반환
+    /// </summary>
+    public int GetStatLevel(PlayerStatType statType)
+    {
+        if (statLevels.TryGetValue(statType, out var level))
+        {
+            return level;
+        }
+        return 0;
     }
 
     /// <summary>
@@ -62,17 +79,41 @@ public class PlayerStatManager : MonoBehaviour
             newGold = currentGold;
             return false;
         }
-        int cost = GetUpgradeCost(statType);
-        if (currentGold < cost)
-        {
-            newGold = currentGold;
-            return false;
-        }
-        // 비용 차감
-        newGold = currentGold - cost;
+        
+        // 골드 체크 로직 제거 (이미 UI에서 체크했음)
+        newGold = currentGold;
+        
         // 능력치 증가
         statLevels[statType]++;
         statValues[statType] += table.upgradeValue;
+        
+        // GameManager.playerData 값도 직접 업데이트 (간결한 방식으로)
+        var gameManager = GameManager.Instance;
+        if (gameManager != null)
+        {
+            switch (statType)
+            {
+                case PlayerStatType.AttackPower:
+                    gameManager.playerData.Attack += Mathf.RoundToInt(table.upgradeValue);
+                    break;
+                case PlayerStatType.CriticalChance:
+                    gameManager.playerData.Critical += table.upgradeValue;
+                    break;
+                case PlayerStatType.CriticalDamage:
+                    gameManager.playerData.CriticalDmg += Mathf.RoundToInt(table.upgradeValue);
+                    break;
+                case PlayerStatType.GoldGainPercent:
+                    gameManager.playerData.BonusGold += Mathf.RoundToInt(table.upgradeValue);
+                    break;
+                case PlayerStatType.AutoAttackCooldownReduce:
+                    gameManager.playerData.AutoAttackCooldown += table.upgradeValue;
+                    break;
+            }
+            
+            // 값이 변경되었으므로 GameManager의 내부 값 갱신
+            gameManager.UpdateData();
+        }
+        
         return true;
     }
 } 

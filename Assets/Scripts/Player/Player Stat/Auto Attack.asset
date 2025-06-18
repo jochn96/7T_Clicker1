@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Auto Attack
   m_EditorClassIdentifier: 
   statType: 4
-  upgradeValue: 0.1
+  upgradeValue: -0.1
   baseCost: 300
   costMultiplier: 1.2

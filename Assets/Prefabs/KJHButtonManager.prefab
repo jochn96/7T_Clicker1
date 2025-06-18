@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5286869499791118546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2267679448634317188}
+  - component: {fileID: 2085472954139961046}
+  - component: {fileID: 6937136359359274038}
+  m_Layer: 0
+  m_Name: KJHButtonManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2267679448634317188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286869499791118546}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 27.87706, y: 1128.709, z: 1.5969751}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2085472954139961046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286869499791118546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39519749975d01f41ada64786c6f5806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetButton: {fileID: 0}
+  Weapon1: {fileID: 11400000, guid: c3bd59a2a85a33a47933c4eaf14ae058, type: 2}
+  Weapon2: {fileID: 11400000, guid: 3f0713f42ac99194cb84db39808aa6e7, type: 2}
+  Weapon3: {fileID: 11400000, guid: bcd26fb95eb92704fa75a4ff822791ec, type: 2}
+  Weapon4: {fileID: 11400000, guid: f78480cf7b86e63429f0291ffe60a8ea, type: 2}
+--- !u!114 &6937136359359274038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286869499791118546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c8fbacc69151cc4c927bbc05348d653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData:
+    StageInfo: 0
+    Attack: 0
+    Critical: 0
+    CriticalDmg: 0
+    BonusGold: 0
+    AutoAttackCooldown: 5
+    Gold: 0
+    EnforceStone: 0
+    IsAutoAttackUnlocked: 0
+  weaponUpgradeManager1: {fileID: 0}
+  weaponUpgradeManager2: {fileID: 0}
+  weaponUpgradeManager3: {fileID: 0}
+  weaponUpgradeManager4: {fileID: 0}
+  NowEquip: {fileID: 11400000, guid: c3bd59a2a85a33a47933c4eaf14ae058, type: 2}
+  weapons:
+  - {fileID: 11400000, guid: c3bd59a2a85a33a47933c4eaf14ae058, type: 2}
+  - {fileID: 11400000, guid: 3f0713f42ac99194cb84db39808aa6e7, type: 2}
+  - {fileID: 11400000, guid: bcd26fb95eb92704fa75a4ff822791ec, type: 2}
+  - {fileID: 11400000, guid: f78480cf7b86e63429f0291ffe60a8ea, type: 2}
+  Weapon1: {fileID: 11400000, guid: c3bd59a2a85a33a47933c4eaf14ae058, type: 2}
+  Weapon2: {fileID: 11400000, guid: 3f0713f42ac99194cb84db39808aa6e7, type: 2}
+  Weapon3: {fileID: 11400000, guid: bcd26fb95eb92704fa75a4ff822791ec, type: 2}
+  Weapon4: {fileID: 11400000, guid: f78480cf7b86e63429f0291ffe60a8ea, type: 2}
+  WOpenButton: {fileID: 0}
+  WCloseButton: {fileID: 0}
+  W1EquipButton: {fileID: 0}
+  W2EquipButton: {fileID: 0}
+  W3EquipButton: {fileID: 0}
+  W4EquipButton: {fileID: 0}
+  W2BuyButton: {fileID: 0}
+  W3BuyButton: {fileID: 0}
+  W4BuyButton: {fileID: 0}
+  W1UpgradeButton: {fileID: 0}
+  W2UpgradeButton: {fileID: 0}
+  W3UpgradeButton: {fileID: 0}
+  W4UpgradeButton: {fileID: 0}
+  WeaponInven: {fileID: 0}
+  W2Shadow: {fileID: 0}
+  W3Shadow: {fileID: 0}
+  W4Shadow: {fileID: 0}
+  W2Buy: {fileID: 0}
+  W3Buy: {fileID: 0}
+  W4Buy: {fileID: 0}
+  W2Equip: {fileID: 0}
+  W3Equip: {fileID: 0}
+  W4Equip: {fileID: 0}
+  W1EquipText: {fileID: 0}
+  W2EquipText: {fileID: 0}
+  W3EquipText: {fileID: 0}
+  W4EquipText: {fileID: 0}
+  W1EquipImage: {fileID: 0}
+  W2EquipImage: {fileID: 0}
+  W3EquipImage: {fileID: 0}
+  W4EquipImage: {fileID: 0}

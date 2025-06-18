@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a08ae7d29aa0a409c5d7724589cf48, type: 3}
+  m_Name: Weapon3
+  m_EditorClassIdentifier: 
+  WeaponLevel: 1
+  atk: 15
+  criticalChance: 15
+  Lv1atk: 15
+  Lv2atk: 19
+  Lv3atk: 23
+  Lv4atk: 27
+  Lv5atk: 31
+  Lv1CriticalChance: 15
+  Lv2CriticalChance: 15
+  Lv3CriticalChance: 20
+  Lv4CriticalChance: 20
+  Lv5CriticalChance: 25
+  BuyPrice: 7
+  UpgradePrice: 4
+  Lv1price: 4
+  Lv2price: 8
+  Lv3price: 12
+  Lv4price: 16

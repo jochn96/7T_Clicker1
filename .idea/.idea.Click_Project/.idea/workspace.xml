@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e44ed41-d675-41b0-8514-78f0e80371ff" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Click_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Click_Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KJH/WeaponButtonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KJH/WeaponButtonManager.cs" afterDir="false" />
-    </list>
+    <list default="true" id="0e44ed41-d675-41b0-8514-78f0e80371ff" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +12,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/KJH/WeaponBuyManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -30,7 +30,7 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;KJH&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;KJH1&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -101,6 +101,11 @@
       <workItem from="1749777746463" duration="827000" />
       <workItem from="1749792883351" duration="7963000" />
       <workItem from="1749801678473" duration="2083000" />
+      <workItem from="1750038914932" duration="12902000" />
+      <workItem from="1750055245122" duration="13248000" />
+      <workItem from="1750178685446" duration="680000" />
+      <workItem from="1750214375862" duration="272000" />
+      <workItem from="1750224634185" duration="366000" />
     </task>
     <servers />
   </component>
