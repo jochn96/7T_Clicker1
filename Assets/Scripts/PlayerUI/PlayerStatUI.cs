@@ -40,6 +40,10 @@ public class PlayerStatUI : MonoBehaviour
     public GameObject autoAttackPurchasePanel;
     public TextMeshProUGUI autoAttackPurchaseCostText;
     public Button autoAttackPurchaseButton;
+    
+    [Header("골드 부족 UI")]
+    public Image notEnoughGoldPanel; // 골드 부족 알림 패널
+    public TextMeshProUGUI notEnoughGoldText; // 골드 부족 알림 텍스트
 
     private Player player;
     private GameManager gameManager;
@@ -50,6 +54,11 @@ public class PlayerStatUI : MonoBehaviour
         player = FindObjectOfType<Player>();
         gameManager = GameManager.Instance;
         
+        // 골드 부족 패널 초기 설정
+        if (notEnoughGoldPanel != null)
+        {
+            notEnoughGoldPanel.gameObject.SetActive(false);
+        }
     }
 
     private void Start()
@@ -185,6 +194,7 @@ public class PlayerStatUI : MonoBehaviour
         else
         {
             Debug.Log($"{statType} 업그레이드 실패: 골드 부족");
+            ShowNotEnoughGoldPanel(cost);
         }
     }
     
@@ -205,6 +215,48 @@ public class PlayerStatUI : MonoBehaviour
         else
         {
             Debug.Log("자동 공격 기능 구매 실패: 골드 부족");
+            ShowNotEnoughGoldPanel(player.autoAttackUnlockCost);
+        }
+    }
+    
+    /// <summary>
+    /// 골드 부족 패널을 표시합니다.
+    /// </summary>
+    private void ShowNotEnoughGoldPanel(int requiredGold)
+    {
+        if (notEnoughGoldPanel == null) return;
+        
+        // 골드 부족 패널 활성화
+        notEnoughGoldPanel.gameObject.SetActive(true);
+        
+        // 텍스트 설정
+        if (notEnoughGoldText != null)
+        {
+            int missingGold = requiredGold - gameManager.playerData.Gold;
+            notEnoughGoldText.text = $"골드가 부족합니다!\n필요: {requiredGold}G\n보유: {gameManager.playerData.Gold}G\n부족: {missingGold}G";
+        }
+    }
+    
+    /// <summary>
+    /// 골드 부족 패널을 닫습니다.
+    /// </summary>
+    public void CloseNotEnoughGoldPanel()
+    {
+        if (notEnoughGoldPanel != null)
+        {
+            notEnoughGoldPanel.gameObject.SetActive(false);
+        }
+    }
+    
+    /// <summary>
+    /// 화면의 아무 곳이나 클릭했을 때 호출되는 메서드 (인스펙터에서 연결)
+    /// </summary>
+    public void OnClickAnywhere()
+    {
+        // 골드 부족 패널이 활성화되어 있다면 닫기
+        if (notEnoughGoldPanel != null && notEnoughGoldPanel.gameObject.activeSelf)
+        {
+            CloseNotEnoughGoldPanel();
         }
     }
 

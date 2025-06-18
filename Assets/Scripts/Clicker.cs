@@ -39,10 +39,14 @@ public class Clicker : MonoBehaviour
         int Damage = FinalDamage(isCri);
         Debug.Log($"크리티컬 {isCri}, 데미지 {Damage}");
 
-        Transform child = target.GetChild(0);
-        if (child.TryGetComponent<Enemy>(out Enemy enemy))
+        if (target.childCount > 0)
         {
-            targetEnemy = enemy;
+            Transform child = target.GetChild(0);
+
+            if (child.TryGetComponent<Enemy>(out Enemy enemy))
+            {
+                targetEnemy = enemy;
+            }
         }
         else
         {
@@ -87,7 +91,7 @@ public class Clicker : MonoBehaviour
         }
     }
 
-    private void AttackAnimation()
+    public void AttackAnimation()
     {
         if (animator == null) return;
 
@@ -103,7 +107,7 @@ public class Clicker : MonoBehaviour
         isAttack = !isAttack; // 1, 2 바꾸면서 재생
     }
 
-    private void Effect(bool isCri)
+    public void Effect(bool isCri)
     {
         GameObject effectPrefab = isCri ? criEffect : nomalEffect;
         if (effectPrefab == null || effectPivot == null) return;

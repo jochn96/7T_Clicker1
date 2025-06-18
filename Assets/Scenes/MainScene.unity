@@ -215,6 +215,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+
 --- !u!1001 &914859258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -272,6 +273,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01827dcb8a4005b4eac51af53a1b9dd8, type: 3}
+
 --- !u!1 &190921725501458405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,6 +1069,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+
 --- !u!114 &3504611508223170377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1609,6 +1612,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8735267076476710112, guid: 73c64e8afbec3b549b973ed4e8137807, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1789463798}
     - target: {fileID: 8735267076476710112, guid: 73c64e8afbec3b549b973ed4e8137807, type: 3}
       propertyPath: effectPivot
       value: 
@@ -3017,4 +3024,6 @@ SceneRoots:
   - {fileID: 3197744178518399804}
   - {fileID: 7057770430203719860}
   - {fileID: 3549138983937906197}
+
   - {fileID: 914859258}
+
