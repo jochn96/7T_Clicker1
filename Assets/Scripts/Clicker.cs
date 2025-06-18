@@ -36,27 +36,30 @@ public class Clicker : MonoBehaviour
     {
         bool isCri = isCritical();
         int Damage = FinalDamage(isCri);
+        Debug.Log($"크리티컬 {isCri}, 데미지 {Damage}");
         if (targetEnemy != null)
         {
             targetEnemy.TakeDamage(Damage); //몬스터 체력 - Damage;
         }
         //공격 이펙트 동작 그리고 크리티컬시 다른 이펙트 동작
-        Debug.Log("클릭했습니다.");
+        AttackAnimation();
+        Effect(isCri);
     }
 
     public int FinalDamage(bool isCri)
     {//공격시 bool isCritical()을 실행시켜 (공격에서 임팩트를 주기위해서 이 함수가 필요) 크리티컬 여부판단
-        if (isCri)//크리티컬이 발동되면
+        if (isCri)
         {
-            AttackAnimation();
-            Effect(isCri);
-            // 크리티컬 발동 시 finalAttack 사용 (이미 크리티컬 데미지가 적용된 값)
+            // 크리티컬 데미지 계산: (기본 공격력 + 무기 공격력) * (1 + 크리티컬 데미지%)
+            int baseDamage = gameManager.finalAttack;
+            float critMultiplier = 1f + (gameManager.finalCritDmg / 100f);
+            return Mathf.RoundToInt(baseDamage * critMultiplier);
+        }
+        else
+        {
+            // 일반 공격
             return gameManager.finalAttack;
         }
-        AttackAnimation();
-        Effect(isCri);
-        // 일반 공격 시 damage 사용 (기본 공격력 + 장비 공격력)
-        return gameManager.damage;
     }
     public bool isCritical()
     {
