@@ -10461,10 +10461,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317cfdf12ef3fc047b8f3c0af196f7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCenter: {fileID: 0}
-  HPBar: {fileID: 0}
+  enemyCenter: {fileID: 11400000, guid: a4c0b458b7650954cbefaf7f7a03fad9, type: 2}
+  HPBar: {fileID: 5528138460381204058}
   currentHP: 0
-  clicker: {fileID: 0}
+  clicker: {fileID: 417287980434670471}
 --- !u!222 &5772597170034184247
 CanvasRenderer:
   m_ObjectHideFlags: 0

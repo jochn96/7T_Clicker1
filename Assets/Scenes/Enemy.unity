@@ -164,6 +164,8 @@ MonoBehaviour:
     Gold: 0
     EnforceStone: 0
     IsAutoAttackUnlocked: 0
+  weaponUpgradeManager: {fileID: 0}
+  weaponButtonManager: {fileID: 0}
   gold: 0
   finalAttack: 0
   finalCritical: 0
@@ -172,6 +174,7 @@ MonoBehaviour:
   stage: 10
   damage: 0
   finalAutoAttackCooldown: 0
+  equippedWeapon: {fileID: 0}
   musicNumber: 0
 --- !u!4 &963713238
 Transform:
@@ -207,6 +210,7 @@ MonoBehaviour:
       spawnCount: 1
     hasboss: 0
     bosstype: 
+  StageClearCount: 0
 --- !u!1 &1589071605
 GameObject:
   m_ObjectHideFlags: 0
@@ -5472,103 +5476,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1001 &7136666351559067723
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104245304134031646, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5155696259403155454, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
-      propertyPath: m_Name
-      value: Stage
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cf997bee5f1e10946a66d224ca7fb491, type: 3}
 --- !u!114 &7164830738224968757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6856,6 +6763,5 @@ SceneRoots:
   - {fileID: 1589071608}
   - {fileID: 963713238}
   - {fileID: 1510970682324665435}
-  - {fileID: 7136666351559067723}
   - {fileID: 5851409843445330196}
   - {fileID: 4305980835182871125}
