@@ -1,11 +1,17 @@
 using UnityEngine;
 
+using UnityEngine;
+using UnityEngine.UIElements;
+
 public class StageManager : MonoBehaviour
 {
     [SerializeField] private StageInfo[] stageInfos;
     [SerializeField] private int stageKey;
-    [SerializeField] private EnemyCenter enemyCenter;
+    [SerializeField] private EnemyCenter[] enemyCenters;
     [SerializeField] private Enemy enemy;
+    [SerializeField] private Transform target; // 적이 소환될 위치
+    public int thisStageEnemy;
+    public EnemyCenter enemyCenter;
 
     private GameManager gameManager;
 
@@ -25,6 +31,7 @@ public class StageManager : MonoBehaviour
         {
             Debug.LogError($"잘못된 스테이지 키: {stageKey}");
         }
+        thisStageEnemy = 0;
     }
 
     private void InitializeStage(StageInfo stageInfo)
@@ -57,7 +64,28 @@ public class StageManager : MonoBehaviour
     // 적 스폰 로직
     private void SpawnEnemies()
     {
+        if (enemyCenter.Length == 0)
+            return;
+        if (thisStageEnemy < stageInfos[gameManager.playerData.StageInfo].Waves.Length)
+        {
+            thisStageEnemy++;
+            int randomEnemy = Random.Range(0, enemyCenter.Length);
+            for (int i = 0; i <= 10; i++)
+            {
+                Instantiate (enemy, target);
+            }
+        }
+        else if(thisStageEnemy == stageInfos[gameManager.playerData.StageInfo].Waves.Length)
+        {
+            StageClear();
+        }
+    }
 
+    private void StageClear()
+    {
+        gameManager.playerData.StageInfo++;
+        thisStageEnemy = 0;
+        SpawnEnemies();
     }
 
     private void SpawnBoss()

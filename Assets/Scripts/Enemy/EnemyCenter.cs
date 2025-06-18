@@ -32,6 +32,11 @@ public class EnemyCenter : ScriptableObject
     private int enemyExp;
     public int EnemyExp { get { return enemyExp; } }
 
+    [Header("적 거리")]
+    [Tooltip("적의 거리를 표기한다")]
+    [SerializeField]
+    public int Length;
+
     [Header("적 종류")] 
     [Tooltip("적 종류의 갯수를 수정한다")] 
     [SerializeField]
