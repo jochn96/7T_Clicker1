@@ -173,6 +173,16 @@ public class PlayerStatUI : MonoBehaviour
     {
         // 골드 UI 업데이트 (매 프레임마다 갱신)
         UpdateGoldUI();
+        
+        // 마우스 클릭 감지하여 골드 부족 패널 닫기
+        if (Input.GetMouseButtonDown(0))
+        {
+            // 골드 부족 패널이 활성화되어 있다면 닫기
+            if (notEnoughGoldPanel != null && notEnoughGoldPanel.gameObject.activeSelf)
+            {
+                CloseNotEnoughGoldPanel();
+            }
+        }
     }
 
     /// <summary>
@@ -390,13 +400,6 @@ public class PlayerStatUI : MonoBehaviour
         
         // 골드 부족 패널 활성화
         notEnoughGoldPanel.gameObject.SetActive(true);
-        
-        // 텍스트 설정
-        if (notEnoughGoldText != null)
-        {
-            int missingGold = requiredGold - gameManager.playerData.Gold;
-            notEnoughGoldText.text = $"골드가 부족합니다!\n필요: {requiredGold}G\n보유: {gameManager.playerData.Gold}G\n부족: {missingGold}G";
-        }
     }
     
     /// <summary>
