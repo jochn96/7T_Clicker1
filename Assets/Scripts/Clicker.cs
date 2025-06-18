@@ -75,7 +75,7 @@ public class Clicker : MonoBehaviour
         }
     }
 
-    private void AttackAnimation()
+    public void AttackAnimation()
     {
         if (animator == null) return;
 
@@ -91,7 +91,7 @@ public class Clicker : MonoBehaviour
         isAttack = !isAttack; // 1, 2 바꾸면서 재생
     }
 
-    private void Effect(bool isCri)
+    public void Effect(bool isCri)
     {
         GameObject effectPrefab = isCri ? criEffect : nomalEffect;
         if (effectPrefab == null || effectPivot == null) return;

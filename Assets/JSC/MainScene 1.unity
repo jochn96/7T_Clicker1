@@ -1512,6 +1512,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2818527521443126916, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818527521443126916, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818527521443126916, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3842695097672384448, guid: 654eaf80390c45f4fb414da08a543000, type: 3}
       propertyPath: m_Name
       value: UI_Player_Stat

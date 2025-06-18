@@ -134,8 +134,8 @@ public class Player : MonoBehaviour
         float baseCooldown = gameManager.playerData.AutoAttackCooldown;
         float cooldownReduction = statManager.GetStatValue(PlayerStatType.AutoAttackCooldownReduce);
         
-        // 최소 0.5초, 최대 기본값
-        return Mathf.Max(0.5f, baseCooldown - cooldownReduction);
+        // 최소 1초, 최대 기본값
+        return Mathf.Max(1.0f, baseCooldown - cooldownReduction);
     }
 
     /// <summary>
@@ -159,7 +159,15 @@ public class Player : MonoBehaviour
                 Debug.Log($"일반 공격. 데미지: {damage}");
             }
             
+            // 애니메이션 및 이펙트 재생 추가
+            clicker.AttackAnimation();
+            clicker.Effect(isCrit);
+            
             // TODO: 적에게 데미지 주기 등 실제 공격 로직 구현
+            if (clicker.targetEnemy != null)
+            {
+                clicker.targetEnemy.TakeDamage(damage);
+            }
         }
         else
         {
@@ -214,7 +222,9 @@ public class Player : MonoBehaviour
                 // 최대 100%
                 return Mathf.Min(gameManager.playerData.BonusGold + upgradeValue, 100f);
             case PlayerStatType.AutoAttackCooldownReduce:
-                return gameManager.playerData.AutoAttackCooldown + upgradeValue;
+                // 최대 25번 업그레이드 (쿨다운 2.5초 감소)
+                float maxCooldownReduction = 2.5f; // 최대 25번 업그레이드 (-0.1 * 25 = -2.5)
+                return Mathf.Min(gameManager.playerData.AutoAttackCooldown + upgradeValue, maxCooldownReduction);
             default:
                 return upgradeValue;
         }
