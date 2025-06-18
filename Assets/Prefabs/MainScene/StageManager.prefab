@@ -47,10 +47,15 @@ MonoBehaviour:
   stageInfos:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   stageKey: 0
   enemyCenters:
+  - {fileID: 11400000, guid: a4c0b458b7650954cbefaf7f7a03fad9, type: 2}
+  - {fileID: 11400000, guid: a4c0b458b7650954cbefaf7f7a03fad9, type: 2}
   - {fileID: 11400000, guid: a4c0b458b7650954cbefaf7f7a03fad9, type: 2}
   - {fileID: 11400000, guid: e83df52f7e3baeb4aac56f08c4111aab, type: 2}
   enemy: {fileID: 0}
   target: {fileID: 0}
   thisStageEnemy: 0
+  enemyCenter: {fileID: 11400000, guid: a4c0b458b7650954cbefaf7f7a03fad9, type: 2}
