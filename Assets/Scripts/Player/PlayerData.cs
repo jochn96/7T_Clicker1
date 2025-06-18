@@ -40,6 +40,7 @@ public  class  PlayerData //임시입니다 스텟레벨을 가져올예정
         SaveDataToJSON.LoadUsers();
         
         Gold = playerdata.Gold;
+        EnforceStone = playerdata.EnforceStone;
         Attack = playerdata.Attack;
         Critical = playerdata.Critical;
         CriticalDmg = playerdata.CriticalDmg;
