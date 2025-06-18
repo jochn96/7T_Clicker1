@@ -1083,8 +1083,8 @@ MonoBehaviour:
   autoAttackUnlocked: 0
   autoAttackInterval: 5
   targetEnemy: {fileID: 0}
-  nomalEffect: {fileID: 1317334335013377502, guid: fc4545d35d462564c8d109688e476f12, type: 3}
-  criEffect: {fileID: 1597015496697396882, guid: fe24e736144dc5545a7400799f8300ce, type: 3}
+  nomalEffect: {fileID: 7241804551320042140, guid: fc4545d35d462564c8d109688e476f12, type: 3}
+  criEffect: {fileID: 7452953187612935517, guid: fe24e736144dc5545a7400799f8300ce, type: 3}
   effectPivot: {fileID: 1427203163521772845}
 --- !u!224 &418256812361661393
 RectTransform:
@@ -5880,7 +5880,6 @@ RectTransform:
   - {fileID: 4723870253002352283}
   - {fileID: 5972836377315298034}
   - {fileID: 435086153639728635}
-  - {fileID: 4908148661804190693}
   - {fileID: 1427203163521772845}
   - {fileID: 1134626262}
   m_Father: {fileID: 0}
@@ -8727,11 +8726,11 @@ Transform:
   m_GameObject: {fileID: 6546181193092063914}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -540, y: -959.48505, z: 0}
-  m_LocalScale: {x: 4.6351933, y: 4.6351933, z: 4.6351933}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3287475783029684371}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4915162270182875015
 MonoBehaviour:
@@ -16988,6 +16987,7 @@ SceneRoots:
   - {fileID: 255347099473890991}
   - {fileID: 3287475783029684371}
   - {fileID: 5285415184194823245}
+  - {fileID: 4908148661804190693}
   - {fileID: 3886387592684688634}
   - {fileID: 7938600585743762562}
   - {fileID: 3894606888326210606}
